@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "562033447161",
+    "project_id": "kannnavi",
+    "storage_bucket": "kannnavi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562033447161:android:c0f217c88357bbcba6d228",
+        "android_client_info": {
+          "package_name": "com.example.testapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562033447161-17uljse9isj4sg4ppspsl8flj9upuitt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVE1kbANwIi2OnJS5kNflTnGCeJnzesCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562033447161-17uljse9isj4sg4ppspsl8flj9upuitt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "562033447161-86eq3iie3bhttpaiacde5uhi2dv9apdi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.testapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
