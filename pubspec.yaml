@@ -31,6 +31,7 @@ dependencies:
   firebase_auth: ^3.1.0
   firebase_storage: ^10.0.3
   image_picker: ^0.8.4
+  direct_select: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -53,9 +54,22 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+     - images/cultural_club_images/keion.jpeg
+     - images/cultural_club_images/guitar.jpeg
+     - images/cultural_club_images/movie.jpeg
+     - images/cultural_club_images/photo.jpeg
+     - images/cultural_club_images/popken.jpeg
+     - images/cultural_club_images/sadou.jpeg
+     - images/cultural_club_images/bungei.jpeg
+     - images/cultural_club_images/caligraphy.jpeg
+     - images/cultural_club_images/expedition.jpeg
+     - images/cultural_club_images/magic.jpeg
+     - images/cultural_club_images/theater.jpeg
+     - images/cultural_club_images/mandolin.jpeg
+     - images/cultural_club_images/art.jpeg
+     - images/cultural_club_images/placeholder_test.jpeg
+     - images/placeholder_image/placeholder.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

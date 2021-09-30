@@ -6,6 +6,7 @@ class ClubDetailPage extends StatelessWidget {
 
   final Club club;
 
+
   ClubDetailPage(this.club);
 
   @override

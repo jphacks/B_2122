@@ -7,8 +7,6 @@ import 'package:testapp/room_detail/room_detail_page.dart';
 import 'package:testapp/room_list/room_list_model.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-import '../next_page.dart';
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,18 +25,8 @@ class HomePage extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0.0,
             centerTitle: false,
-            actions: [
-              IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NextPage(),
-                      ),
-                    );
-                  }),
-            ],),
+            automaticallyImplyLeading: false
+        ),
         extendBodyBehindAppBar: true,
 
         body: Center(

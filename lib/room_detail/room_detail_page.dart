@@ -13,8 +13,7 @@ class RoomDetailPage extends StatelessWidget {
         elevation: 0.0,
         centerTitle: false,
       ),
-      body: Container(
-      ),
+      body: Container(),
     );
   }
 }

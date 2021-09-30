@@ -153,11 +153,10 @@ class SignUpPage extends StatelessWidget {
                       onPressed: () async {
                         try {
                           await model.signUp();
-                          Navigator.of(context).push(
+                          Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) {
-                                return TopPage();
-                              },
+                              builder: (context)
+                                => TopPage(),
                             ),
                           );
                         } catch (e) {

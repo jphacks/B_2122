@@ -16,38 +16,44 @@ class TopPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<TopModel>(
-      create: (_) => TopModel(),
-      child: Consumer<TopModel>(
-        builder: (context, model, child) {
-          return Scaffold(
-              body: _topPageBody(context),
-              bottomNavigationBar: BottomNavigationBar(
-                onTap: model.onTabTapped,
-                currentIndex: model.currentIndex,
-                type: BottomNavigationBarType.fixed,
-                items: [
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: _tabNames[0],
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.explore),
-                    label: _tabNames[1],
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.notifications),
-                    label: _tabNames[2],
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.account_circle),
-                    label: _tabNames[3],
-                  ),
-                ],
-              ));
-        },
+    return WillPopScope(
+      onWillPop: _willPopCallback,
+      child: ChangeNotifierProvider<TopModel>(
+        create: (_) => TopModel(),
+        child: Consumer<TopModel>(
+          builder: (context, model, child) {
+            return Scaffold(
+                body: _topPageBody(context),
+                bottomNavigationBar: BottomNavigationBar(
+                  onTap: model.onTabTapped,
+                  currentIndex: model.currentIndex,
+                  type: BottomNavigationBarType.fixed,
+                  items: [
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.home),
+                      label: _tabNames[0],
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.explore),
+                      label: _tabNames[1],
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.notifications),
+                      label: _tabNames[2],
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.account_circle),
+                      label: _tabNames[3],
+                    ),
+                  ],
+                ));
+          },
+        ),
       ),
     );
+  }
+  Future<bool> _willPopCallback() async {
+    return false;
   }
 
   Widget _topPageBody(BuildContext context) {
