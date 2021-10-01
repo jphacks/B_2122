@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'top_model.dart';
-import 'room_list/room_list_page.dart';
+import 'home/home_page.dart';
 import 'club_list/club_list_page.dart';
-import 'notification_list/notification_list_page.dart';
+import 'community/community_page.dart';
 import 'profile_page.dart';
 
 class TopPage extends StatelessWidget {
   final List<String> _tabNames = [
-    "ホーム",
-    "サークル・部活",
-    "通知",
-    "設定",
+    "",
+    "",
+    "",
+    "",
   ];
 
   @override
@@ -38,7 +38,7 @@ class TopPage extends StatelessWidget {
                       label: _tabNames[1],
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.notifications),
+                      icon: Icon(Icons.chat_sharp),
                       label: _tabNames[2],
                     ),
                     BottomNavigationBarItem(
@@ -74,7 +74,7 @@ class TopPage extends StatelessWidget {
         _tabPage(
           currentIndex,
           2,
-          ChatPage(),
+          CommunityPage(),
         ),
         _tabPage(
           currentIndex,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RoomDetailModel extends StatelessWidget {
+class CommunityDetailModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

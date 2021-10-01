@@ -499,7 +499,7 @@ class SearchPage extends StatelessWidget {
                     width:130,
                     height: 130,
                     child: Image.asset(
-                      'cultural_club_images/${culturalClub.imageURL}',
+                      'images/cultural_club_images/${culturalClub.imageURL}',
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -510,7 +510,7 @@ class SearchPage extends StatelessWidget {
                   BlendMode.saturation,
                 ),
                 child: Image.asset(
-                  'placeholder_image/placeholder.jpeg',
+                  'images/placeholder_image/placeholder.jpeg',
                   fit: BoxFit.cover,
                 ),
               ),

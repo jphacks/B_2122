@@ -1,64 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:testapp/domain/room.dart';
-import 'edit_room_model.dart';
+import 'add_community_model.dart';
 
-class EditRoomPage extends StatelessWidget {
-  final Room room;
-  EditRoomPage(this.room);
-
+class AddCommunityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<EditRoomModel>(
-      create: (_) => EditRoomModel(room),
+    return ChangeNotifierProvider<AddCommunityModel>(
+      create: (_) => AddCommunityModel(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('ルームを更新',
+          title: const Text('新規コミュニティ',
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           centerTitle: false,
         ),
         body: Center(
-          child: Consumer<EditRoomModel>(builder: (context, model, child) {
+          child: Consumer<AddCommunityModel>(builder: (context, model, child) {
             return Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(children: [
                 TextField(
-                  controller: model.titleController,
                   decoration: InputDecoration(
-                      border: InputBorder.none, hintText: 'ルーム名を更新'),
+                      border: InputBorder.none, hintText: 'コミュニティ名を追加'),
                   onChanged: (text) {
-                    model.setTitle(text);
+                    model.title = text;
                   },
                 ),
                 SizedBox(
                   height: 16,
                 ),
                 TextField(
-                  controller: model.ownerController,
                   decoration: InputDecoration(
-                      border: InputBorder.none, hintText: '作成者名を更新'),
+                      border: InputBorder.none, hintText: 'コミュニティのカテゴリを追加'),
                   onChanged: (text) {
-                    model.setOwner(text);
+                    model.category = text;
                   },
                 ),
                 SizedBox(
                   height: 16,
                 ),
                 ElevatedButton(
-                  onPressed:model.isUpdated() ? () async {
+                  onPressed: () async {
                     try {
-                      await model.update();
-                      Navigator.of(context).pop(model.title);
+                      await model.addCommunity();
+                      Navigator.of(context).pop(true);
                     } catch (e) {
                       final snackBar = SnackBar(
                         content: Text(e.toString()),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
-                  }  : null,
-                  child: Text('更新する'),
+                  },
+                  child: Text('新規作成'),
                 ),
               ]),
             );
