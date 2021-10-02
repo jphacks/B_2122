@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testapp/add_community/add_community_page.dart';
+import 'package:testapp/community_detail/community_detail_page.dart';
 import 'package:testapp/domain/community.dart';
 import 'package:testapp/edit_community/edit_community_page.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -42,13 +43,21 @@ class CommunityPage extends StatelessWidget {
                 actionPane: SlidableDrawerActionPane(),
                 actionExtentRatio: 0.25,
                 child:
-                ListTile(
-                  leading: community.imageURL != null ? CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        community.imageURL!),
-                  ): null,
-                  title: Text(community.title),
-                  subtitle: Text(community.category),
+                Card(
+                  child: ListTile(
+                    leading: community.imageURL != null ? CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          community.imageURL!),
+                    ): null,
+                    title: Text(community.title),
+                    subtitle: Text(community.category),
+                    onTap: () async {
+                      await Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => CommunityDetailPage(community),
+                        ),
+                      );
+                    },
+                  ),
                 ) ,
                 secondaryActions: <Widget>[
                   IconSlideAction(

@@ -14,7 +14,7 @@ class ProfileWidget extends StatelessWidget {
   final String bio;
   final Timestamp createdAt;
 
-  final double photoSize = 150;
+  final double photoSize = 130;
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +65,71 @@ class ProfileWidget extends StatelessWidget {
           SizedBox(height: 8),
           Container(
               child: Text(bio)
+          ),
+          SizedBox(
+            height: 32,
+          ),
+          Divider(),
+          Text(
+            '基本データ',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Divider(),
+          Column(
+            children: [
+              Card(
+                margin: EdgeInsets.symmetric(vertical: 10),
+
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    '大学: 関西大学/千里山キャンパス',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                margin: EdgeInsets.symmetric(vertical: 10),
+
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    '学部: 商学部/3年生',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                margin: EdgeInsets.symmetric(vertical: 10),
+
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    '誕生日: 8月21日',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                margin: EdgeInsets.symmetric(vertical: 10),
+
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    '性別: 男性',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
