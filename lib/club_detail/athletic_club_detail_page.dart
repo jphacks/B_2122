@@ -61,8 +61,10 @@ class AthleticClubDetailPage extends StatelessWidget {
                       tag: 'club-img${athleticClub.imageURL}',
                       child: CircleAvatar(
                         radius: 30.0,
-                        backgroundImage: athleticClub.imageURL != null ?
-                        NetworkImage(athleticClub.imageURL!) : null,
+                        backgroundImage: athleticClub.imageURL != null && athleticClub.imageURL!.isNotEmpty
+                            ?
+                        AssetImage('images/cultural_club_images/${athleticClub.imageURL}')
+                            : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),
                     ),

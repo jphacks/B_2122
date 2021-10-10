@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/club.dart';
-import 'package:testapp/favorite_list/favorite_list_page.dart';
 
 class AcademicStudyClubDetailPage extends StatelessWidget {
 
@@ -11,32 +10,17 @@ class AcademicStudyClubDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child:Scaffold(
-        appBar: AppBar(
-          title: Text(
-            '詳細',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          centerTitle: false,
-          actions: [
-            IconButton(
-                icon: Icon(Icons.favorite_border_outlined),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FavoritePage(),
-                    ),
-                  );
-                }),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          '詳細',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
-        body: academicStudyClubWidget(context, academicStudyClub),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        centerTitle: false,
       ),
+      body: academicStudyClubWidget(context, academicStudyClub),
     );
   }
 
@@ -61,8 +45,10 @@ class AcademicStudyClubDetailPage extends StatelessWidget {
                       tag: 'club-img${academicStudyClub.imageURL}',
                       child: CircleAvatar(
                         radius: 30.0,
-                        backgroundImage: academicStudyClub.imageURL != null ?
-                        NetworkImage(academicStudyClub.imageURL!) : null,
+                        backgroundImage: academicStudyClub.imageURL != null && academicStudyClub.imageURL!.isNotEmpty
+                            ?
+                        AssetImage('images/academic_study_club_images/${academicStudyClub.imageURL}')
+                            : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),
                     ),

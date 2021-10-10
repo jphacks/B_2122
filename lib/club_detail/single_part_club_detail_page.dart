@@ -61,8 +61,10 @@ class SinglePartClubDetailPage extends StatelessWidget {
                       tag: 'club-img${singlePartClub.imageURL}',
                       child: CircleAvatar(
                         radius: 30.0,
-                        backgroundImage: singlePartClub.imageURL != null ?
-                        NetworkImage(singlePartClub.imageURL!) : null,
+                        backgroundImage: singlePartClub.imageURL != null && singlePartClub.imageURL!.isNotEmpty
+                            ?
+                        AssetImage('images/single_part_club_images/${singlePartClub.imageURL}')
+                            : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),
                     ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'top_model.dart';
 import 'home/home_page.dart';
+import 'top_model.dart';
 import 'club_list/club_list_page.dart';
 import 'community/community_page.dart';
 import 'profile_page.dart';
@@ -69,7 +69,7 @@ class TopPage extends StatelessWidget {
         _tabPage(
           currentIndex,
           1,
-          SearchPage(),
+          ClubListPage(),
         ),
         _tabPage(
           currentIndex,

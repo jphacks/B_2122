@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/club.dart';
-import 'package:flutter/cupertino.dart';
 
 class CulturalClubDetailPage extends StatelessWidget {
 
@@ -49,7 +48,7 @@ class CulturalClubDetailPage extends StatelessWidget {
                         backgroundImage: culturalClub.imageURL != null && culturalClub.imageURL!.isNotEmpty
                             ?
                         AssetImage('images/cultural_club_images/${culturalClub.imageURL}')
-                            : AssetImage('images/cultural_club_images/placeholder_test.jpeg') ,
+                            : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),
                     ),

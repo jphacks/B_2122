@@ -12,122 +12,133 @@ class CommunityPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<CommunityPageModel>(
       create: (_) => CommunityPageModel()..fetchCommunityList(),
-      child: Scaffold(
-        appBar: AppBar(
-            title: const Text(
-              'コミュニティ',
-              style:
-              TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black
-              ),
+      child: DefaultTabController(
+        length:3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: TabBar(
+              tabs:[
+              Tab(text:'話題'),
+              Tab(text:'最新'),
+              Tab(text:'フォロー'),
+              ],
             ),
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            centerTitle: false,
-            automaticallyImplyLeading: false
-        ),
-        extendBodyBehindAppBar: true,
-
-        body: Center(
-          child: Consumer<CommunityPageModel>(builder: (context, model, child) {
-            final List<Community>? communities = model.communities;
-
-            if (communities == null) {
-              return CircularProgressIndicator();
-            }
-
-            final List<Widget> widgets = communities
-                .map(
-                  (community) => Slidable(
-                actionPane: SlidableDrawerActionPane(),
-                actionExtentRatio: 0.25,
-                child:
-                Card(
-                  child: ListTile(
-                    leading: community.imageURL != null ? CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          community.imageURL!),
-                    ): null,
-                    title: Text(community.title),
-                    subtitle: Text(community.category),
-                    onTap: () async {
-                      await Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => CommunityDetailPage(community),
-                        ),
-                      );
-                    },
-                  ),
-                ) ,
-                secondaryActions: <Widget>[
-                  IconSlideAction(
-                    caption: '編集',
-                    color: Colors.black45,
-                    icon: Icons.edit,
-                    onTap: () async {
-                      final String? title = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EditCommunityPage(community),
-                        ),
-                      );
-
-                      if (title != null) {
-                        final snackBar = SnackBar(
-                          content: Text('$titleを編集しました'),
-                        );
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(snackBar);
-                      }
-
-                      model.fetchCommunityList();
-                    },
-                  ),
-                  IconSlideAction(
-                    caption: '削除',
-                    color: Colors.red,
-                    icon: Icons.delete,
-                    onTap: () async {
-                      //削除しますか？モーダルを表示
-                      await showConfirmDialog(context, community, model);
-                    },
-                  ),
-                ],
-              ),
-            )
-                .toList();
-            return InkWell(
-                child: ListView(
-                  children: widgets,
+              title: const Text(
+                'コミュニティ',
+                style:
+                TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black
                 ),
+              ),
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              centerTitle: false,
+              automaticallyImplyLeading: false
+          ),
+          extendBodyBehindAppBar: true,
+
+          body: Center(
+            child: Consumer<CommunityPageModel>(builder: (context, model, child) {
+              final List<Community>? communities = model.communities;
+
+              if (communities == null) {
+                return CircularProgressIndicator();
+              }
+
+              final List<Widget> widgets = communities
+                  .map(
+                    (community) => Slidable(
+                  actionPane: SlidableDrawerActionPane(),
+                  actionExtentRatio: 0.25,
+                  child:
+                  Card(
+                    child: ListTile(
+                      leading: community.imageURL != null ? CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            community.imageURL!),
+                      ): null,
+                      title: Text(community.title),
+                      subtitle: Text(community.category),
+                      onTap: () async {
+                        await Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => CommunityDetailPage(community),
+                          ),
+                        );
+                      },
+                    ),
+                    elevation: 0.0,
+                  ) ,
+                  secondaryActions: <Widget>[
+                    IconSlideAction(
+                      caption: '編集',
+                      color: Colors.black45,
+                      icon: Icons.edit,
+                      onTap: () async {
+                        final String? title = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditCommunityPage(community),
+                          ),
+                        );
+
+                        if (title != null) {
+                          final snackBar = SnackBar(
+                            content: Text('$titleを編集しました'),
+                          );
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(snackBar);
+                        }
+
+                        model.fetchCommunityList();
+                      },
+                    ),
+                    IconSlideAction(
+                      caption: '削除',
+                      color: Colors.red,
+                      icon: Icons.delete,
+                      onTap: () async {
+                        //削除しますか？モーダルを表示
+                        await showConfirmDialog(context, community, model);
+                      },
+                    ),
+                  ],
+                ),
+              )
+                  .toList();
+              return InkWell(
+                  child: ListView(
+                    children: widgets,
+                  ),
+              );
+            }),
+          ),
+          floatingActionButton:
+          Consumer<CommunityPageModel>(builder: (context, model, child) {
+            return FloatingActionButton(
+              onPressed: () async {
+                final bool? added = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddCommunityPage(),
+                    fullscreenDialog: true,
+                  ),
+                );
+
+                if (added != null && added) {
+                  final snackBar = SnackBar(
+                    content: Text('コミュニティを追加しました'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+
+                model.fetchCommunityList();
+              },
+              tooltip: 'Increment',
+              child: Icon(Icons.add),
             );
           }),
         ),
-        floatingActionButton:
-        Consumer<CommunityPageModel>(builder: (context, model, child) {
-          return FloatingActionButton(
-            onPressed: () async {
-              final bool? added = await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddCommunityPage(),
-                  fullscreenDialog: true,
-                ),
-              );
-
-              if (added != null && added) {
-                final snackBar = SnackBar(
-                  content: Text('コミュニティを追加しました'),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              }
-
-              model.fetchCommunityList();
-            },
-            tooltip: 'Increment',
-            child: Icon(Icons.chat_outlined),
-          );
-        }),
       ),
     );
   }

@@ -69,7 +69,6 @@ class ProfileWidget extends StatelessWidget {
           SizedBox(
             height: 32,
           ),
-          Divider(),
           Text(
             '基本データ',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -77,57 +76,66 @@ class ProfileWidget extends StatelessWidget {
           Divider(),
           Column(
             children: [
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 10),
-
-                child: Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    '大学: 関西大学/千里山キャンパス',
-                    style: TextStyle(
-                      fontSize: 16,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      '大学: 関西大学/千里山キャンパス',
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
                   ),
-                ),
+                ]
               ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 10),
-
-                child: Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    '学部: 商学部/3年生',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text(
+                          '学部: 商学部/3年生',
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ]
                   ),
-                ),
+                ]
               ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 10),
-
-                child: Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    '誕生日: 8月21日',
-                    style: TextStyle(
-                      fontSize: 16,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      '誕生日: 8月21日',
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
                   ),
-                ),
+                ]
               ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 10),
-
-                child: Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    '性別: 男性',
-                    style: TextStyle(
-                      fontSize: 16,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children:[
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      '性別: 男性',
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
                   ),
-                ),
+                ]
               ),
             ],
           ),

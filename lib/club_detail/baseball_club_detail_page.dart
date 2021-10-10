@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/club.dart';
-import 'package:testapp/favorite_list/favorite_list_page.dart';
 
 class BaseballClubDetailPage extends StatelessWidget {
 
@@ -11,32 +10,17 @@ class BaseballClubDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child:Scaffold(
-        appBar: AppBar(
-          title: Text(
-            '詳細',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          centerTitle: false,
-          actions: [
-            IconButton(
-                icon: Icon(Icons.favorite_border_outlined),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FavoritePage(),
-                    ),
-                  );
-                }),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          '詳細',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
-        body: baseballClubWidget(context, baseballClub),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        centerTitle: false,
       ),
+      body: baseballClubWidget(context, baseballClub),
     );
   }
 
@@ -61,8 +45,10 @@ class BaseballClubDetailPage extends StatelessWidget {
                       tag: 'club-img${baseballClub.imageURL}',
                       child: CircleAvatar(
                         radius: 30.0,
-                        backgroundImage: baseballClub.imageURL != null ?
-                        NetworkImage(baseballClub.imageURL!) : null,
+                        backgroundImage: baseballClub.imageURL != null && baseballClub.imageURL!.isNotEmpty
+                            ?
+                        AssetImage('images/baseball_club_images/${baseballClub.imageURL}')
+                            : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),
                     ),

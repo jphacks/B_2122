@@ -17,6 +17,13 @@ class ProfilePage extends StatelessWidget {
                 color: Colors.black
             ),
             ),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                  child: Icon(Icons.settings,
+                    color: Colors.grey[700],)
+              )
+            ],
             backgroundColor: Colors.transparent,
             elevation: 0.0,
             centerTitle: false,

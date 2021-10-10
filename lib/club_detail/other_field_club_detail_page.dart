@@ -61,8 +61,10 @@ class OtherFieldClubDetailPage extends StatelessWidget {
                       tag: 'club-img${otherFieldClub.imageURL}',
                       child: CircleAvatar(
                         radius: 30.0,
-                        backgroundImage: otherFieldClub.imageURL != null ?
-                        NetworkImage(otherFieldClub.imageURL!) : null,
+                        backgroundImage: otherFieldClub.imageURL != null && otherFieldClub.imageURL!.isNotEmpty
+                            ?
+                        AssetImage('images/other_field_club_images/${otherFieldClub.imageURL}')
+                            : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),
                     ),

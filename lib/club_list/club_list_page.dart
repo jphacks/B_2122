@@ -28,7 +28,7 @@ import 'club_list_model.dart';
 import 'package:testapp/domain/club.dart';
 
 
-class SearchPage extends StatelessWidget {
+class ClubListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ClubListModel>(
@@ -436,8 +436,8 @@ class SearchPage extends StatelessWidget {
                   child: Container(
                     width:130,
                     height: 130,
-                    child: Image.network(
-                      athleticClub.imageURL!,
+                    child: Image.asset(
+                      'images/athletic_club_images/${athleticClub.imageURL}',
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -487,8 +487,7 @@ class SearchPage extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30.0),
-              child: culturalClub.imageURL != null && culturalClub.imageURL!.isNotEmpty
-                  ?
+              child: culturalClub.imageURL != null ?
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -498,22 +497,17 @@ class SearchPage extends StatelessWidget {
                   child: Container(
                     width:130,
                     height: 130,
-                    child: Image.asset(
-                      'images/cultural_club_images/${culturalClub.imageURL}',
-                      fit: BoxFit.fill,
+                    child: CircleAvatar(
+                      radius: 30.0,
+                      backgroundImage: culturalClub.imageURL != null && culturalClub.imageURL!.isNotEmpty
+                          ?
+                      AssetImage('images/cultural_club_images/${culturalClub.imageURL}')
+                          : AssetImage('images/placeholder_image/placeholder.jpeg') ,
+                      backgroundColor: Colors.transparent,
                     ),
                   ),
                 ),
-              ) : ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  Colors.grey,
-                  BlendMode.saturation,
-                ),
-                child: Image.asset(
-                  'images/placeholder_image/placeholder.jpeg',
-                  fit: BoxFit.cover,
-                ),
-              ),
+              ) : null,
             ),
           ),
           SizedBox(
@@ -558,9 +552,13 @@ class SearchPage extends StatelessWidget {
                   child: Container(
                     width:130,
                     height: 130,
-                    child: Image.network(
-                      academicStudyClub.imageURL!,
-                      fit: BoxFit.fill,
+                    child: CircleAvatar(
+                      radius: 30.0,
+                      backgroundImage: academicStudyClub.imageURL != null && academicStudyClub.imageURL!.isNotEmpty
+                          ?
+                      AssetImage('images/academic_study_club_images/${academicStudyClub.imageURL}')
+                          : AssetImage('images/placeholder_image/placeholder.jpeg') ,
+                      backgroundColor: Colors.transparent,
                     ),
                   ),
                 ),
@@ -609,8 +607,8 @@ class SearchPage extends StatelessWidget {
                   child: Container(
                     width:130,
                     height: 130,
-                    child: Image.network(
-                      singlePartClub.imageURL!,
+                    child: Image.asset(
+                      'images/single_part_club_images/${singlePartClub.imageURL}',
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -660,8 +658,8 @@ class SearchPage extends StatelessWidget {
                   child: Container(
                     width:130,
                     height: 130,
-                    child: Image.network(
-                      otherFieldClub.imageURL!,
+                    child: Image.asset(
+                      'images/other_field_club_images/${otherFieldClub.imageURL}',
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -711,9 +709,13 @@ class SearchPage extends StatelessWidget {
                   child: Container(
                     width:130,
                     height: 130,
-                    child: Image.network(
-                      baseballClub.imageURL!,
-                      fit: BoxFit.fill,
+                    child: CircleAvatar(
+                      radius: 30.0,
+                      backgroundImage: baseballClub.imageURL != null && baseballClub.imageURL!.isNotEmpty
+                          ?
+                      AssetImage('images/baseball_club_images/${baseballClub.imageURL}')
+                          : AssetImage('images/placeholder_image/placeholder.jpeg') ,
+                      backgroundColor: Colors.transparent,
                     ),
                   ),
                 ),
