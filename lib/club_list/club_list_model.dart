@@ -111,8 +111,9 @@ class ClubListModel extends ChangeNotifier {
       final String people = data['people'];
       final String place = data['place'];
       final String title = data['title'];
+      final String twitterURL = data['twitterURL'];
       return CulturalClub(id,activity,campus,category,frequency,imageURL,
-          people,place,title);
+          people,place,title,twitterURL);
     }).toList();
 
     this.culturalClubs = culturalClubs;

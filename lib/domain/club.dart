@@ -27,7 +27,7 @@ class AthleticClub {
 }
 
 class CulturalClub {
-  CulturalClub(this.id,this.activity,this.campus, this.category, this.frequency, this.imageURL, this.people, this.place, this.title);
+  CulturalClub(this.id,this.activity,this.campus, this.category, this.frequency, this.imageURL, this.people, this.place, this.title, this.twitterURL);
 
   String id;
   String activity;
@@ -38,6 +38,7 @@ class CulturalClub {
   String people;
   String place;
   String title;
+  String? twitterURL;
 }
 
 class AcademicStudyClub {

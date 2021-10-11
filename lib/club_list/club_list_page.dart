@@ -492,19 +492,16 @@ class ClubListPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                 ),
-                child: Hero(
-                  tag: 'club-img${culturalClub.imageURL}',
-                  child: Container(
-                    width:130,
-                    height: 130,
-                    child: CircleAvatar(
-                      radius: 30.0,
-                      backgroundImage: culturalClub.imageURL != null && culturalClub.imageURL!.isNotEmpty
-                          ?
-                      AssetImage('images/cultural_club_images/${culturalClub.imageURL}')
-                          : AssetImage('images/placeholder_image/placeholder.jpeg') ,
-                      backgroundColor: Colors.transparent,
-                    ),
+                child: Container(
+                  width:130,
+                  height: 130,
+                  child: CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage: culturalClub.imageURL != null && culturalClub.imageURL!.isNotEmpty
+                        ?
+                    AssetImage('images/cultural_club_images/${culturalClub.imageURL}')
+                        : AssetImage('images/placeholder_image/placeholder.jpeg') ,
+                    backgroundColor: Colors.transparent,
                   ),
                 ),
               ) : null,
