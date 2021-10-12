@@ -27,7 +27,7 @@ class CulturalClubDetailPage extends StatelessWidget {
   Widget culturalClubWidget(BuildContext context, CulturalClub culturalClub) {
     final _url = '${culturalClub.twitterURL}';
     void _launchURL() async =>
-        await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
+        await canLaunch(_url) ? await launch(_url) : throw '$_urlを開くことができませんでした。';
 
     return SingleChildScrollView(
       child: Column(

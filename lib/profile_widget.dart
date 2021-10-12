@@ -139,6 +139,19 @@ class ProfileWidget extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(
+            height: 30,
+          ),
+          Text(
+            '追加したコミュニティ',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Divider(),
+          Text(
+            'コミュニティをここにいれる',
+            style: TextStyle(fontWeight: FontWeight.bold
+            ),
+          ),
         ],
       ),
     );
