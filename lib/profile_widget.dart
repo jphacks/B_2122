@@ -147,11 +147,37 @@ class ProfileWidget extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           Divider(),
-          Text(
-            'コミュニティをここにいれる',
-            style: TextStyle(fontWeight: FontWeight.bold
-            ),
+          ListTile(
+            leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+            title: Text('自分が作成したコミュニティ'),
+            subtitle: Text('コミュニティのカテゴリ'),
+            onTap: () {},
           ),
+          ListTile(
+            leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+            title: Text('自分が作成したコミュニティ'),
+            subtitle: Text('コミュニティのカテゴリ'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+            title: Text('自分が作成したコミュニティ'),
+            subtitle: Text('コミュニティのカテゴリ'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+            title: Text('自分が作成したコミュニティ'),
+            subtitle: Text('コミュニティのカテゴリ'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+            title: Text('自分が作成したコミュニティ'),
+            subtitle: Text('コミュニティのカテゴリ'),
+            onTap: () {},
+          ),
+
         ],
       ),
     );
