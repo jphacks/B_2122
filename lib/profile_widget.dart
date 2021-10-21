@@ -147,37 +147,132 @@ class ProfileWidget extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           Divider(),
-          ListTile(
-            leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
-            title: Text('自分が作成したコミュニティ'),
-            subtitle: Text('コミュニティのカテゴリ'),
-            onTap: () {},
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
           ),
-          ListTile(
-            leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
-            title: Text('自分が作成したコミュニティ'),
-            subtitle: Text('コミュニティのカテゴリ'),
-            onTap: () {},
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
           ),
-          ListTile(
-            leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
-            title: Text('自分が作成したコミュニティ'),
-            subtitle: Text('コミュニティのカテゴリ'),
-            onTap: () {},
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
           ),
-          ListTile(
-            leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
-            title: Text('自分が作成したコミュニティ'),
-            subtitle: Text('コミュニティのカテゴリ'),
-            onTap: () {},
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
           ),
-          ListTile(
-            leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
-            title: Text('自分が作成したコミュニティ'),
-            subtitle: Text('コミュニティのカテゴリ'),
-            onTap: () {},
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
           ),
-
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
+          ),
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
+          ),
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
+          ),
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
+          ),
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
+          ),
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
+          ),
+          Card(
+            child: ListTile(
+              leading: Image.asset('images/placeholder_image/placeholder.jpeg'),
+              title: Text('自分が作成したコミュニティ'),
+              subtitle: Text('コミュニティのカテゴリ'),
+              onTap: () {},
+            ),
+            elevation: 0.0,
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Text(
+            '参加したイベント',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Divider(),
+          SizedBox(
+            height: 30,
+          ),
+          Text(
+            '参加したイベントはありません',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 30,
+          ),
         ],
       ),
     );

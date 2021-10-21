@@ -493,8 +493,8 @@ class ClubListPage extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: Container(
-                  width:130,
-                  height: 130,
+                  width:200,
+                  height: 200,
                   child: CircleAvatar(
                     radius: 30.0,
                     backgroundImage: culturalClub.imageURL != null && culturalClub.imageURL!.isNotEmpty
