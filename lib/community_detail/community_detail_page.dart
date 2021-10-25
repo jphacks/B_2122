@@ -13,7 +13,7 @@ class CommunityDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("チャットページ"),
+          title: new Text("チャットページ "),
         ),
         body: Container(
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
