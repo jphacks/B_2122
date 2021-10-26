@@ -5,3 +5,5 @@ class Community {
   String category;
   String? imageURL;
 }
+
+
