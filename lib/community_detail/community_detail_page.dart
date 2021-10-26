@@ -35,7 +35,7 @@ class CommunityDetailPage extends StatelessWidget {
                         ;
 
                         bool isOwnMessage = false;
-                        if (document['user_name'] == true ) {
+                        if (document['user_name'] == true) {
                           isOwnMessage = true;
                         }
                         return isOwnMessage
