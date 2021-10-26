@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/club.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class CulturalClubDetailPage extends StatelessWidget {
   final CulturalClub culturalClub;
@@ -25,10 +24,6 @@ class CulturalClubDetailPage extends StatelessWidget {
   }
 
   Widget culturalClubWidget(BuildContext context, CulturalClub culturalClub) {
-    final _url = '${culturalClub.twitterURL}';
-    void _launchURL() async =>
-        await canLaunch(_url) ? await launch(_url) : throw '$_urlを開くことができませんでした。';
-
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -304,17 +299,7 @@ class CulturalClubDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 50,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                TextButton(
-                  child: Text('Twitter'),
-                  onPressed: _launchURL,
-                ),
-              ],
             ),
-          ),
           SizedBox(
             height: 30,
           ),
