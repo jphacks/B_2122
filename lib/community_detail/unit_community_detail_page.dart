@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:testapp/domain/community.dart';
 
-class CommunityDetailPage extends StatelessWidget {
-  final Community community;
-  CommunityDetailPage(this.community);
+class UnitCommunityDetailPage extends StatelessWidget {
+  final UnitCommunity unitCommunity;
+  UnitCommunityDetailPage(this.unitCommunity);
   final _controller = TextEditingController();
 
   @override
@@ -13,15 +13,15 @@ class CommunityDetailPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            community.title,
+            unitCommunity.title,
             style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black
+                fontWeight: FontWeight.bold,
+                color: Colors.black
+            ),
           ),
-          ),
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            centerTitle: false,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          centerTitle: false,
         ),
         body: Container(
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -129,9 +129,9 @@ class CommunityDetailPage extends StatelessWidget {
               height: 10.0,
             ),
             Text(userName,style: TextStyle(
-    fontWeight: FontWeight.bold,
-    color: Colors.amber
-    ),),
+                fontWeight: FontWeight.bold,
+                color: Colors.amber
+            ),),
             Text(message),
           ],
         )

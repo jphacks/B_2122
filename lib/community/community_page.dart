@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testapp/add_community/add_community_page.dart';
-import 'package:testapp/community_detail/community_detail_page.dart';
+import 'package:testapp/community_detail/college_life_community_detail_page.dart';
+import 'package:testapp/community_detail/food_community_detail_page.dart';
+import 'package:testapp/community_detail/unit_community_detail_page.dart';
 import 'package:testapp/domain/community.dart';
 import 'community_page_model.dart';
 
@@ -9,16 +11,19 @@ class CommunityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<CommunityPageModel>(
-      create: (_) => CommunityPageModel()..fetchCommunityList(),
+      create: (_) => CommunityPageModel()
+        ..fetchCollegeLifeCommunityList()
+        ..fetchFoodCommunityList()
+        ..fetchUnitCommunityList(),
       child: DefaultTabController(
         length: 3,
         child: Scaffold(
           appBar: AppBar(
               bottom: TabBar(
                 tabs: [
-                  Tab(text: '話題'),
-                  Tab(text: '最新'),
-                  Tab(text: 'フォロー'),
+                  Tab(text: '大学生活'),
+                  Tab(text: '食べ物'),
+                  Tab(text: '単位'),
                 ],
               ),
               title: const Text(
@@ -34,28 +39,39 @@ class CommunityPage extends StatelessWidget {
           body: Column(
             children: [
               Consumer<CommunityPageModel>(builder: (context, model, child) {
-                final List<Community>? communities = model.communities;
+                final List<CollegeLifeCommunity>? collegeLifeCommunities = model.collegeLifeCommunities;
+                final List<FoodCommunity>? foodCommunities = model.foodCommunities;
+                final List<UnitCommunity>? unitCommunities = model.unitCommunities;
 
-                if (communities == null) {
+                if (collegeLifeCommunities == null) {
                   return CircularProgressIndicator();
                 }
 
-                final List<Widget> communityWidgets = communities
+                if (foodCommunities == null) {
+                  return CircularProgressIndicator();
+                }
+
+                if (unitCommunities == null) {
+                  return CircularProgressIndicator();
+                }
+
+
+                final List<Widget> collegeLifeCommunityWidgets = collegeLifeCommunities
                     .map(
-                      (communities) => ListTile(
-                        leading: communities.imageURL != null
+                      (collegeLifeCommunities) => ListTile(
+                        leading: collegeLifeCommunities.imageURL != null
                             ? CircleAvatar(
                                 backgroundImage:
-                                    NetworkImage(communities.imageURL!),
+                                    NetworkImage(collegeLifeCommunities.imageURL!),
                               )
                             : null,
-                        title: Text(communities.title),
-                        subtitle: Text(communities.category),
+                        title: Text(collegeLifeCommunities.title),
+                        subtitle: Text(collegeLifeCommunities.category),
                         onTap: () async {
                           await Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) =>
-                                  CommunityDetailPage(communities),
+                                  CollegeLifeCommunityDetailPage(collegeLifeCommunities),
                             ),
                           );
                         },
@@ -63,12 +79,58 @@ class CommunityPage extends StatelessWidget {
                     )
                     .toList();
 
+                final List<Widget> foodCommunityWidgets = foodCommunities
+                    .map(
+                      (foodCommunities) => ListTile(
+                    leading: foodCommunities.imageURL != null
+                        ? CircleAvatar(
+                      backgroundImage:
+                      NetworkImage(foodCommunities.imageURL!),
+                    )
+                        : null,
+                    title: Text(foodCommunities.title),
+                    subtitle: Text(foodCommunities.category),
+                    onTap: () async {
+                      await Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              FoodCommunityDetailPage(foodCommunities),
+                        ),
+                      );
+                    },
+                  ),
+                )
+                    .toList();
+
+                final List<Widget> unitCommunityWidgets = unitCommunities
+                    .map(
+                      (unitCommunities) => ListTile(
+                    leading: unitCommunities.imageURL != null
+                        ? CircleAvatar(
+                      backgroundImage:
+                      NetworkImage(unitCommunities.imageURL!),
+                    )
+                        : null,
+                    title: Text(unitCommunities.title),
+                    subtitle: Text(unitCommunities.category),
+                    onTap: () async {
+                      await Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              UnitCommunityDetailPage(unitCommunities),
+                        ),
+                      );
+                    },
+                  ),
+                )
+                    .toList();
+
                 return Expanded(
                   child: TabBarView(
                     children: [
-                      ListView(children: communityWidgets),
-                      ListView(children: communityWidgets),
-                      ListView(children: communityWidgets)
+                      ListView(children: collegeLifeCommunityWidgets),
+                      ListView(children: foodCommunityWidgets),
+                      ListView(children: unitCommunityWidgets)
                     ],
                   ),
                 );
@@ -94,7 +156,7 @@ class CommunityPage extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
 
-                model.fetchCommunityList();
+                model.fetchCollegeLifeCommunityList();
               },
               tooltip: 'Increment',
               child: Icon(Icons.add),
@@ -106,7 +168,7 @@ class CommunityPage extends StatelessWidget {
   }
 
   Future showConfirmDialog(
-      BuildContext context, Community community, CommunityPageModel model) {
+      BuildContext context, CollegeLifeCommunity community, CommunityPageModel model) {
     return showDialog(
       context: context,
       barrierDismissible: false,
@@ -128,7 +190,7 @@ class CommunityPage extends StatelessWidget {
                 final snackBar = SnackBar(
                   content: Text('${community.title}を削除しました'),
                 );
-                model..fetchCommunityList();
+                model..fetchCollegeLifeCommunityList();
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
             ),

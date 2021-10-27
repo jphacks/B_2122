@@ -4,7 +4,7 @@ import 'package:testapp/domain/community.dart';
 import 'edit_community_model.dart';
 
 class EditCommunityPage extends StatelessWidget {
-  final Community community;
+  final CollegeLifeCommunity community;
   EditCommunityPage(this.community);
 
   @override
