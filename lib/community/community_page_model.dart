@@ -17,9 +17,10 @@ class CommunityPageModel extends ChangeNotifier {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
       final String id = document.id;
       final String title = data['title'];
+      final String contents = data['contents'];
       final String category = data['category'];
       final String? imageURL = data['imageURL'];
-      return CollegeLifeCommunity(id,title,category,imageURL);
+      return CollegeLifeCommunity(id,title,contents,category,imageURL);
     }).toList();
 
     this.collegeLifeCommunities = collegeLifeCommunities;

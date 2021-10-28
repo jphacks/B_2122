@@ -1,7 +1,8 @@
 class CollegeLifeCommunity {
-  CollegeLifeCommunity(this.id,this.title, this.category,this.imageURL);
+  CollegeLifeCommunity(this.id,this.title,this.contents,this.category,this.imageURL);
   String id;
   String title;
+  String contents;
   String category;
   String? imageURL;
 }

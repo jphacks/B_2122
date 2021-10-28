@@ -55,60 +55,33 @@ class CulturalClubDetailPage extends StatelessWidget {
           ),
           Container(
             width: double.infinity,
-            height: 70,
-            child: Column(
+            child: Expanded(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(culturalClub.title, style: TextStyle(fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                    ),
+                  ]),
+            ),
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            height: 30,
+            child: Expanded(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(culturalClub.title, style: TextStyle(fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                  ),
-                ]),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('カテゴリ',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black),),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(culturalClub.category),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('キャンパス',
+                  Text('カテゴリ',
                     style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
+                        fontWeight: FontWeight.bold, color: Colors.black),),
+                ],
+              ),
             ),
           ),
           Container(
@@ -117,12 +90,48 @@ class CulturalClubDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(culturalClub.campus),
-              ],
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(culturalClub.category),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            height: 30,
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('キャンパス',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black)),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            height: 30,
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(culturalClub.campus),
+                ],
+              ),
             ),
           ),
           Container(
@@ -146,13 +155,14 @@ class CulturalClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 150,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(culturalClub.activity),
-              ],
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(culturalClub.activity),
+                ],
+              ),
             ),
           ),
           Container(
@@ -176,13 +186,14 @@ class CulturalClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(culturalClub.place),
-              ],
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(culturalClub.place),
+                ],
+              ),
             ),
           ),
           Container(
@@ -190,15 +201,16 @@ class CulturalClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('在籍人数',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('在籍人数',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black)),
+                ],
+              ),
             ),
           ),
           Container(
@@ -206,13 +218,14 @@ class CulturalClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(culturalClub.people),
-              ],
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(culturalClub.people),
+                ],
+              ),
             ),
           ),
           Container(
@@ -220,15 +233,16 @@ class CulturalClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('活動日程',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('活動日程',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black)),
+                ],
+              ),
             ),
           ),
           Container(
@@ -236,13 +250,14 @@ class CulturalClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(culturalClub.frequency),
-              ],
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(culturalClub.frequency),
+                ],
+              ),
             ),
           ),
           Container(
@@ -250,17 +265,18 @@ class CulturalClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('年間予定',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black
-                    )
-                ),
-              ],
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('年間予定',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black
+                      )
+                  ),
+                ],
+              ),
             ),
           ),
           Container(

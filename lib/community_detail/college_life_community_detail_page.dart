@@ -24,6 +24,28 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             children: <Widget>[
+              Card(
+                child: Column(children: <Widget>[
+                  ListTile(
+                    leading: Container(
+                        height: 50,
+                        width: 50,
+                        child: Image(
+                            image: AssetImage(
+                                'images/placeholder_image/placeholder.jpeg'))),
+                    title: Text('迷える子羊'),
+                    subtitle: Text('関西大学 商学部 1年生'),
+                  ),
+                  Row(children: <Widget>[
+                    Expanded(
+                      child: SizedBox(
+                          child: Center(
+                              child: Text(collegeLifeCommunity.contents))),
+                    ),
+                  ]),
+                ]),
+                elevation: 0.0,
+              ),
               Flexible(
                 child: StreamBuilder<QuerySnapshot>(
                   stream: FirebaseFirestore.instance
@@ -124,9 +146,11 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
             Row(children: <Widget>[
               SizedBox(width: 10),
               Container(
-                height: 50,
-                  width:50,
-                  child: Image(image: AssetImage('images/placeholder_image/placeholder.jpeg'))),
+                  height: 50,
+                  width: 50,
+                  child: Image(
+                      image: AssetImage(
+                          'images/placeholder_image/placeholder.jpeg'))),
               SizedBox(width: 8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
