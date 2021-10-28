@@ -118,6 +118,8 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
                       child: TextField(
                         controller: _controller,
                         onSubmitted: _handleSubmit,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
                         decoration:
                             InputDecoration.collapsed(hintText: "メッセージの送信"),
                       ),
