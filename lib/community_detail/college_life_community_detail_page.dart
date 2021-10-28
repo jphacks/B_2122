@@ -14,14 +14,11 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             collegeLifeCommunity.title,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
-          ),
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            centerTitle: false,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          centerTitle: false,
         ),
         body: Container(
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -34,7 +31,6 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
                       .orderBy("created_at", descending: true)
                       .snapshots(),
                   builder: (context, snapshot) {
-
                     if (!snapshot.hasData) return Container();
 
                     return ListView.builder(
@@ -48,14 +44,12 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
                           isOwnMessage = true;
                         }
                         return isOwnMessage
-                        //isOwnMessageがtrueの場合
+                            //isOwnMessageがtrueの場合
                             ? _ownMessage(
-                            document['message'], document['user_name']
-                        )
-                        //isOwnMessageがfalseの場合
+                                document['message'], document['user_name'])
+                            //isOwnMessageがfalseの場合
                             : _message(
-                            document['message'], document['user_name']
-                        );
+                                document['message'], document['user_name']);
                       },
                       itemCount: snapshot.data!.docs.length,
                     );
@@ -72,7 +66,7 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
                         controller: _controller,
                         onSubmitted: _handleSubmit,
                         decoration:
-                        InputDecoration.collapsed(hintText: "メッセージの送信"),
+                            InputDecoration.collapsed(hintText: "メッセージの送信"),
                       ),
                     ),
                     Container(
@@ -97,56 +91,78 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
   }
 
   Widget _ownMessage(String message, String userName) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 10.0,
-            ),
-            Text(userName,style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.blue
-            ),),
-            Text(message),
-          ],
-        ),
-        Icon(Icons.person),
-      ],
+    return Card(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                userName,
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+              ),
+              Text(message),
+            ],
+          ),
+          Icon(Icons.person),
+        ],
+      ),
     );
   }
 
   Widget _message(String message, String userName) {
-    return Row(
-      children: <Widget>[
-        Icon(Icons.person),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return Center(
+      child: Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            SizedBox(
-              height: 10.0,
-            ),
-            Text(userName,style: TextStyle(
-    fontWeight: FontWeight.bold,
-    color: Colors.amber
-    ),),
-            Text(message),
+            Row(children: <Widget>[
+              SizedBox(width: 10),
+              Container(
+                height: 50,
+                  width:50,
+                  child: Image(image: AssetImage('images/placeholder_image/placeholder.jpeg'))),
+              SizedBox(width: 8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    userName,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.amber),
+                  ),
+                  SizedBox(height: 4),
+                  Text(message),
+                  SizedBox(height: 10),
+                ],
+              ),
+            ])
           ],
-        )
-      ],
+        ),
+        elevation: 0.0,
+      ),
     );
   }
 
-  _handleSubmit(String message) async{
+  _handleSubmit(String message) async {
     _controller.text = "";
     var db = FirebaseFirestore.instance;
     final uid = FirebaseAuth.instance.currentUser!.uid;
-    final document = await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    final document =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
     Map<String, dynamic> data = document.data() as Map<String, dynamic>;
     db.collection("chat_room").add({
       "user_name": data['nickname'],
+      "user_image": data['photoUrl'],
       //user_nameを変数に変更する
       "message": message,
       "created_at": DateTime.now()
