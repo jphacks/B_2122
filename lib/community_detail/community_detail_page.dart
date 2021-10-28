@@ -9,7 +9,7 @@ class CommunityDetailPage extends StatelessWidget {
   final _controller = TextEditingController();
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(
