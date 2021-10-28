@@ -24,6 +24,20 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             children: <Widget>[
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text('質問内容',style: TextStyle(fontWeight: FontWeight.bold),)
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
               Card(
                 child: Column(children: <Widget>[
                   ListTile(
@@ -38,13 +52,30 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
                   ),
                   Row(children: <Widget>[
                     Expanded(
-                      child: SizedBox(
-                          child: Center(
-                              child: Text(collegeLifeCommunity.contents))),
+                      child: Container(
+                        padding: EdgeInsets.all(10.0),
+                        child: SizedBox(
+                            child: Center(
+                                child: Text(collegeLifeCommunity.contents))),
+                      ),
                     ),
                   ]),
                 ]),
                 elevation: 0.0,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text('みんなの回答',style: TextStyle(fontWeight: FontWeight.bold),)
+                ],
+              ),
+              SizedBox(
+                height: 10,
               ),
               Flexible(
                 child: StreamBuilder<QuerySnapshot>(
@@ -152,22 +183,27 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
                       image: AssetImage(
                           'images/placeholder_image/placeholder.jpeg'))),
               SizedBox(width: 8),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    height: 10.0,
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        userName,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.amber),
+                      ),
+                      SizedBox(height: 4),
+                      Text(message),
+                      SizedBox(height: 10),
+                    ],
                   ),
-                  SizedBox(height: 8),
-                  Text(
-                    userName,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.amber),
-                  ),
-                  SizedBox(height: 4),
-                  Text(message),
-                  SizedBox(height: 10),
-                ],
+                ),
               ),
             ])
           ],
