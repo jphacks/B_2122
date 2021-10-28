@@ -40,7 +40,7 @@ class CommunityDetailPage extends StatelessWidget {
                         DocumentSnapshot document = snapshot.data!.docs[index];
 
                         bool isOwnMessage = false;
-                        if (document['user_name'] == true) {
+                        if (document['user_name'] == false) {
                           isOwnMessage = true;
                         }
                         return isOwnMessage
