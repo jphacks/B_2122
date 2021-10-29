@@ -422,6 +422,9 @@ class ClubListPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(children: <Widget>[
+          SizedBox(
+            height:5,
+          ),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30.0),
@@ -436,9 +439,13 @@ class ClubListPage extends StatelessWidget {
                   child: Container(
                     width:130,
                     height: 130,
-                    child: Image.asset(
-                      'images/athletic_club_images/${athleticClub.imageURL}',
-                      fit: BoxFit.fill,
+                    child: CircleAvatar(
+                      radius: 30.0,
+                      backgroundImage: athleticClub.imageURL != null && athleticClub.imageURL!.isNotEmpty
+                    ?
+                    AssetImage('images/athletic_club_images/${athleticClub.imageURL}')
+                          : AssetImage('images/placeholder_image/placeholder.jpeg') ,
+                backgroundColor: Colors.transparent,
                     ),
                   ),
                 ),
@@ -484,6 +491,9 @@ class ClubListPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(children: <Widget>[
+          SizedBox(
+            height:5,
+          ),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30.0),
@@ -492,16 +502,19 @@ class ClubListPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                 ),
-                child: Container(
-                  width:130,
-                  height: 130,
-                  child: CircleAvatar(
-                    radius: 30.0,
-                    backgroundImage: culturalClub.imageURL != null && culturalClub.imageURL!.isNotEmpty
-                        ?
-                    AssetImage('images/cultural_club_images/${culturalClub.imageURL}')
-                        : AssetImage('images/placeholder_image/placeholder.jpeg') ,
-                    backgroundColor: Colors.transparent,
+                child: Hero(
+                  tag: 'club-img${culturalClub.imageURL}',
+                  child: Container(
+                    width:130,
+                    height: 130,
+                    child: CircleAvatar(
+                      radius: 30.0,
+                      backgroundImage: culturalClub.imageURL != null && culturalClub.imageURL!.isNotEmpty
+                          ?
+                      AssetImage('images/cultural_club_images/${culturalClub.imageURL}')
+                          : AssetImage('images/placeholder_image/placeholder.jpeg') ,
+                      backgroundColor: Colors.transparent,
+                    ),
                   ),
                 ),
               ) : null,

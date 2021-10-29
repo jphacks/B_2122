@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/club.dart';
-import 'package:testapp/favorite_list/favorite_list_page.dart';
 
 class AthleticClubDetailPage extends StatelessWidget {
 
@@ -11,32 +10,17 @@ class AthleticClubDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child:Scaffold(
-        appBar: AppBar(
-          title: Text(
-            '詳細',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          centerTitle: false,
-          actions: [
-            IconButton(
-                icon: Icon(Icons.favorite_border_outlined),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FavoritePage(),
-                    ),
-                  );
-                }),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          '詳細',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
-        body: athleticClubWidget(context, athleticClub),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        centerTitle: false,
       ),
+      body: athleticClubWidget(context, athleticClub),
     );
   }
 
@@ -63,7 +47,7 @@ class AthleticClubDetailPage extends StatelessWidget {
                         radius: 30.0,
                         backgroundImage: athleticClub.imageURL != null && athleticClub.imageURL!.isNotEmpty
                             ?
-                        AssetImage('images/cultural_club_images/${athleticClub.imageURL}')
+                        AssetImage('images/athletic_club_images/${athleticClub.imageURL}')
                             : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),

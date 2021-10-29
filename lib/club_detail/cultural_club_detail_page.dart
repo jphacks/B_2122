@@ -40,13 +40,16 @@ class CulturalClubDetailPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                     ),
-                    child: CircleAvatar(
-                      radius: 30.0,
-                      backgroundImage: culturalClub.imageURL != null && culturalClub.imageURL!.isNotEmpty
-                          ?
-                      AssetImage('images/cultural_club_images/${culturalClub.imageURL}')
-                          : AssetImage('images/placeholder_image/placeholder.jpeg') ,
-                      backgroundColor: Colors.transparent,
+                    child: Hero(
+                      tag: 'club-img${culturalClub.imageURL}',
+                      child: CircleAvatar(
+                        radius: 30.0,
+                        backgroundImage: culturalClub.imageURL != null && culturalClub.imageURL!.isNotEmpty
+                            ?
+                        AssetImage('images/cultural_club_images/${culturalClub.imageURL}')
+                            : AssetImage('images/placeholder_image/placeholder.jpeg') ,
+                        backgroundColor: Colors.transparent,
+                      ),
                     ),
                   )
                 ],
