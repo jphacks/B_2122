@@ -72,6 +72,13 @@ flutter:
      - images/academic_study_club_images/kaigai.jpeg
      - images/placeholder_image/placeholder.jpeg
      - images/academic_study_club_images/massken.jpeg
+     - images/athletic_club_images/archery.jpeg
+     - images/athletic_club_images/skating.jpeg
+     - images/athletic_club_images/hokkey.jpeg
+     - images/athletic_club_images/amefootball.jpeg
+     - images/athletic_club_images/golf.jpeg
+     - images/athletic_club_images/soccer.jpeg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
