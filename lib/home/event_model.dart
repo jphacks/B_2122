@@ -13,7 +13,7 @@ class EventModel extends ChangeNotifier {
       'category', isEqualTo: '就活相談');
 
   List<PickUpEvent>? pickUpEvents;
-  void pickUpEventList() async {
+  void fetchPickUpEventList() async {
     final snapshot = await _pickUpEventsCorrection.get();
     final List<PickUpEvent> pickUpEvents = snapshot.docs.map((DocumentSnapshot document) {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
@@ -31,7 +31,7 @@ class EventModel extends ChangeNotifier {
   }
 
   List<ExcitingEvent>? excitingEvents;
-  void excitingEventList() async {
+  void fetchExcitingEventList() async {
     final snapshot = await _excitingEventsCorrection.get();
     final List<ExcitingEvent> excitingEvents = snapshot.docs.map((DocumentSnapshot document) {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
@@ -49,7 +49,7 @@ class EventModel extends ChangeNotifier {
   }
 
   List<StudyEvent>? studyEvents;
-  void studyEventList() async {
+  void fetchStudyEventList() async {
     final snapshot = await _studyEventsCorrection.get();
     final List<StudyEvent> studyEvents = snapshot.docs.map((DocumentSnapshot document) {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
@@ -67,7 +67,7 @@ class EventModel extends ChangeNotifier {
   }
 
   List<RecruitEvent>? recruitEvents;
-  void recruitEventList() async {
+  void fetchRecruitEventList() async {
     final snapshot = await _recruitEventsCorrection.get();
     final List<RecruitEvent> recruitEvents = snapshot.docs.map((DocumentSnapshot document) {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
