@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'home/home_page.dart';
+import 'home/event_page.dart';
 import 'top_model.dart';
 import 'club_list/club_list_page.dart';
 import 'community/community_page.dart';
@@ -64,7 +64,7 @@ class TopPage extends StatelessWidget {
         _tabPage(
           currentIndex,
           0,
-          HomePage(),
+          EventPage(),
         ),
         _tabPage(
           currentIndex,

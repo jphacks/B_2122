@@ -423,7 +423,7 @@ class ClubListPage extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Column(children: <Widget>[
           SizedBox(
-            height:5,
+            height:8,
           ),
           Expanded(
             child: ClipRRect(
@@ -491,9 +491,6 @@ class ClubListPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(children: <Widget>[
-          SizedBox(
-            height:5,
-          ),
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30.0),
