@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testapp/domain/community.dart';
 
 class EditCommunityModel extends ChangeNotifier {
-  final Community community;
+  final CollegeLifeCommunity community;
   EditCommunityModel(this.community) {
     titleController.text = community.title;
     categoryController.text = community.category;

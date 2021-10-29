@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:testapp/domain/community.dart';
 
-class CommunityDetailPage extends StatelessWidget {
-  final Community community;
-  CommunityDetailPage(this.community);
+class UnitCommunityDetailPage extends StatelessWidget {
+  final UnitCommunity unitCommunity;
+  UnitCommunityDetailPage(this.unitCommunity);
   final _controller = TextEditingController();
 
   @override
@@ -13,8 +13,11 @@ class CommunityDetailPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            community.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            unitCommunity.title,
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black
+            ),
           ),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
@@ -31,6 +34,7 @@ class CommunityDetailPage extends StatelessWidget {
                       .orderBy("created_at", descending: true)
                       .snapshots(),
                   builder: (context, snapshot) {
+
                     if (!snapshot.hasData) return Container();
 
                     return ListView.builder(
@@ -40,16 +44,18 @@ class CommunityDetailPage extends StatelessWidget {
                         DocumentSnapshot document = snapshot.data!.docs[index];
 
                         bool isOwnMessage = false;
-                        if (document['user_name'] == true){
+                        if (document['user_name'] == true) {
                           isOwnMessage = true;
                         }
                         return isOwnMessage
-                            //isOwnMessageがtrueの場合
+                        //isOwnMessageがtrueの場合
                             ? _ownMessage(
-                                document['message'], document['user_name'])
-                            //isOwnMessageがfalseの場合
+                            document['message'], document['user_name']
+                        )
+                        //isOwnMessageがfalseの場合
                             : _message(
-                                document['message'], document['user_name']);
+                            document['message'], document['user_name']
+                        );
                       },
                       itemCount: snapshot.data!.docs.length,
                     );
@@ -66,7 +72,7 @@ class CommunityDetailPage extends StatelessWidget {
                         controller: _controller,
                         onSubmitted: _handleSubmit,
                         decoration:
-                            InputDecoration.collapsed(hintText: "メッセージの送信"),
+                        InputDecoration.collapsed(hintText: "メッセージの送信"),
                       ),
                     ),
                     Container(
@@ -100,10 +106,10 @@ class CommunityDetailPage extends StatelessWidget {
             SizedBox(
               height: 10.0,
             ),
-            Text(
-              userName,
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
-            ),
+            Text(userName,style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.blue
+            ),),
             Text(message),
           ],
         ),
@@ -122,11 +128,10 @@ class CommunityDetailPage extends StatelessWidget {
             SizedBox(
               height: 10.0,
             ),
-            Text(
-              userName,
-              style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.amber),
-            ),
+            Text(userName,style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.amber
+            ),),
             Text(message),
           ],
         )
@@ -134,12 +139,11 @@ class CommunityDetailPage extends StatelessWidget {
     );
   }
 
-  _handleSubmit(String message) async {
+  _handleSubmit(String message) async{
     _controller.text = "";
     var db = FirebaseFirestore.instance;
     final uid = FirebaseAuth.instance.currentUser!.uid;
-    final document =
-        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    final document = await FirebaseFirestore.instance.collection('users').doc(uid).get();
     Map<String, dynamic> data = document.data() as Map<String, dynamic>;
     db.collection("chat_room").add({
       "user_name": data['nickname'],
