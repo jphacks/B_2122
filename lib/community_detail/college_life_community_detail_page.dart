@@ -128,7 +128,7 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
                       child: IconButton(
                           icon: Icon(
                             Icons.send,
-                            color: Colors.blue,
+                            color: Colors.amber,
                           ),
                           onPressed: () {
                             _handleSubmit(_controller.text);
@@ -159,7 +159,7 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
               Text(
                 userName,
                 style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.amber),
               ),
               Text(message),
             ],

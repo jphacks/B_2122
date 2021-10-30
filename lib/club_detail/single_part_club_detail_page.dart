@@ -90,7 +90,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,12 +114,14 @@ class SinglePartClubDetailPage extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: 30,
+          ),
           Container(
             width: MediaQuery
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,7 +137,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -150,7 +150,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,7 +165,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 150,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +178,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,7 +193,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,7 +206,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -226,7 +221,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -240,7 +234,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -256,7 +249,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -270,7 +262,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -288,7 +279,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -302,7 +292,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -318,7 +307,6 @@ class SinglePartClubDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
