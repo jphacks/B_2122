@@ -1,30 +1,16 @@
-# testapp
 
-A new Flutter project.
+# Mosimo
+![91C7C2A7-0FC4-4061-8527-69FB970FF050](https://user-images.githubusercontent.com/73173075/139519310-072bf46a-2046-4195-aad5-7106b31b10ec.jpeg)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# testapp
-# サンプル（プロダクト名）
-
-[![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2021/07/JPHACKS2021_ogp.jpg)](https://www.youtube.com/watch?v=LUPQFB4QyVo)
 
 ## 製品概要
 ### 背景(製品開発のきっかけ、課題等）
-### 製品説明（具体的な製品の説明）
+現在、社会はコロナの影響を大きく受けている。特に、自分たち(大学生たち)は、コロナの影響を受けて、入学式がなくなったり、授業がオンラインになり、学生どうしのつながりや多様性が希薄になって
 ### 特長
-####1. 特長1
-####2. 特長2
+####1. このアプリは全ての大学生にあらゆるきっかけを提供します。
+学生生活は多様性に満ち溢れているのに個々人が交流できる機会というのはかなり限られている現状をもったいないと感じ、全てに学生同士がコミュニケーションを取れるプラットフォームを用意することでこの課題を解決することを目的としたサービスです。
+####2. 大学生が持っている
 ####3. 特長3
 
 ### 解決出来ること
@@ -36,23 +22,31 @@ samples, guidance on mobile development, and a full API reference.
 ## 開発技術
 ### 活用した技術
 #### API・データ
+**バックエンド**
+* Firebase
 * 
 * 
 
 #### フレームワーク・ライブラリ・モジュール
-* 
+**フロントエンド**
+* Flutter
 * 
 
 #### デバイス
-* 
+* IOS
+* Android
 * 
 
 ### 独自技術
 #### ハッカソンで開発した独自機能・技術
 * 独自で開発したものの内容をこちらに記載してください
 * 特に力を入れた部分をファイルリンク、またはcommit_idを記載してください。
+* チャット機能
+* サークル一覧リスト
+* サークル詳細機能
+* イベント一覧ページ
 
 #### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
-* 
+* ノーコードでプロトタイプを作り、実際にユーザーにニーズがあることが判明(総ユーザー466人)
 * 
 
