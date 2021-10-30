@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../next_page.dart';
 import 'event_model.dart';
 import 'package:testapp/domain/event.dart';
 
@@ -142,7 +141,7 @@ class EventPage extends StatelessWidget {
                           child: Card(
                             child: Container(
                               child: Image.network(
-                                'https://lh3.googleusercontent.com/proxy/-5ch7Mwh_iv_JJRV8m3nHWlZMeU1EiRYRba1BHqyYeZaZouFf2l71Re5mcCxJ7H1crIQVqcBG5R4fes_mMO7nRIrApneOhpLsmLZ3xTCEm4hOeNc1b1eL9A',
+                                'https://thumb.photo-ac.com/f5/f53c0038d070f912b37219451b32b38d_t.jpeg',
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -208,49 +207,25 @@ class EventPage extends StatelessWidget {
   }
 
   Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
-    return InkWell(
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(children: <Widget>[
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(30.0),
-              child: pickUpEvent.imageURL != null ?
-              Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Container(
-                  width:130,
-                  height: 130,
-                  child: CircleAvatar(
-                    radius: 30.0,
-                    backgroundImage: pickUpEvent.imageURL != null && pickUpEvent.imageURL!.isNotEmpty
-                        ?
-                    AssetImage('images/cultural_club_images/${pickUpEvent.imageURL}')
-                        : AssetImage('images/placeholder_image/placeholder.jpeg') ,
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-              ) : null,
+    return Column(children: [
+      Container(
+          width: MediaQuery.of(context).size.width * 0.4,
+          child: Card(
+            child: Container(
+              child: Image.network(
+                'https://yukawanet.com/wp-content/uploads/2018/08/1bbc25ab.jpg',
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 8,
-          ),
+          )),
+      Row(
+        children: [
           Text(
-            pickUpEvent.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            'イベント名',
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
-        ]),
+        ],
       ),
-      onTap: () async {
-        await Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => NextPage(),
-              fullscreenDialog: true
-          ),
-        );
-      },
-    );
+    ]);
   }
 }
