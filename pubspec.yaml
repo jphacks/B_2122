@@ -83,6 +83,7 @@ flutter:
      - images/single_part_club_images/kbc.jpeg
      - images/single_part_club_images/tia-man.jpeg
      - images/single_part_club_images/cheer.jpeg
+     
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
