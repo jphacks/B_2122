@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # testapp
 
 A new Flutter project.
@@ -16,7 +15,6 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 # testapp
-=======
 # サンプル（プロダクト名）
 
 [![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2021/07/JPHACKS2021_ogp.jpg)](https://www.youtube.com/watch?v=LUPQFB4QyVo)
@@ -57,4 +55,4 @@ samples, guidance on mobile development, and a full API reference.
 #### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
 * 
 * 
->>>>>>> origin/main
+
