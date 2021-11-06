@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testapp/event_detail/exciting_event_detail_page.dart';
 import 'package:testapp/event_detail/pickup_event_detail_page.dart';
+import 'package:testapp/event_detail/recruit_event_detail_page.dart';
 import 'package:testapp/event_detail/study_event_detail_page.dart';
 import 'event_model.dart';
 import 'package:testapp/domain/event.dart';
@@ -246,3 +247,73 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
   );
 }
 
+//リクルートイベント選択時
+Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
+  return InkWell(
+    child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(children: <Widget>[
+        SizedBox(
+          height: 8,
+        ),
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: recruitEvent.imageURL != null &&
+                recruitEvent.imageURL!.isNotEmpty
+                ? Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Hero(
+                tag: 'event-img${recruitEvent.imageURL}',
+                child: Container(
+                  width: 130,
+                  height: 130,
+                  child: CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage: recruitEvent.imageURL != null &&
+                        recruitEvent.imageURL!.isNotEmpty
+                        ? AssetImage(
+                        'images/recruit_event_images/${recruitEvent.imageURL}')
+                        : AssetImage(
+                        'images/placeholder_image/placeholder.jpeg'),
+                    backgroundColor: Colors.transparent,
+                  ),
+                ),
+              ),
+            )
+                : ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                Colors.grey,
+                BlendMode.saturation,
+              ),
+              child: Image.asset(
+                'placeholder_image/placeholder.jpeg',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 8,
+        ),
+        Text(
+          recruitEvent.title,
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        Text(
+          recruitEvent.category,
+          style: TextStyle(color: Colors.grey),
+        ),
+      ]),
+    ),
+    onTap: () async {
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+            builder: (context) => RecruitEventDetailPage(recruitEvent),
+            fullscreenDialog: true),
+      );
+    },
+  );
+}
