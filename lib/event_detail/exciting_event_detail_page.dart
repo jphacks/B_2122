@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/domain/club.dart';
 import 'package:testapp/domain/event.dart';
-
-import 'package:testapp/home/event_page.dart';
 
 class ExcitingEventDetailPage extends StatelessWidget {
 
@@ -27,7 +24,7 @@ class ExcitingEventDetailPage extends StatelessWidget {
     );
   }
 
-  Widget athleticClubWidget(BuildContext context, AthleticClub athleticClub) {
+  Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -45,12 +42,12 @@ class ExcitingEventDetailPage extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                     child: Hero(
-                      tag: 'club-img${athleticClub.imageURL}',
+                      tag: 'event-img${excitingEvent.imageURL}',
                       child: CircleAvatar(
                         radius: 30.0,
-                        backgroundImage: athleticClub.imageURL != null && athleticClub.imageURL!.isNotEmpty
+                        backgroundImage: excitingEvent.imageURL != null && excitingEvent.imageURL!.isNotEmpty
                             ?
-                        AssetImage('images/athletic_club_images/${athleticClub.imageURL}')
+                        AssetImage('images/exciting_event_images/${excitingEvent.imageURL}')
                             : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),
@@ -66,7 +63,7 @@ class ExcitingEventDetailPage extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(athleticClub.title, style: TextStyle(fontSize: 25,
+                  Text(excitingEvent.title, style: TextStyle(fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
                   ),
@@ -98,7 +95,7 @@ class ExcitingEventDetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(athleticClub.category),
+                Text(excitingEvent.category),
               ],
             ),
           ),
@@ -108,15 +105,6 @@ class ExcitingEventDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('キャンパス',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -124,13 +112,6 @@ class ExcitingEventDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.campus),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -138,15 +119,6 @@ class ExcitingEventDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('活動内容',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -154,13 +126,6 @@ class ExcitingEventDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 150,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.activity),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -168,15 +133,6 @@ class ExcitingEventDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('活動場所',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -184,13 +140,6 @@ class ExcitingEventDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.place),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -198,15 +147,6 @@ class ExcitingEventDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('在籍人数',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -214,13 +154,6 @@ class ExcitingEventDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.people),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -235,20 +168,6 @@ class ExcitingEventDetailPage extends StatelessWidget {
                 Text('活動日程',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.frequency),
               ],
             ),
           ),
