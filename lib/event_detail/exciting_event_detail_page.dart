@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/club.dart';
+import 'package:testapp/domain/event.dart';
 
-class AthleticClubDetailPage extends StatelessWidget {
+import 'package:testapp/home/event_page.dart';
 
-  final AthleticClub athleticClub;
+class ExcitingEventDetailPage extends StatelessWidget {
+
+  final ExcitingEvent excitingEvents;
 
 
-  AthleticClubDetailPage(this.athleticClub);
+  ExcitingEventDetailPage(this.excitingEvents);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class AthleticClubDetailPage extends StatelessWidget {
         elevation: 0.0,
         centerTitle: false,
       ),
-      body: athleticClubWidget(context, athleticClub),
+      body: excitingEventWidget(context, excitingEvents),
     );
   }
 

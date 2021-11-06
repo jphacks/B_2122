@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/domain/club.dart';
+import 'package:testapp/domain/event.dart';
 
-class AthleticClubDetailPage extends StatelessWidget {
+class StudyEventDetailPage extends StatelessWidget {
 
-  final AthleticClub athleticClub;
+  final StudyEvent studyEvents;
 
-
-  AthleticClubDetailPage(this.athleticClub);
+  StudyEventDetailPage(this.studyEvents);
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +19,11 @@ class AthleticClubDetailPage extends StatelessWidget {
         elevation: 0.0,
         centerTitle: false,
       ),
-      body: athleticClubWidget(context, athleticClub),
+      body: studyEventWidget(context, studyEvents),
     );
   }
 
-  Widget athleticClubWidget(BuildContext context, AthleticClub athleticClub) {
+  Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -42,12 +41,12 @@ class AthleticClubDetailPage extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                     child: Hero(
-                      tag: 'club-img${athleticClub.imageURL}',
+                      tag: 'event-img${studyEvent.imageURL}',
                       child: CircleAvatar(
                         radius: 30.0,
-                        backgroundImage: athleticClub.imageURL != null && athleticClub.imageURL!.isNotEmpty
+                        backgroundImage: studyEvent.imageURL != null && studyEvent.imageURL!.isNotEmpty
                             ?
-                        AssetImage('images/athletic_club_images/${athleticClub.imageURL}')
+                        AssetImage('images/study_event_images/${studyEvent.imageURL}')
                             : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),
@@ -63,7 +62,7 @@ class AthleticClubDetailPage extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(athleticClub.title, style: TextStyle(fontSize: 25,
+                  Text(studyEvent.title, style: TextStyle(fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
                   ),
@@ -95,7 +94,7 @@ class AthleticClubDetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(athleticClub.category),
+                Text(studyEvent.category),
               ],
             ),
           ),
@@ -121,13 +120,6 @@ class AthleticClubDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.campus),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -151,13 +143,6 @@ class AthleticClubDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 150,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.activity),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -181,13 +166,6 @@ class AthleticClubDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.place),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -211,13 +189,6 @@ class AthleticClubDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.people),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery
@@ -241,13 +212,6 @@ class AthleticClubDetailPage extends StatelessWidget {
                 .size
                 .height * 0.43,
             height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.frequency),
-              ],
-            ),
           ),
           Container(
             width: MediaQuery

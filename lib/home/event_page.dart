@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testapp/event_detail/exciting_event_detail_page.dart';
+import 'package:testapp/event_detail/pickup_event_detail_page.dart';
+import 'package:testapp/event_detail/study_event_detail_page.dart';
 import 'event_model.dart';
 import 'package:testapp/domain/event.dart';
 
@@ -22,210 +25,224 @@ class EventPage extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0.0,
             centerTitle: false,
-            automaticallyImplyLeading: false),
-        body: SingleChildScrollView(
-          child: Column(children: [
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  'ピックアップ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                )
-              ],
-            ),
-            Divider(),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-              height: MediaQuery.of(context).size.height * 0.25,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Column(children: [
-                      Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          child: Card(
-                            child: Container(
-                              child: Image.network(
-                                'https://yukawanet.com/wp-content/uploads/2018/08/1bbc25ab.jpg',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          )),
-                      Row(
-                        children: [
-                          Text(
-                            'イベント名',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ]);
-                  }),
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  'みんなでワイワイ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                )
-              ],
-            ),
-            Divider(),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-              height: MediaQuery.of(context).size.height * 0.25,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Column(children: [
-                      Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          child: Card(
-                            child: Container(
-                              child: Image.network(
-                                'https://yukawanet.com/wp-content/uploads/2018/08/1bbc25ab.jpg',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          )),
-                      Row(
-                        children: [
-                          Text(
-                            'イベント名',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ]);
-                  }),
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  'じっくりもくもく',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                )
-              ],
-            ),
-            Divider(),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-              height: MediaQuery.of(context).size.height * 0.25,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Column(children: [
-                      Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          child: Card(
-                            child: Container(
-                              child: Image.network(
-                                'https://thumb.photo-ac.com/f5/f53c0038d070f912b37219451b32b38d_t.jpeg',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          )),
-                      Row(
-                        children: [
-                          Text(
-                            'イベント名',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ]);
-                  }),
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  '就活相談',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                )
-              ],
-            ),
-            Divider(),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-              height: MediaQuery.of(context).size.height * 0.25,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Column(children: [
-                      Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          child: Card(
-                            child: Container(
-                              child: Image.network(
-                                'https://www.sankei.com/resizer/6cOeEir-XgX42svzjzbSkp2gIkY=/730x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/sankei/WVSLE3WNCVPCZESVFVT7AQWZJM.jpg',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          )),
-                      Row(
-                        children: [
-                          Text(
-                            'イベント名',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ]);
-                  }),
-            ),
-          ]),
+            automaticallyImplyLeading: false
         ),
+        body: Container(),
       ),
     );
   }
+}
 
-  Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
-    return Column(children: [
-      Container(
-          width: MediaQuery.of(context).size.width * 0.4,
-          child: Card(
-            child: Container(
-              child: Image.network(
-                'https://yukawanet.com/wp-content/uploads/2018/08/1bbc25ab.jpg',
+//ピックアップイベント選択時
+Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
+  return InkWell(
+    child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(children: <Widget>[
+        SizedBox(
+          height: 8,
+        ),
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: pickUpEvent.imageURL != null &&
+                pickUpEvent.imageURL!.isNotEmpty
+                ? Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Hero(
+                tag: 'event-img${pickUpEvent.imageURL}',
+                child: Container(
+                  width: 130,
+                  height: 130,
+                  child: CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage: pickUpEvent.imageURL != null &&
+                        pickUpEvent.imageURL!.isNotEmpty
+                        ? AssetImage(
+                        'images/athletic_club_images/${pickUpEvent.imageURL}')
+                        : AssetImage(
+                        'images/placeholder_image/placeholder.jpeg'),
+                    backgroundColor: Colors.transparent,
+                  ),
+                ),
+              ),
+            )
+                : ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                Colors.grey,
+                BlendMode.saturation,
+              ),
+              child: Image.asset(
+                'placeholder_image/placeholder.jpeg',
                 fit: BoxFit.cover,
               ),
             ),
-          )),
-      Row(
-        children: [
-          Text(
-            'イベント名',
-            style: TextStyle(fontWeight: FontWeight.bold),
           ),
-        ],
-      ),
-    ]);
-  }
+        ),
+        SizedBox(
+          height: 8,
+        ),
+        Text(
+          pickUpEvent.title,
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        Text(
+          pickUpEvent.category,
+          style: TextStyle(color: Colors.grey),
+        ),
+      ]),
+    ),
+    onTap: () async {
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+            builder: (context) => PickUpEventDetailPage(pickUpEvent),
+            fullscreenDialog: true),
+      );
+    },
+  );
 }
+
+//エキサイティングイベント選択時
+Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
+  return InkWell(
+    child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(children: <Widget>[
+        SizedBox(
+          height: 8,
+        ),
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: excitingEvent.imageURL != null &&
+                excitingEvent.imageURL!.isNotEmpty
+                ? Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Hero(
+                tag: 'event-img${excitingEvent.imageURL}',
+                child: Container(
+                  width: 130,
+                  height: 130,
+                  child: CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage: excitingEvent.imageURL != null &&
+                        excitingEvent.imageURL!.isNotEmpty
+                        ? AssetImage(
+                        'images/athletic_club_images/${excitingEvent.imageURL}')
+                        : AssetImage(
+                        'images/placeholder_image/placeholder.jpeg'),
+                    backgroundColor: Colors.transparent,
+                  ),
+                ),
+              ),
+            )
+                : ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                Colors.grey,
+                BlendMode.saturation,
+              ),
+              child: Image.asset(
+                'placeholder_image/placeholder.jpeg',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 8,
+        ),
+        Text(
+          excitingEvent.title,
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        Text(
+          excitingEvent.category,
+          style: TextStyle(color: Colors.grey),
+        ),
+      ]),
+    ),
+    onTap: () async {
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+            builder: (context) => ExcitingEventDetailPage(excitingEvent),
+            fullscreenDialog: true),
+      );
+    },
+  );
+}
+
+//スタディイベント選択時
+Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
+  return InkWell(
+    child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(children: <Widget>[
+        SizedBox(
+          height: 8,
+        ),
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: studyEvent.imageURL != null &&
+                studyEvent.imageURL!.isNotEmpty
+                ? Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Hero(
+                tag: 'event-img${studyEvent.imageURL}',
+                child: Container(
+                  width: 130,
+                  height: 130,
+                  child: CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage: studyEvent.imageURL != null &&
+                        studyEvent.imageURL!.isNotEmpty
+                        ? AssetImage(
+                        'images/athletic_club_images/${studyEvent.imageURL}')
+                        : AssetImage(
+                        'images/placeholder_image/placeholder.jpeg'),
+                    backgroundColor: Colors.transparent,
+                  ),
+                ),
+              ),
+            )
+                : ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                Colors.grey,
+                BlendMode.saturation,
+              ),
+              child: Image.asset(
+                'placeholder_image/placeholder.jpeg',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 8,
+        ),
+        Text(
+          studyEvent.title,
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        Text(
+          studyEvent.category,
+          style: TextStyle(color: Colors.grey),
+        ),
+      ]),
+    ),
+    onTap: () async {
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+            builder: (context) => StudyEventDetailPage(studyEvent),
+            fullscreenDialog: true),
+      );
+    },
+  );
+}
+
