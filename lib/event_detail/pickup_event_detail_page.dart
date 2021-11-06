@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/domain/club.dart';
 import 'package:testapp/domain/event.dart';
-
-import '../home/event_page.dart';
 
 class PickUpEventDetailPage extends StatelessWidget {
 
@@ -27,7 +24,7 @@ class PickUpEventDetailPage extends StatelessWidget {
     );
   }
 
-  Widget athleticClubWidget(BuildContext context, AthleticClub athleticClub) {
+  Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -45,12 +42,12 @@ class PickUpEventDetailPage extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                     child: Hero(
-                      tag: 'club-img${athleticClub.imageURL}',
+                      tag: 'event-img${pickUpEvent.imageURL}',
                       child: CircleAvatar(
                         radius: 30.0,
-                        backgroundImage: athleticClub.imageURL != null && athleticClub.imageURL!.isNotEmpty
+                        backgroundImage: pickUpEvent.imageURL != null && pickUpEvent.imageURL!.isNotEmpty
                             ?
-                        AssetImage('images/athletic_club_images/${athleticClub.imageURL}')
+                        AssetImage('images/pickup_event_images/${pickUpEvent.imageURL}')
                             : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),
@@ -66,7 +63,7 @@ class PickUpEventDetailPage extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(athleticClub.title, style: TextStyle(fontSize: 25,
+                  Text(pickUpEvent.title, style: TextStyle(fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
                   ),
@@ -77,7 +74,6 @@ class PickUpEventDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,229 +89,13 @@ class PickUpEventDetailPage extends StatelessWidget {
                 .of(context)
                 .size
                 .height * 0.43,
-            height: 30,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(athleticClub.category),
+                Text(pickUpEvent.category),
               ],
             ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('キャンパス',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.campus),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('活動内容',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 150,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.activity),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('活動場所',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.place),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('在籍人数',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.people),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('活動日程',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(athleticClub.frequency),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('年間予定',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black
-                    )
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('ここに年間予定を入れる'),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('SNSアカウント',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ],
-            ),
-          ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .height * 0.43,
-            height: 30,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('ここにSNSアカウントのURLを入れる'),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 50,
           ),
         ],
       ),
