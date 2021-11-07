@@ -26,14 +26,174 @@ class EventPage extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0.0,
             centerTitle: false,
-            automaticallyImplyLeading: false
+            automaticallyImplyLeading: false),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Consumer<EventModel>(builder: (context, model, child) {
+                //ここのfinalはevent_modelから指定のeventをprovider経由で持ってきてる
+                final List<PickUpEvent>? pickUpEvents = model.pickUpEvents;
+                final List<ExcitingEvent>? excitingEvents = model.excitingEvents;
+                final List<StudyEvent>? studyEvents = model.studyEvents;
+                final List<RecruitEvent>? recruitEvents = model.recruitEvents;
+
+                //指定のeventがnullを返したらCircularProgressIndicatorを真ん中に出してる
+                if (pickUpEvents == null) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (excitingEvents == null) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (studyEvents == null) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (recruitEvents == null) {
+                  return Center(child: CircularProgressIndicator());
+                }
+
+                //上のfinalでリスト型の情報の変えた指定のeventsデータをリスト形式のwidgetに変換している
+                //これがないと下のListViewで定義した各eventのwidgetを表示できない
+                final List<Widget> pickUpEventWidgets = pickUpEvents
+                    .map((pickUpEvent) => pickUpEventWidget(context, pickUpEvent))
+                    .toList();
+                final List<Widget> excitingEventWidgets = excitingEvents
+                    .map((excitingEvent) =>
+                        excitingEventWidget(context, excitingEvent))
+                    .toList();
+                final List<Widget> studyEventWidgets = studyEvents
+                    .map((studyEvent) => studyEventWidget(context, studyEvent))
+                    .toList();
+                final List<Widget> recruitEventWidgets = recruitEvents
+                    .map((recruitEvent) =>
+                        recruitEventWidget(context, recruitEvent))
+                    .toList();
+
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'ピックアップ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: pickUpEventWidgets,
+                            );
+                          }),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'みんなでワイワイ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: excitingEventWidgets,
+                            );
+                          }),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'じっくりもくもく',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: studyEventWidgets,
+                            );
+                          }),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          '就活相談',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: recruitEventWidgets,
+                            );
+                          }),
+                    ),
+                  ],
+                );
+              })
+            ],
+          ),
         ),
-        body: Container(),
       ),
     );
   }
 }
 
+//ここから各種widgetの定義↓
 //ピックアップイベント選択時
 Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
   return InkWell(
@@ -46,40 +206,40 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
         Expanded(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30.0),
-            child: pickUpEvent.imageURL != null &&
-                pickUpEvent.imageURL!.isNotEmpty
-                ? Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Hero(
-                tag: 'event-img${pickUpEvent.imageURL}',
-                child: Container(
-                  width: 130,
-                  height: 130,
-                  child: CircleAvatar(
-                    radius: 30.0,
-                    backgroundImage: pickUpEvent.imageURL != null &&
-                        pickUpEvent.imageURL!.isNotEmpty
-                        ? AssetImage(
-                        'images/athletic_club_images/${pickUpEvent.imageURL}')
-                        : AssetImage(
-                        'images/placeholder_image/placeholder.jpeg'),
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-              ),
-            )
-                : ColorFiltered(
-              colorFilter: ColorFilter.mode(
-                Colors.grey,
-                BlendMode.saturation,
-              ),
-              child: Image.asset(
-                'placeholder_image/placeholder.jpeg',
-                fit: BoxFit.cover,
-              ),
-            ),
+            child:
+                pickUpEvent.imageURL != null && pickUpEvent.imageURL!.isNotEmpty
+                    ? Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Hero(
+                          tag: 'event-img${pickUpEvent.imageURL}2',
+                          child: Container(
+                            width: 130,
+                            height: 130,
+                            child: CircleAvatar(
+                              radius: 30.0,
+                              backgroundImage: pickUpEvent.imageURL != null &&
+                                      pickUpEvent.imageURL!.isNotEmpty
+                                  ? AssetImage(
+                                      'event_images/pickup_event_images/${pickUpEvent.imageURL}')
+                                  : AssetImage(
+                                      'images/placeholder_image/placeholder.jpeg'),
+                              backgroundColor: Colors.transparent,
+                            ),
+                          ),
+                        ),
+                      )
+                    : ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          Colors.grey,
+                          BlendMode.saturation,
+                        ),
+                        child: Image.asset(
+                          'placeholder_image/placeholder.jpeg',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
           ),
         ),
         SizedBox(
@@ -88,10 +248,6 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
         Text(
           pickUpEvent.title,
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-        Text(
-          pickUpEvent.category,
-          style: TextStyle(color: Colors.grey),
         ),
       ]),
     ),
@@ -118,39 +274,39 @@ Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30.0),
             child: excitingEvent.imageURL != null &&
-                excitingEvent.imageURL!.isNotEmpty
+                    excitingEvent.imageURL!.isNotEmpty
                 ? Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Hero(
-                tag: 'event-img${excitingEvent.imageURL}',
-                child: Container(
-                  width: 130,
-                  height: 130,
-                  child: CircleAvatar(
-                    radius: 30.0,
-                    backgroundImage: excitingEvent.imageURL != null &&
-                        excitingEvent.imageURL!.isNotEmpty
-                        ? AssetImage(
-                        'images/athletic_club_images/${excitingEvent.imageURL}')
-                        : AssetImage(
-                        'images/placeholder_image/placeholder.jpeg'),
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-              ),
-            )
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Hero(
+                      tag: 'event-img${excitingEvent.imageURL}',
+                      child: Container(
+                        width: 130,
+                        height: 130,
+                        child: CircleAvatar(
+                          radius: 30.0,
+                          backgroundImage: excitingEvent.imageURL != null &&
+                                  excitingEvent.imageURL!.isNotEmpty
+                              ? AssetImage(
+                                  'event_images/exciting_event_images/${excitingEvent.imageURL}')
+                              : AssetImage(
+                                  'images/placeholder_image/placeholder.jpeg'),
+                          backgroundColor: Colors.transparent,
+                        ),
+                      ),
+                    ),
+                  )
                 : ColorFiltered(
-              colorFilter: ColorFilter.mode(
-                Colors.grey,
-                BlendMode.saturation,
-              ),
-              child: Image.asset(
-                'placeholder_image/placeholder.jpeg',
-                fit: BoxFit.cover,
-              ),
-            ),
+                    colorFilter: ColorFilter.mode(
+                      Colors.grey,
+                      BlendMode.saturation,
+                    ),
+                    child: Image.asset(
+                      'placeholder_image/placeholder.jpeg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
           ),
         ),
         SizedBox(
@@ -159,10 +315,6 @@ Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
         Text(
           excitingEvent.title,
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-        Text(
-          excitingEvent.category,
-          style: TextStyle(color: Colors.grey),
         ),
       ]),
     ),
@@ -188,40 +340,40 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
         Expanded(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30.0),
-            child: studyEvent.imageURL != null &&
-                studyEvent.imageURL!.isNotEmpty
-                ? Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Hero(
-                tag: 'event-img${studyEvent.imageURL}',
-                child: Container(
-                  width: 130,
-                  height: 130,
-                  child: CircleAvatar(
-                    radius: 30.0,
-                    backgroundImage: studyEvent.imageURL != null &&
-                        studyEvent.imageURL!.isNotEmpty
-                        ? AssetImage(
-                        'images/athletic_club_images/${studyEvent.imageURL}')
-                        : AssetImage(
-                        'images/placeholder_image/placeholder.jpeg'),
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-              ),
-            )
-                : ColorFiltered(
-              colorFilter: ColorFilter.mode(
-                Colors.grey,
-                BlendMode.saturation,
-              ),
-              child: Image.asset(
-                'placeholder_image/placeholder.jpeg',
-                fit: BoxFit.cover,
-              ),
-            ),
+            child:
+                studyEvent.imageURL != null && studyEvent.imageURL!.isNotEmpty
+                    ? Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Hero(
+                          tag: 'event-img${studyEvent.imageURL}',
+                          child: Container(
+                            width: 130,
+                            height: 130,
+                            child: CircleAvatar(
+                              radius: 30.0,
+                              backgroundImage: studyEvent.imageURL != null &&
+                                      studyEvent.imageURL!.isNotEmpty
+                                  ? AssetImage(
+                                      'event_images/study_event_images/${studyEvent.imageURL}')
+                                  : AssetImage(
+                                      'images/placeholder_image/placeholder.jpeg'),
+                              backgroundColor: Colors.transparent,
+                            ),
+                          ),
+                        ),
+                      )
+                    : ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          Colors.grey,
+                          BlendMode.saturation,
+                        ),
+                        child: Image.asset(
+                          'placeholder_image/placeholder.jpeg',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
           ),
         ),
         SizedBox(
@@ -230,10 +382,6 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
         Text(
           studyEvent.title,
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-        Text(
-          studyEvent.category,
-          style: TextStyle(color: Colors.grey),
         ),
       ]),
     ),
@@ -260,39 +408,39 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30.0),
             child: recruitEvent.imageURL != null &&
-                recruitEvent.imageURL!.isNotEmpty
+                    recruitEvent.imageURL!.isNotEmpty
                 ? Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: Hero(
-                tag: 'event-img${recruitEvent.imageURL}',
-                child: Container(
-                  width: 130,
-                  height: 130,
-                  child: CircleAvatar(
-                    radius: 30.0,
-                    backgroundImage: recruitEvent.imageURL != null &&
-                        recruitEvent.imageURL!.isNotEmpty
-                        ? AssetImage(
-                        'images/recruit_event_images/${recruitEvent.imageURL}')
-                        : AssetImage(
-                        'images/placeholder_image/placeholder.jpeg'),
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-              ),
-            )
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Hero(
+                      tag: 'event-img${recruitEvent.imageURL}',
+                      child: Container(
+                        width: 130,
+                        height: 130,
+                        child: CircleAvatar(
+                          radius: 30.0,
+                          backgroundImage: recruitEvent.imageURL != null &&
+                                  recruitEvent.imageURL!.isNotEmpty
+                              ? AssetImage(
+                                  'event_images/recruit_event_images/${recruitEvent.imageURL}')
+                              : AssetImage(
+                                  'images/placeholder_image/placeholder.jpeg'),
+                          backgroundColor: Colors.transparent,
+                        ),
+                      ),
+                    ),
+                  )
                 : ColorFiltered(
-              colorFilter: ColorFilter.mode(
-                Colors.grey,
-                BlendMode.saturation,
-              ),
-              child: Image.asset(
-                'placeholder_image/placeholder.jpeg',
-                fit: BoxFit.cover,
-              ),
-            ),
+                    colorFilter: ColorFilter.mode(
+                      Colors.grey,
+                      BlendMode.saturation,
+                    ),
+                    child: Image.asset(
+                      'placeholder_image/placeholder.jpeg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
           ),
         ),
         SizedBox(
@@ -301,10 +449,6 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
         Text(
           recruitEvent.title,
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-        Text(
-          recruitEvent.category,
-          style: TextStyle(color: Colors.grey),
         ),
       ]),
     ),

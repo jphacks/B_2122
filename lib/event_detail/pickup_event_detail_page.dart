@@ -42,12 +42,12 @@ class PickUpEventDetailPage extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                     child: Hero(
-                      tag: 'event-img${pickUpEvent.imageURL}',
+                      tag: 'event-img${pickUpEvent.imageURL}2',
                       child: CircleAvatar(
                         radius: 30.0,
                         backgroundImage: pickUpEvent.imageURL != null && pickUpEvent.imageURL!.isNotEmpty
                             ?
-                        AssetImage('images/pickup_event_images/${pickUpEvent.imageURL}')
+                        AssetImage('event_images/pickup_event_images/${pickUpEvent.imageURL}')
                             : AssetImage('images/placeholder_image/placeholder.jpeg') ,
                         backgroundColor: Colors.transparent,
                       ),

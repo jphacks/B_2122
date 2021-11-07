@@ -19,11 +19,11 @@ class EventModel extends ChangeNotifier {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
       final String id = document.id;
       final String title = data['title'];
-      final String contents = data['contents'];
       final String category = data['category'];
+      final String contents = data['contents'];
       final String date = data['date'];
       final String? imageURL = data['imageURL'];
-      return PickUpEvent(id,title,contents,category,date,imageURL);
+      return PickUpEvent(id,title,category,contents,date,imageURL);
     }).toList();
 
     this.pickUpEvents = pickUpEvents;
@@ -37,11 +37,11 @@ class EventModel extends ChangeNotifier {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
       final String id = document.id;
       final String title = data['title'];
-      final String contents = data['contents'];
       final String category = data['category'];
+      final String contents = data['contents'];
       final String date = data['date'];
       final String? imageURL = data['imageURL'];
-      return ExcitingEvent(id,title,contents,category,date,imageURL);
+      return ExcitingEvent(id,title,category,contents,date,imageURL);
     }).toList();
 
     this.excitingEvents = excitingEvents;
@@ -55,11 +55,11 @@ class EventModel extends ChangeNotifier {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
       final String id = document.id;
       final String title = data['title'];
-      final String contents = data['contents'];
       final String category = data['category'];
+      final String contents = data['contents'];
       final String date = data['date'];
       final String? imageURL = data['imageURL'];
-      return StudyEvent(id,title,contents,category,date,imageURL);
+      return StudyEvent(id,title,category,contents,date,imageURL);
     }).toList();
 
     this.studyEvents = studyEvents;
@@ -73,11 +73,11 @@ class EventModel extends ChangeNotifier {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
       final String id = document.id;
       final String title = data['title'];
-      final String contents = data['contents'];
       final String category = data['category'];
+      final String contents = data['contents'];
       final String date = data['date'];
       final String? imageURL = data['imageURL'];
-      return RecruitEvent(id,title,contents,category,date,imageURL);
+      return RecruitEvent(id,title,category,contents,date,imageURL);
     }).toList();
 
     this.recruitEvents = recruitEvents;

@@ -87,6 +87,10 @@ flutter:
      - images/baseball_club_images/baseball.jpeg
      - images/soccer_club_images/soccer2.jpeg
      - images/futsal_club_images/futsal.jpeg
+     - event_images/pickup_event_images/pocky.jpeg
+     - event_images/exciting_event_images/waiwai.jpeg
+     - event_images/study_event_images/study.jpeg
+     - event_images/recruit_event_images/recruit.jpeg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
