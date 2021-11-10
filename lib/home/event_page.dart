@@ -89,7 +89,7 @@ class EventPage extends StatelessWidget {
                     ),
                     Divider(),
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
+                      height: MediaQuery.of(context).size.height * 0.3,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
@@ -212,20 +212,32 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child: Hero(
-                          tag: 'event-img${pickUpEvent.imageURL}2',
-                          child: Container(
+                        child: Container(
+                          width: 300,
+                          child: pickUpEvent.imageURL != null &&
+                        pickUpEvent.imageURL!.isNotEmpty
+                                ? Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Hero(
+                              tag: 'event-img${pickUpEvent.imageURL}',
+                              child: Container(
+                                width: 130,
+                                height: 130,
+                                child: Image.asset(
+                                  'event_images/pickup_event_images/${pickUpEvent.imageURL}',
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+                          )
+                                : Container(
                             width: 130,
                             height: 130,
-                            child: CircleAvatar(
-                              radius: 30.0,
-                              backgroundImage: pickUpEvent.imageURL != null &&
-                                      pickUpEvent.imageURL!.isNotEmpty
-                                  ? AssetImage(
-                                      'event_images/pickup_event_images/${pickUpEvent.imageURL}')
-                                  : AssetImage(
-                                      'images/placeholder_image/placeholder.jpeg'),
-                              backgroundColor: Colors.transparent,
+                            child: Image.asset(
+                              'images/placeholder_image/placeholder.jpeg',
+                              fit: BoxFit.fill,
                             ),
                           ),
                         ),
