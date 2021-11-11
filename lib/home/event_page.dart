@@ -89,7 +89,7 @@ class EventPage extends StatelessWidget {
                     ),
                     Divider(),
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.3,
+                      height: MediaQuery.of(context).size.height * 0.32,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
@@ -204,62 +204,44 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
           height: 8,
         ),
         Expanded(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(30.0),
-            child:
-                pickUpEvent.imageURL != null && pickUpEvent.imageURL!.isNotEmpty
-                    ? Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
+          child: Container(
+            child: pickUpEvent.imageURL != null &&
+                pickUpEvent.imageURL!.isNotEmpty
+                ? Card(
+                  child: Column(
+                    children: <Widget>[
+                      Container(
                         child: Container(
-                          width: 300,
-                          child: pickUpEvent.imageURL != null &&
-                        pickUpEvent.imageURL!.isNotEmpty
-                                ? Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: Hero(
-                              tag: 'event-img${pickUpEvent.imageURL}',
-                              child: Container(
-                                width: 130,
-                                height: 130,
-                                child: Image.asset(
-                                  'event_images/pickup_event_images/${pickUpEvent.imageURL}',
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-                          )
-                                : Container(
-                            width: 130,
-                            height: 130,
-                            child: Image.asset(
-                              'images/placeholder_image/placeholder.jpeg',
-                              fit: BoxFit.fill,
-                            ),
+                          height: 150,
+                          child: Image.asset(
+                            'event_images/pickup_event_images/${pickUpEvent.imageURL}',
+                            fit: BoxFit.fill,
                           ),
                         ),
-                      )
-                    : ColorFiltered(
-                        colorFilter: ColorFilter.mode(
-                          Colors.grey,
-                          BlendMode.saturation,
-                        ),
-                        child: Image.asset(
-                          'placeholder_image/placeholder.jpeg',
-                          fit: BoxFit.cover,
-                        ),
                       ),
+                      Container(
+                        width: 180,
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                            child: Text(pickUpEvent.title, style: TextStyle(fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            ),
+                        ),
+                      )
+                    ]
+                  ),
+                )
+                : Container(
+              child: Image.asset(
+                'images/placeholder_image/placeholder.jpeg',
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
         ),
         SizedBox(
           height: 8,
-        ),
-        Text(
-          pickUpEvent.title,
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ]),
     ),
@@ -473,3 +455,4 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
     },
   );
 }
+
