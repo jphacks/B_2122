@@ -226,16 +226,49 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                         SizedBox(
                           height:8,
                         ),
-                        Container(
-                          width: 250,
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                              child: Text('11/11(木)', style: TextStyle(fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
-                              ),
-                          ),
-                        )
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text('木', style: TextStyle(fontSize: 23,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text('11/11', style: TextStyle(fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              children: [
+                                Text(pickUpEvent.title, style: TextStyle(fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                                ),
+                                Text('会場:悠久の庭', style: TextStyle(fontSize: 13,
+                                    color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                          ]
+                        ),
                       ]
                     ),
                   ),
@@ -273,50 +306,85 @@ Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
           height: 8,
         ),
         Expanded(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(30.0),
+          child: Container(
             child: excitingEvent.imageURL != null &&
-                    excitingEvent.imageURL!.isNotEmpty
+                excitingEvent.imageURL!.isNotEmpty
                 ? Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: Hero(
-                      tag: 'event-img${excitingEvent.imageURL}',
-                      child: Container(
-                        width: 130,
-                        height: 130,
-                        child: CircleAvatar(
-                          radius: 30.0,
-                          backgroundImage: excitingEvent.imageURL != null &&
-                                  excitingEvent.imageURL!.isNotEmpty
-                              ? AssetImage(
-                                  'event_images/exciting_event_images/${excitingEvent.imageURL}')
-                              : AssetImage(
-                                  'images/placeholder_image/placeholder.jpeg'),
-                          backgroundColor: Colors.transparent,
+              height: 500,
+              width:300,
+              child: Card(
+                child: Column(
+                    children: <Widget>[
+                      Container(
+                        child: Container(
+                          height: 100,
+                          width: 300,
+                          child: Image.asset(
+                            'event_images/exciting_event_images/${excitingEvent.imageURL}',
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                : ColorFiltered(
-                    colorFilter: ColorFilter.mode(
-                      Colors.grey,
-                      BlendMode.saturation,
-                    ),
-                    child: Image.asset(
-                      'placeholder_image/placeholder.jpeg',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                      SizedBox(
+                        height:8,
+                      ),
+                      Row(
+                          children: [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text('木', style: TextStyle(fontSize: 23,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text('11/11', style: TextStyle(fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              children: [
+                                Text(excitingEvent.title, style: TextStyle(fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                                ),
+                                Text('会場:悠久の庭', style: TextStyle(fontSize: 13,
+                                    color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                          ]
+                      ),
+                    ]
+                ),
+              ),
+            )
+                : Container(
+              child: Image.asset(
+                'images/placeholder_image/placeholder.jpeg',
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
         ),
         SizedBox(
           height: 8,
-        ),
-        Text(
-          excitingEvent.title,
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ]),
     ),
@@ -340,50 +408,85 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
           height: 8,
         ),
         Expanded(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(30.0),
-            child:
-                studyEvent.imageURL != null && studyEvent.imageURL!.isNotEmpty
-                    ? Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Hero(
-                          tag: 'event-img${studyEvent.imageURL}',
-                          child: Container(
-                            width: 130,
-                            height: 130,
-                            child: CircleAvatar(
-                              radius: 30.0,
-                              backgroundImage: studyEvent.imageURL != null &&
-                                      studyEvent.imageURL!.isNotEmpty
-                                  ? AssetImage(
-                                      'event_images/study_event_images/${studyEvent.imageURL}')
-                                  : AssetImage(
-                                      'images/placeholder_image/placeholder.jpeg'),
-                              backgroundColor: Colors.transparent,
-                            ),
+          child: Container(
+            child: studyEvent.imageURL != null &&
+                studyEvent.imageURL!.isNotEmpty
+                ? Container(
+              height: 500,
+              width:300,
+              child: Card(
+                child: Column(
+                    children: <Widget>[
+                      Container(
+                        child: Container(
+                          height: 100,
+                          width: 300,
+                          child: Image.asset(
+                            'event_images/study_event_images/${studyEvent.imageURL}',
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
-                      )
-                    : ColorFiltered(
-                        colorFilter: ColorFilter.mode(
-                          Colors.grey,
-                          BlendMode.saturation,
-                        ),
-                        child: Image.asset(
-                          'placeholder_image/placeholder.jpeg',
-                          fit: BoxFit.cover,
-                        ),
                       ),
+                      SizedBox(
+                        height:8,
+                      ),
+                      Row(
+                          children: [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text('木', style: TextStyle(fontSize: 23,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text('11/11', style: TextStyle(fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              children: [
+                                Text(studyEvent.title, style: TextStyle(fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                                ),
+                                Text('会場:悠久の庭', style: TextStyle(fontSize: 13,
+                                    color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                          ]
+                      ),
+                    ]
+                ),
+              ),
+            )
+                : Container(
+              child: Image.asset(
+                'images/placeholder_image/placeholder.jpeg',
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
         ),
         SizedBox(
           height: 8,
-        ),
-        Text(
-          studyEvent.title,
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ]),
     ),
@@ -407,50 +510,85 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
           height: 8,
         ),
         Expanded(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(30.0),
+          child: Container(
             child: recruitEvent.imageURL != null &&
-                    recruitEvent.imageURL!.isNotEmpty
+                recruitEvent.imageURL!.isNotEmpty
                 ? Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: Hero(
-                      tag: 'event-img${recruitEvent.imageURL}',
-                      child: Container(
-                        width: 130,
-                        height: 130,
-                        child: CircleAvatar(
-                          radius: 30.0,
-                          backgroundImage: recruitEvent.imageURL != null &&
-                                  recruitEvent.imageURL!.isNotEmpty
-                              ? AssetImage(
-                                  'event_images/recruit_event_images/${recruitEvent.imageURL}')
-                              : AssetImage(
-                                  'images/placeholder_image/placeholder.jpeg'),
-                          backgroundColor: Colors.transparent,
+              height: 500,
+              width:300,
+                child: Card(
+                  child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: Container(
+                            height: 100,
+                            width: 300,
+                            child: Image.asset(
+                              'event_images/recruit_event_images/${recruitEvent.imageURL}',
+                              fit: BoxFit.fitWidth,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  )
-                : ColorFiltered(
-                    colorFilter: ColorFilter.mode(
-                      Colors.grey,
-                      BlendMode.saturation,
-                    ),
-                    child: Image.asset(
-                      'placeholder_image/placeholder.jpeg',
-                      fit: BoxFit.cover,
-                    ),
+                        SizedBox(
+                          height:8,
+                        ),
+                        Row(
+                            children: [
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Column(
+                                children: [
+                                  Container(
+                                    child: Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text('木', style: TextStyle(fontSize: 23,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text('11/11', style: TextStyle(fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Column(
+                                children: [
+                                  Text(recruitEvent.title, style: TextStyle(fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
+                                  ),
+                                  Text('会場:悠久の庭', style: TextStyle(fontSize: 13,
+                                      color: Colors.grey),
+                                  ),
+                                ],
+                              ),
+                            ]
+                        ),
+                      ]
                   ),
+                ),
+            )
+                : Container(
+              child: Image.asset(
+                'images/placeholder_image/placeholder.jpeg',
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
         ),
         SizedBox(
           height: 8,
-        ),
-        Text(
-          recruitEvent.title,
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ]),
     ),
