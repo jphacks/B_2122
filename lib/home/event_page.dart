@@ -207,29 +207,37 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
           child: Container(
             child: pickUpEvent.imageURL != null &&
                 pickUpEvent.imageURL!.isNotEmpty
-                ? Card(
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        child: Container(
-                          height: 150,
-                          child: Image.asset(
-                            'event_images/pickup_event_images/${pickUpEvent.imageURL}',
-                            fit: BoxFit.fill,
+                ? Container(
+              height: 500,
+                  width:300,
+                  child: Card(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: Container(
+                            height: 150,
+                            width:300,
+                            child: Image.asset(
+                              'event_images/pickup_event_images/${pickUpEvent.imageURL}',
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: 180,
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                            child: Text(pickUpEvent.title, style: TextStyle(fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            ),
+                        SizedBox(
+                          height:8,
                         ),
-                      )
-                    ]
+                        Container(
+                          width: 250,
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                              child: Text('11/11(木)', style: TextStyle(fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              ),
+                          ),
+                        )
+                      ]
+                    ),
                   ),
                 )
                 : Container(

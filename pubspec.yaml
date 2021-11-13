@@ -91,7 +91,16 @@ flutter:
      - event_images/exciting_event_images/waiwai.jpeg
      - event_images/study_event_images/study.jpeg
      - event_images/recruit_event_images/recruit.jpeg
-
+     - images/other_field_club_images/quiz.jpeg
+     - images/other_field_club_images/loveraibu.jpeg
+     - images/badminton_club_images/bado.jpeg
+     - images/badminton_club_images/bado2.jpeg
+     - images/basketball_club_images/basketball1.jpeg
+     - images/basketball_club_images/basketball2.jpeg
+     - images/volleyball_club_images/volleyball.jpeg
+     - images/volleyball_club_images/volleyball2.jpeg
+     - images/volleyball_club_images/volleyball3.jpeg
+     - images/volleyball_club_images/volleyball4.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
