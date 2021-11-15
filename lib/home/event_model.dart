@@ -23,7 +23,8 @@ class EventModel extends ChangeNotifier {
       final String contents = data['contents'];
       final String date = data['date'];
       final String? imageURL = data['imageURL'];
-      return PickUpEvent(id,title,category,contents,date,imageURL);
+      final String place = data['place'];
+      return PickUpEvent(id,title,category,contents,date,imageURL,place);
     }).toList();
 
     this.pickUpEvents = pickUpEvents;
@@ -41,7 +42,8 @@ class EventModel extends ChangeNotifier {
       final String contents = data['contents'];
       final String date = data['date'];
       final String? imageURL = data['imageURL'];
-      return ExcitingEvent(id,title,category,contents,date,imageURL);
+      final String place = data['place'];
+      return ExcitingEvent(id,title,category,contents,date,imageURL,place);
     }).toList();
 
     this.excitingEvents = excitingEvents;
@@ -59,7 +61,8 @@ class EventModel extends ChangeNotifier {
       final String contents = data['contents'];
       final String date = data['date'];
       final String? imageURL = data['imageURL'];
-      return StudyEvent(id,title,category,contents,date,imageURL);
+      final String place = data['place'];
+      return StudyEvent(id,title,category,contents,date,imageURL,place);
     }).toList();
 
     this.studyEvents = studyEvents;
@@ -77,7 +80,8 @@ class EventModel extends ChangeNotifier {
       final String contents = data['contents'];
       final String date = data['date'];
       final String? imageURL = data['imageURL'];
-      return RecruitEvent(id,title,category,contents,date,imageURL);
+      final String place = data['place'];
+      return RecruitEvent(id,title,category,contents,date,imageURL,place);
     }).toList();
 
     this.recruitEvents = recruitEvents;

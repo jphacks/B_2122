@@ -97,6 +97,241 @@ class PickUpEventDetailPage extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height:30,
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('カテゴリ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),),
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(pickUpEvent.category),
+              ],
+            ),
+          ),
+          SizedBox(
+            height:30,
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('カテゴリ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),),
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(pickUpEvent.category),
+              ],
+            ),
+          ),
+          SizedBox(
+            height:30,
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('カテゴリ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),),
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(pickUpEvent.category),
+              ],
+            ),
+          ),
+          SizedBox(
+            height:30,
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('カテゴリ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),),
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(pickUpEvent.category),
+              ],
+            ),
+          ),
+          SizedBox(
+            height:30,
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('カテゴリ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),),
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(pickUpEvent.category),
+              ],
+            ),
+          ),
+          SizedBox(
+            height:30,
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('カテゴリ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),),
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(pickUpEvent.category),
+              ],
+            ),
+          ),
+          SizedBox(
+            height:30,
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('カテゴリ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),),
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .height * 0.43,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(pickUpEvent.category),
+              ],
+            ),
+          ),
+
+
+          SizedBox(
+            height:30,
+          ),
+          SizedBox(
+            height:50,
+            width:300,
+            child: FlatButton(
+              color: Colors.amber,
+              onPressed: () {},
+              child: Text("このイベントに参加する"),
+              textColor: Colors.white,
+            ),
+          ),
+          SizedBox(
+            height:30,
+          ),
         ],
       ),
     );
