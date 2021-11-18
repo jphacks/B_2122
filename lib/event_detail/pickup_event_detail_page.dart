@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
+import 'package:testapp/get_ticket/get_ticket_page.dart';
 
 class PickUpEventDetailPage extends StatelessWidget {
   final PickUpEvent pickUpEvents;
@@ -258,7 +259,13 @@ class PickUpEventDetailPage extends StatelessWidget {
               width: 300,
               child: FlatButton(
                 color: Colors.amber,
-                onPressed: () {},
+                onPressed: () async {
+                  await Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (context) => GetTicketPage(),
+                        fullscreenDialog: true),
+                  );
+                },
                 child: Text("このイベントに参加する"),
                 textColor: Colors.white,
               ),
