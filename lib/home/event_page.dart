@@ -215,19 +215,19 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                     child: Column(
                       children: <Widget>[
                         Container(
-                          child: Container(
-                            height: 150,
-                            width:300,
-                            child: Image.asset(
-                              'event_images/pickup_event_images/${pickUpEvent.imageURL}',
-                              fit: BoxFit.fill,
-                            ),
+                          height: 150,
+                          width:300,
+                          child: Image.asset(
+                            'event_images/pickup_event_images/${pickUpEvent.imageURL}',
+                            fit: BoxFit.fill,
                           ),
                         ),
                         SizedBox(
                           height:8,
                         ),
                         Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
                               width: 20,
@@ -235,35 +235,24 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                             Column(
                               children: [
                                 Container(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text('木', style: TextStyle(fontSize: 23,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                    ),
+                                  child: Text(pickUpEvent.date, style: TextStyle(fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
                                   ),
                                 ),
-                                Container(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text('11/11', style: TextStyle(fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                    ),
-                                  ),
-                                )
                               ],
                             ),
                             SizedBox(
                               width: 20,
                             ),
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(pickUpEvent.title, style: TextStyle(fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black),
                                 ),
-                                Text('会場:悠久の庭', style: TextStyle(fontSize: 13,
+                                Text('開催場所: ' + pickUpEvent.place, style: TextStyle(fontSize: 13,
                                     color: Colors.grey),
                                 ),
                               ],
