@@ -211,6 +211,7 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
               height: 500,
                   width:300,
                   child: Card(
+                    elevation: 0.0,
                     child: Column(
                       children: <Widget>[
                         Container(
@@ -290,7 +291,7 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
       await Navigator.of(context).push(
         MaterialPageRoute(
             builder: (context) => PickUpEventDetailPage(pickUpEvent),
-            fullscreenDialog: true),
+            ),
       );
     },
   );
@@ -313,6 +314,7 @@ Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
               height: 500,
               width:300,
               child: Card(
+                elevation: 0.0,
                 child: Column(
                     children: <Widget>[
                       Container(
@@ -415,6 +417,7 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
               height: 500,
               width:300,
               child: Card(
+                elevation: 0.0,
                 child: Column(
                     children: <Widget>[
                       Container(
@@ -517,6 +520,7 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
               height: 500,
               width:300,
                 child: Card(
+                  elevation: 0.0,
                   child: Column(
                       children: <Widget>[
                         Container(

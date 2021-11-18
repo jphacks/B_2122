@@ -525,7 +525,7 @@ class ClubListPage extends StatelessWidget {
         await Navigator.of(context).push(
           MaterialPageRoute(
               builder: (context) => AthleticClubDetailPage(athleticClub),
-              fullscreenDialog: true),
+              ),
         );
       },
     );
