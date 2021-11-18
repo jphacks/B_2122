@@ -234,11 +234,24 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                             ),
                             Column(
                               children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Container(
-                                  child: Text(pickUpEvent.date, style: TextStyle(fontSize: 15,
+                                  child:
+                                  Text(pickUpEvent.date, style: TextStyle(fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black),
                                   ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Icon(
+                                  Icons.favorite_border_outlined,
+                                  color: Colors.grey,
+                                  size: 24.0,
+                                  semanticLabel: 'Text to announce in accessibility modes',
                                 ),
                               ],
                             ),
@@ -253,6 +266,9 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                                     color: Colors.black),
                                 ),
                                 Text('開催場所: ' + pickUpEvent.place, style: TextStyle(fontSize: 13,
+                                    color: Colors.grey),
+                                ),
+                                Text('主催者: ' + '内芝弘尭', style: TextStyle(fontSize: 13,
                                     color: Colors.grey),
                                 ),
                               ],
