@@ -210,8 +210,11 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                 ? Container(
               height: 500,
                   width:300,
-                  child: Card(
-                    elevation: 0.0,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      minWidth: 100,
+                      minHeight: 80,
+                    ),
                     child: Column(
                       children: <Widget>[
                         Container(
@@ -261,7 +264,8 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(pickUpEvent.title, style: TextStyle(fontSize: 15,
+                                Text(pickUpEvent.title,
+                                  style: TextStyle(fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black),
                                 ),
@@ -318,8 +322,11 @@ Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
                 ? Container(
               height: 500,
               width:300,
-              child: Card(
-                elevation: 0.0,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 100,
+                  minHeight: 80,
+                ),
                 child: Column(
                     children: <Widget>[
                       Container(
@@ -421,8 +428,11 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
                 ? Container(
               height: 500,
               width:300,
-              child: Card(
-                elevation: 0.0,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 100,
+                  minHeight: 80,
+                ),
                 child: Column(
                     children: <Widget>[
                       Container(
@@ -524,8 +534,11 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
                 ? Container(
               height: 500,
               width:300,
-                child: Card(
-                  elevation: 0.0,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minWidth: 100,
+                    minHeight: 80,
+                  ),
                   child: Column(
                       children: <Widget>[
                         Container(
