@@ -210,6 +210,10 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                 ? Container(
               height: 500,
                   width:300,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade200),
+                borderRadius: BorderRadius.circular(10),
+              ),
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(
                       minWidth: 100,
@@ -220,9 +224,15 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                         Container(
                           height: 150,
                           width:300,
-                          child: Image.asset(
-                            'event_images/pickup_event_images/${pickUpEvent.imageURL}',
-                            fit: BoxFit.fill,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: const Radius.circular(10.0),
+                              topRight: const Radius.circular(10.0),
+                            ),
+                            child: Image.asset(
+                              'event_images/pickup_event_images/${pickUpEvent.imageURL}',
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                         SizedBox(
