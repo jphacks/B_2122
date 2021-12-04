@@ -77,37 +77,37 @@ class CollegeLifeCommunityDetailPage extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Flexible(
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: FirebaseFirestore.instance
-                      .collection("chat_room")
-                      .orderBy("created_at", descending: true)
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) return Container();
+              StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance
+                    .collection("chat_room")
+                    .orderBy("created_at", descending: true)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) return Container();
 
-                    return ListView.builder(
-                      padding: EdgeInsets.all(8.0),
-                      reverse: true,
-                      itemBuilder: (BuildContext context, int index) {
-                        DocumentSnapshot document = snapshot.data!.docs[index];
+                  return Flexible(
+                    child: ListView.builder(
+                        padding: EdgeInsets.all(8.0),
+                        reverse: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          DocumentSnapshot document = snapshot.data!.docs[index];
 
-                        bool isOwnMessage = false;
-                        if (document['user_name'] == true) {
-                          isOwnMessage = true;
-                        }
-                        return isOwnMessage
-                            //isOwnMessageがtrueの場合
-                            ? _ownMessage(
-                                document['message'], document['user_name'])
-                            //isOwnMessageがfalseの場合
-                            : _message(
-                                document['message'], document['user_name']);
-                      },
-                      itemCount: snapshot.data!.docs.length,
-                    );
-                  },
-                ),
+                          bool isOwnMessage = false;
+                          if (document['user_name'] == true) {
+                            isOwnMessage = true;
+                          }
+                          return isOwnMessage
+                              //isOwnMessageがtrueの場合
+                              ? _ownMessage(
+                                  document['message'], document['user_name'])
+                              //isOwnMessageがfalseの場合
+                              : _message(
+                                  document['message'], document['user_name']);
+                        },
+                        itemCount: snapshot.data!.docs.length,
+                    ),
+                  );
+                },
               ),
               Divider(height: 1.0),
               Container(

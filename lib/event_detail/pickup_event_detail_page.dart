@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
-import 'package:testapp/get_ticket/get_ticket_page.dart';
 
 class PickUpEventDetailPage extends StatelessWidget {
   final PickUpEvent pickUpEvents;
@@ -257,17 +257,38 @@ class PickUpEventDetailPage extends StatelessWidget {
             SizedBox(
               height: 50,
               width: 300,
-              child: FlatButton(
+              child: CupertinoButton(
                 color: Colors.amber,
-                onPressed: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) => GetTicketPage(),
-                        fullscreenDialog: true),
+                onPressed: () {
+                  showCupertinoDialog<void>(
+                    context: context,
+                    builder: (BuildContext context) => CupertinoAlertDialog(
+                      title: const Text('イベント参加確認'),
+                      content: const Text('このイベントに参加しますか？'),
+                      actions: <CupertinoDialogAction>[
+                        CupertinoDialogAction(
+                          child: const Text('やめとく'),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        CupertinoDialogAction(
+                          child: const Text('参加する'),
+                          isDestructiveAction: true,
+                          onPressed: () {
+                            // Do something destructive.
+                          },
+                        )
+                      ],
+                    ),
                   );
                 },
-                child: Text("このイベントに参加する"),
-                textColor: Colors.white,
+                child: Text("参加する",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                  ),
+                ),
               ),
             ),
             SizedBox(

@@ -26,7 +26,8 @@ class EventPage extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0.0,
             centerTitle: false,
-            automaticallyImplyLeading: false),
+            automaticallyImplyLeading: false
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -208,7 +209,7 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
             child: pickUpEvent.imageURL != null &&
                 pickUpEvent.imageURL!.isNotEmpty
                 ? Container(
-              height: 500,
+                  height: 500,
                   width:300,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade200),
@@ -221,17 +222,19 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                     ),
                     child: Column(
                       children: <Widget>[
-                        Container(
-                          height: 150,
-                          width:300,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: const Radius.circular(10.0),
-                              topRight: const Radius.circular(10.0),
-                            ),
-                            child: Image.asset(
-                              'event_images/pickup_event_images/${pickUpEvent.imageURL}',
-                              fit: BoxFit.fill,
+                        Expanded(
+                          child: Container(
+                            height: 150,
+                            width:300,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                topLeft: const Radius.circular(10.0),
+                                topRight: const Radius.circular(10.0),
+                              ),
+                              child: Image.asset(
+                                'event_images/pickup_event_images/${pickUpEvent.imageURL}',
+                                fit: BoxFit.fill,
+                              ),
                             ),
                           ),
                         ),
@@ -264,7 +267,6 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                                   Icons.favorite_border_outlined,
                                   color: Colors.grey,
                                   size: 24.0,
-                                  semanticLabel: 'Text to announce in accessibility modes',
                                 ),
                               ],
                             ),
@@ -285,6 +287,9 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                                 Text('主催者: ' + '内芝弘尭', style: TextStyle(fontSize: 13,
                                     color: Colors.grey),
                                 ),
+                                SizedBox(
+                                  height: 8,
+                                ),
                               ],
                             ),
                           ]
@@ -294,15 +299,14 @@ Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
                   ),
                 )
                 : Container(
+              height: 500,
+              width:300,
               child: Image.asset(
                 'images/placeholder_image/placeholder.jpeg',
                 fit: BoxFit.fill,
               ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 8,
         ),
       ]),
     ),
@@ -332,6 +336,10 @@ Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
                 ? Container(
               height: 500,
               width:300,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade200),
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
                   minWidth: 100,
@@ -339,13 +347,19 @@ Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
                 ),
                 child: Column(
                     children: <Widget>[
-                      Container(
+                      Expanded(
                         child: Container(
-                          height: 100,
-                          width: 300,
-                          child: Image.asset(
-                            'event_images/exciting_event_images/${excitingEvent.imageURL}',
-                            fit: BoxFit.fitWidth,
+                          height: 150,
+                          width:300,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: const Radius.circular(10.0),
+                              topRight: const Radius.circular(10.0),
+                            ),
+                            child: Image.asset(
+                              'event_images/exciting_event_images/${excitingEvent.imageURL}',
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       ),
@@ -353,43 +367,53 @@ Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
                         height:8,
                       ),
                       Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
                               width: 20,
                             ),
                             Column(
                               children: [
-                                Container(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text('木', style: TextStyle(fontSize: 23,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                    ),
-                                  ),
+                                SizedBox(
+                                  height: 5,
                                 ),
                                 Container(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text('11/11', style: TextStyle(fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                    ),
+                                  child:
+                                  Text(excitingEvent.date, style: TextStyle(fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
                                   ),
-                                )
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Icon(
+                                  Icons.favorite_border_outlined,
+                                  color: Colors.grey,
+                                  size: 24.0,
+                                ),
                               ],
                             ),
                             SizedBox(
                               width: 20,
                             ),
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(excitingEvent.title, style: TextStyle(fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black),
+                                Text(excitingEvent.title,
+                                  style: TextStyle(fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
                                 ),
-                                Text('会場:悠久の庭', style: TextStyle(fontSize: 13,
+                                Text('開催場所: ' + excitingEvent.place, style: TextStyle(fontSize: 13,
                                     color: Colors.grey),
+                                ),
+                                Text('主催者: ' + '内芝弘尭', style: TextStyle(fontSize: 13,
+                                    color: Colors.grey),
+                                ),
+                                SizedBox(
+                                  height: 8,
                                 ),
                               ],
                             ),
@@ -400,6 +424,8 @@ Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
               ),
             )
                 : Container(
+              height: 500,
+              width:300,
               child: Image.asset(
                 'images/placeholder_image/placeholder.jpeg',
                 fit: BoxFit.fill,
@@ -407,16 +433,13 @@ Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
             ),
           ),
         ),
-        SizedBox(
-          height: 8,
-        ),
       ]),
     ),
     onTap: () async {
       await Navigator.of(context).push(
         MaterialPageRoute(
-            builder: (context) => ExcitingEventDetailPage(excitingEvent),
-            fullscreenDialog: true),
+          builder: (context) => ExcitingEventDetailPage(excitingEvent),
+        ),
       );
     },
   );
@@ -438,6 +461,10 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
                 ? Container(
               height: 500,
               width:300,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade200),
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
                   minWidth: 100,
@@ -445,13 +472,19 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
                 ),
                 child: Column(
                     children: <Widget>[
-                      Container(
+                      Expanded(
                         child: Container(
-                          height: 100,
-                          width: 300,
-                          child: Image.asset(
-                            'event_images/study_event_images/${studyEvent.imageURL}',
-                            fit: BoxFit.fitWidth,
+                          height: 150,
+                          width:300,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: const Radius.circular(10.0),
+                              topRight: const Radius.circular(10.0),
+                            ),
+                            child: Image.asset(
+                              'event_images/study_event_images/${studyEvent.imageURL}',
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       ),
@@ -459,45 +492,57 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
                         height:8,
                       ),
                       Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
                               width: 20,
                             ),
                             Column(
                               children: [
-                                Container(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text('木', style: TextStyle(fontSize: 23,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                    ),
-                                  ),
+                                SizedBox(
+                                  height: 5,
                                 ),
                                 Container(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text('11/11', style: TextStyle(fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                    ),
+                                  child:
+                                  Text(studyEvent.date, style: TextStyle(fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
                                   ),
-                                )
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Icon(
+                                  Icons.favorite_border_outlined,
+                                  color: Colors.grey,
+                                  size: 24.0,
+                                ),
                               ],
                             ),
                             SizedBox(
                               width: 20,
                             ),
-                            Column(
-                              children: [
-                                Text(studyEvent.title, style: TextStyle(fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black),
-                                ),
-                                Text('会場:悠久の庭', style: TextStyle(fontSize: 13,
-                                    color: Colors.grey),
-                                ),
-                              ],
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(studyEvent.title,
+                                    style: TextStyle(fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                  ),
+                                  Text('開催場所: ' + studyEvent.place, style: TextStyle(fontSize: 13,
+                                      color: Colors.grey),
+                                  ),
+                                  Text('主催者: ' + '内芝弘尭', style: TextStyle(fontSize: 13,
+                                      color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                ],
+                              ),
                             ),
                           ]
                       ),
@@ -506,6 +551,8 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
               ),
             )
                 : Container(
+              height: 500,
+              width:300,
               child: Image.asset(
                 'images/placeholder_image/placeholder.jpeg',
                 fit: BoxFit.fill,
@@ -513,16 +560,13 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
             ),
           ),
         ),
-        SizedBox(
-          height: 8,
-        ),
       ]),
     ),
     onTap: () async {
       await Navigator.of(context).push(
         MaterialPageRoute(
-            builder: (context) => StudyEventDetailPage(studyEvent),
-            fullscreenDialog: true),
+          builder: (context) => StudyEventDetailPage(studyEvent),
+        ),
       );
     },
   );
@@ -544,74 +588,98 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
                 ? Container(
               height: 500,
               width:300,
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    minWidth: 100,
-                    minHeight: 80,
-                  ),
-                  child: Column(
-                      children: <Widget>[
-                        Container(
-                          child: Container(
-                            height: 100,
-                            width: 300,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade200),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 100,
+                  minHeight: 80,
+                ),
+                child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          height: 150,
+                          width:300,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: const Radius.circular(10.0),
+                              topRight: const Radius.circular(10.0),
+                            ),
                             child: Image.asset(
                               'event_images/recruit_event_images/${recruitEvent.imageURL}',
-                              fit: BoxFit.fitWidth,
+                              fit: BoxFit.fill,
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height:8,
-                        ),
-                        Row(
-                            children: [
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Column(
-                                children: [
-                                  Container(
-                                    child: Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text('木', style: TextStyle(fontSize: 23,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text('11/11', style: TextStyle(fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Column(
-                                children: [
-                                  Text(recruitEvent.title, style: TextStyle(fontSize: 15,
+                      ),
+                      SizedBox(
+                        height:8,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  child:
+                                  Text(recruitEvent.date, style: TextStyle(fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black),
                                   ),
-                                  Text('会場:悠久の庭', style: TextStyle(fontSize: 13,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Icon(
+                                  Icons.favorite_border_outlined,
+                                  color: Colors.grey,
+                                  size: 24.0,
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(recruitEvent.title,
+                                    style: TextStyle(fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                  ),
+                                  Text('開催場所: ' + recruitEvent.place, style: TextStyle(fontSize: 13,
                                       color: Colors.grey),
+                                  ),
+                                  Text('主催者: ' + '内芝弘尭', style: TextStyle(fontSize: 13,
+                                      color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
                                   ),
                                 ],
                               ),
-                            ]
-                        ),
-                      ]
-                  ),
+                            ),
+                          ]
+                      ),
+                    ]
                 ),
+              ),
             )
                 : Container(
+              height: 500,
+              width:300,
               child: Image.asset(
                 'images/placeholder_image/placeholder.jpeg',
                 fit: BoxFit.fill,
@@ -619,16 +687,13 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
             ),
           ),
         ),
-        SizedBox(
-          height: 8,
-        ),
       ]),
     ),
     onTap: () async {
       await Navigator.of(context).push(
         MaterialPageRoute(
-            builder: (context) => RecruitEventDetailPage(recruitEvent),
-            fullscreenDialog: true),
+          builder: (context) => RecruitEventDetailPage(recruitEvent),
+        ),
       );
     },
   );
