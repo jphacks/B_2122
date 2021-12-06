@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:provider/provider.dart';
+import 'package:testapp/add_community/add_community_page.dart';
 import 'package:testapp/event_detail/exciting_event_detail_page.dart';
 import 'package:testapp/event_detail/pickup_event_detail_page.dart';
 import 'package:testapp/event_detail/recruit_event_detail_page.dart';
@@ -189,8 +191,59 @@ class EventPage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+        floatingActionButton:
+        SpeedDial(
+            animatedIcon: AnimatedIcons.menu_close,
+            backgroundColor: Colors.amber,
+            closeManually: true,
+            children: [
+              SpeedDialChild(
+                child: Icon(Icons.event),
+                label: 'イベント作成',
+                backgroundColor: Colors.amberAccent,
+                onTap: () async {
+                  final bool? added = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddCommunityPage(),
+                      fullscreenDialog: true,
+                    ),
+                  );
+
+                  if (added != null && added) {
+                    final snackBar = SnackBar(
+                      content: Text('コミュニティを追加しました'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
+                },
+
+              ),
+              SpeedDialChild(
+                child: Icon(Icons.people),
+                label: 'オープンチャット作成',
+                backgroundColor: Colors.amberAccent,
+                onTap: () async {
+                  final bool? added = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddCommunityPage(),
+                      fullscreenDialog: true,
+                    ),
+                  );
+
+                  if (added != null && added) {
+                    final snackBar = SnackBar(
+                      content: Text('コミュニティを追加しました'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
+                },
+              ),
+            ],
+          )
+        ),
+      );
   }
 }
 

@@ -6,6 +6,7 @@ import 'package:testapp/community_detail/food_community_detail_page.dart';
 import 'package:testapp/community_detail/unit_community_detail_page.dart';
 import 'package:testapp/domain/community.dart';
 import 'community_page_model.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class CommunityPage extends StatelessWidget {
   @override
@@ -27,7 +28,7 @@ class CommunityPage extends StatelessWidget {
                 ],
               ),
               title: const Text(
-                'コミュニティ',
+                'みんなの意見箱',
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
               ),
@@ -139,29 +140,59 @@ class CommunityPage extends StatelessWidget {
           ),
           floatingActionButton:
               Consumer<CommunityPageModel>(builder: (context, model, child) {
-            return FloatingActionButton(
-              onPressed: () async {
-                final bool? added = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AddCommunityPage(),
-                    fullscreenDialog: true,
-                  ),
-                );
+            return SpeedDial(
+              animatedIcon: AnimatedIcons.menu_close,
+              backgroundColor: Colors.amber,
+              closeManually: true,
+              children: [
+                SpeedDialChild(
+                  child: Icon(Icons.event),
+                  label: 'イベント作成',
+                  backgroundColor: Colors.amberAccent,
+                  onTap: () async {
+                    final bool? added = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddCommunityPage(),
+                        fullscreenDialog: true,
+                      ),
+                    );
 
-                if (added != null && added) {
-                  final snackBar = SnackBar(
-                    content: Text('コミュニティを追加しました'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                }
+                    if (added != null && added) {
+                      final snackBar = SnackBar(
+                        content: Text('コミュニティを追加しました'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
 
-                model.fetchCollegeLifeCommunityList();
-              },
-              tooltip: 'Increment',
-              child: Icon(Icons.add),
+                    model.fetchCollegeLifeCommunityList();
+                  },
+
+                ),
+                SpeedDialChild(
+                  child: Icon(Icons.people),
+                  label: 'オープンチャット作成',
+                  backgroundColor: Colors.amberAccent,
+                  onTap: () async {
+                    final bool? added = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddCommunityPage(),
+                        fullscreenDialog: true,
+                      ),
+                    );
+
+                    if (added != null && added) {
+                      final snackBar = SnackBar(
+                        content: Text('コミュニティを追加しました'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                  },
+                ),
+              ],
             );
-          }),
+              }),
         ),
       ),
     );

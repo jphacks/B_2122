@@ -10,7 +10,7 @@ class AddCommunityPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            '新規コミュニティ',
+            '新規オープンチャット',
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           backgroundColor: Colors.transparent,
@@ -25,7 +25,7 @@ class AddCommunityPage extends StatelessWidget {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.start, children: [
                   Text(
-                    'コミュニティ名',
+                    'タイトル',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                   ),
@@ -33,104 +33,48 @@ class AddCommunityPage extends StatelessWidget {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                      border: InputBorder.none, hintText: 'コミュニティ名を追加'),
+                      border: InputBorder.none, hintText: 'オープンチャットの名前'),
                   onChanged: (text) {
                     model.title = text;
                   },
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 30,
                 ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.start, children: [
                   Text(
-                    'コミュニティのカテゴリ',
+                    'カテゴリ',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                 ]
                 ),
-                Expanded(
-                  child: GridView.count(
-                      padding: const EdgeInsets.all(20),
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    crossAxisCount: 3,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.amber,
-                            width: 1,
-                            style: BorderStyle.solid,
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(8),
-                        child: Center(child: const Text('授業')),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.amber,
-                            width: 1,
-                            style: BorderStyle.solid,
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(8),
-                        child: Center(child: const Text('サークル')),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.amber,
-                            width: 1,
-                            style: BorderStyle.solid,
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(8),
-                        child: Center(child: const Text('部活')),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.amber,
-                            width: 1,
-                            style: BorderStyle.solid,
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(8),
-                        child: Center(child: const Text('バイト')),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.amber,
-                            width: 1,
-                            style: BorderStyle.solid,
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(8),
-                        child: Center(child: const Text('インターン')),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.amber,
-                            width: 1,
-                            style: BorderStyle.solid,
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(8),
-                        child: Center(child: const Text('恋愛')),
-                      ),
-                    ]
+                TextField(
+                  decoration: InputDecoration(
+                      border: InputBorder.none, hintText: 'カテゴリ名'),
+                  onChanged: (text) {
+                    model.title = text;
+                  },
+                ),
+                SizedBox(
+                  height:30,
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Text(
+                    '内容',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
                   ),
+                ]
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                      border: InputBorder.none, hintText: '単位落としそうです助けてください'),
+                  onChanged: (text) {
+                    model.title = text;
+                  },
                 ),
                 SizedBox(
                   height: 16,
@@ -147,7 +91,7 @@ class AddCommunityPage extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
-                  child: Text('新規作成'),
+                  child: Text('投稿する！'),
                 ),
               ]),
             );
