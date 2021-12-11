@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:testapp/home/event_page.dart';
+import 'package:testapp/event/event_page.dart';
 
 class EventParticipationCompletePage extends StatelessWidget {
   const EventParticipationCompletePage({Key? key}) : super(key: key);
