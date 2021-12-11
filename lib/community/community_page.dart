@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testapp/add_community/add_community_page.dart';
+import 'package:testapp/add_event/add_event_page.dart';
 import 'package:testapp/community_detail/college_life_community_detail_page.dart';
 import 'package:testapp/community_detail/food_community_detail_page.dart';
 import 'package:testapp/community_detail/unit_community_detail_page.dart';
@@ -153,7 +154,7 @@ class CommunityPage extends StatelessWidget {
                     final bool? added = await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AddCommunityPage(),
+                        builder: (context) => AddEventPage(),
                         fullscreenDialog: true,
                       ),
                     );
@@ -171,7 +172,7 @@ class CommunityPage extends StatelessWidget {
                 ),
                 SpeedDialChild(
                   child: Icon(Icons.people),
-                  label: 'オープンチャット作成',
+                  label: '意見箱作成',
                   backgroundColor: Colors.amberAccent,
                   onTap: () async {
                     final bool? added = await Navigator.push(
