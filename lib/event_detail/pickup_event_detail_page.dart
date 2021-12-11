@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
+import 'package:testapp/event_participation_complete/event_participation_complete_page.dart';
 
 class PickUpEventDetailPage extends StatelessWidget {
   final PickUpEvent pickUpEvents;
@@ -275,8 +276,12 @@ class PickUpEventDetailPage extends StatelessWidget {
                         CupertinoDialogAction(
                           child: const Text('参加する'),
                           isDestructiveAction: true,
-                          onPressed: () {
-                            // Do something destructive.
+                          onPressed: () async {
+                            await Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => EventParticipationCompletePage(),
+                              ),
+                            );
                           },
                         )
                       ],

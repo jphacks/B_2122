@@ -38,106 +38,119 @@ class CommunityPage extends StatelessWidget {
               centerTitle: false,
               automaticallyImplyLeading: false),
           extendBodyBehindAppBar: true,
-          body: Column(
-            children: [
-              Consumer<CommunityPageModel>(builder: (context, model, child) {
-                final List<CollegeLifeCommunity>? collegeLifeCommunities = model.collegeLifeCommunities;
-                final List<FoodCommunity>? foodCommunities = model.foodCommunities;
-                final List<UnitCommunity>? unitCommunities = model.unitCommunities;
+          body: Padding(
+            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+            child: Column(
+              children: [
+                Consumer<CommunityPageModel>(builder: (context, model, child) {
+                  final List<CollegeLifeCommunity>? collegeLifeCommunities =
+                      model.collegeLifeCommunities;
+                  final List<FoodCommunity>? foodCommunities =
+                      model.foodCommunities;
+                  final List<UnitCommunity>? unitCommunities =
+                      model.unitCommunities;
 
-                if (collegeLifeCommunities == null) {
-                  return CircularProgressIndicator();
-                }
+                  if (collegeLifeCommunities == null) {
+                    return CircularProgressIndicator();
+                  }
 
-                if (foodCommunities == null) {
-                  return CircularProgressIndicator();
-                }
+                  if (foodCommunities == null) {
+                    return CircularProgressIndicator();
+                  }
 
-                if (unitCommunities == null) {
-                  return CircularProgressIndicator();
-                }
+                  if (unitCommunities == null) {
+                    return CircularProgressIndicator();
+                  }
 
-
-                final List<Widget> collegeLifeCommunityWidgets = collegeLifeCommunities
-                    .map(
-                      (collegeLifeCommunities) => ListTile(
-                        leading: collegeLifeCommunities.imageURL != null
-                            ? CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage(collegeLifeCommunities.imageURL!),
-                              )
-                            : null,
-                        title: Text(collegeLifeCommunities.title),
-                        subtitle: Text(collegeLifeCommunities.category),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  CollegeLifeCommunityDetailPage(collegeLifeCommunities),
+                  final List<Widget> collegeLifeCommunityWidgets =
+                      collegeLifeCommunities
+                          .map(
+                            (collegeLifeCommunities) => Card(
+                              child: ListTile(
+                                leading: collegeLifeCommunities.imageURL != null
+                                    ? CircleAvatar(
+                                        backgroundImage: NetworkImage(
+                                            collegeLifeCommunities.imageURL!),
+                                      )
+                                    : null,
+                                title: Text(collegeLifeCommunities.title),
+                                subtitle: Text(collegeLifeCommunities.category),
+                                onTap: () async {
+                                  await Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          CollegeLifeCommunityDetailPage(
+                                              collegeLifeCommunities),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    )
-                    .toList();
+                          )
+                          .toList();
 
-                final List<Widget> foodCommunityWidgets = foodCommunities
-                    .map(
-                      (foodCommunities) => ListTile(
-                    leading: foodCommunities.imageURL != null
-                        ? CircleAvatar(
-                      backgroundImage:
-                      NetworkImage(foodCommunities.imageURL!),
-                    )
-                        : null,
-                    title: Text(foodCommunities.title),
-                    subtitle: Text(foodCommunities.category),
-                    onTap: () async {
-                      await Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              FoodCommunityDetailPage(foodCommunities),
+                  final List<Widget> foodCommunityWidgets = foodCommunities
+                      .map(
+                        (foodCommunities) => Card(
+                          child: ListTile(
+                            leading: foodCommunities.imageURL != null
+                                ? CircleAvatar(
+                                    backgroundImage:
+                                        NetworkImage(foodCommunities.imageURL!),
+                                  )
+                                : null,
+                            title: Text(foodCommunities.title),
+                            subtitle: Text(foodCommunities.category),
+                            onTap: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      FoodCommunityDetailPage(foodCommunities),
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                      );
-                    },
-                  ),
-                )
-                    .toList();
+                      )
+                      .toList();
 
-                final List<Widget> unitCommunityWidgets = unitCommunities
-                    .map(
-                      (unitCommunities) => ListTile(
-                    leading: unitCommunities.imageURL != null
-                        ? CircleAvatar(
-                      backgroundImage:
-                      NetworkImage(unitCommunities.imageURL!),
-                    )
-                        : null,
-                    title: Text(unitCommunities.title),
-                    subtitle: Text(unitCommunities.category),
-                    onTap: () async {
-                      await Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              UnitCommunityDetailPage(unitCommunities),
+                  final List<Widget> unitCommunityWidgets = unitCommunities
+                      .map(
+                        (unitCommunities) => Card(
+                          child: ListTile(
+                            leading: unitCommunities.imageURL != null
+                                ? CircleAvatar(
+                                    backgroundImage:
+                                        NetworkImage(unitCommunities.imageURL!),
+                                  )
+                                : null,
+                            title: Text(unitCommunities.title),
+                            subtitle: Text(unitCommunities.category),
+                            onTap: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      UnitCommunityDetailPage(unitCommunities),
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                      );
-                    },
-                  ),
-                )
-                    .toList();
+                      )
+                      .toList();
 
-                return Expanded(
-                  child: TabBarView(
-                    children: [
-                      ListView(children: collegeLifeCommunityWidgets),
-                      ListView(children: foodCommunityWidgets),
-                      ListView(children: unitCommunityWidgets)
-                    ],
-                  ),
-                );
-              })
-            ],
+                  return Expanded(
+                    child: TabBarView(
+                      children: [
+                        ListView(children: collegeLifeCommunityWidgets),
+                        ListView(children: foodCommunityWidgets),
+                        ListView(children: unitCommunityWidgets)
+                      ],
+                    ),
+                  );
+                })
+              ],
+            ),
           ),
           floatingActionButton:
               Consumer<CommunityPageModel>(builder: (context, model, child) {
@@ -168,7 +181,6 @@ class CommunityPage extends StatelessWidget {
 
                     model.fetchCollegeLifeCommunityList();
                   },
-
                 ),
                 SpeedDialChild(
                   child: Icon(Icons.people),
@@ -193,14 +205,14 @@ class CommunityPage extends StatelessWidget {
                 ),
               ],
             );
-              }),
+          }),
         ),
       ),
     );
   }
 
-  Future showConfirmDialog(
-      BuildContext context, CollegeLifeCommunity community, CommunityPageModel model) {
+  Future showConfirmDialog(BuildContext context, CollegeLifeCommunity community,
+      CommunityPageModel model) {
     return showDialog(
       context: context,
       barrierDismissible: false,
