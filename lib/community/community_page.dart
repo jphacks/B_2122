@@ -23,9 +23,9 @@ class CommunityPage extends StatelessWidget {
           appBar: AppBar(
               bottom: TabBar(
                 tabs: [
-                  Tab(text: '大学生活'),
-                  Tab(text: '食べ物'),
-                  Tab(text: '単位'),
+                  Tab(text: '人気'),
+                  Tab(text: '最新'),
+                  Tab(text: 'フォロー'),
                 ],
               ),
               title: const Text(
