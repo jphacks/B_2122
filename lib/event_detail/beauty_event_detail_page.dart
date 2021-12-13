@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
 
-class ExcitingEventDetailPage extends StatelessWidget {
-  final ExcitingEvent excitingEvents;
+class BeautyEventDetailPage extends StatelessWidget {
+  final BeautyEvent beautyEvents;
 
-  ExcitingEventDetailPage(this.excitingEvents);
+  BeautyEventDetailPage(this.beautyEvents);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,11 @@ class ExcitingEventDetailPage extends StatelessWidget {
         elevation: 0.0,
         centerTitle: false,
       ),
-      body: excitingEventWidget(context, excitingEvents),
+      body: beautyEventWidget(context, beautyEvents),
     );
   }
 
-  Widget excitingEventWidget(BuildContext context, ExcitingEvent excitingEvent) {
+  Widget beautyEventWidget(BuildContext context, BeautyEvent beautyEvent) {
     return SingleChildScrollView(
       child: Column(children: [
         Container(
@@ -32,10 +32,10 @@ class ExcitingEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: excitingEvent.imageURL != null &&
-                      excitingEvent.imageURL!.isNotEmpty
+                  child: beautyEvent.imageURL != null &&
+                      beautyEvent.imageURL!.isNotEmpty
                       ? Image.asset(
-                      'event_images/exciting_event_images/${excitingEvent.imageURL}')
+                      'event_images/beauty_event_images/${beautyEvent.imageURL}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),
@@ -69,7 +69,7 @@ class ExcitingEventDetailPage extends StatelessWidget {
                         width: 20,
                       ),
                       Text(
-                        excitingEvent.title,
+                        beautyEvent.title,
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class ExcitingEventDetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(excitingEvent.category),
+              Text(beautyEvent.category),
             ],
           ),
         ),
@@ -169,7 +169,7 @@ class ExcitingEventDetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(excitingEvent.place),
+              Text(beautyEvent.place),
             ],
           ),
         ),
@@ -207,7 +207,7 @@ class ExcitingEventDetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(excitingEvent.contents),
+              Text(beautyEvent.contents),
             ],
           ),
         ),
@@ -245,7 +245,7 @@ class ExcitingEventDetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(excitingEvent.date),
+              Text(beautyEvent.date),
             ],
           ),
         ),

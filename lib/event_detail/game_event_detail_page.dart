@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
-import 'package:testapp/event_participation_complete/event_participation_complete_page.dart';
 
-class PickUpEventDetailPage extends StatelessWidget {
-  final PickUpEvent pickUpEvents;
+class GameEventDetailPage extends StatelessWidget {
+  final GameEvent gameEvents;
 
-  PickUpEventDetailPage(this.pickUpEvents);
+  GameEventDetailPage(this.gameEvents);
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +19,11 @@ class PickUpEventDetailPage extends StatelessWidget {
         elevation: 0.0,
         centerTitle: false,
       ),
-      body: pickUpEventWidget(context, pickUpEvents),
+      body: gameEventWidget(context, gameEvents),
     );
   }
 
-  Widget pickUpEventWidget(BuildContext context, PickUpEvent pickUpEvent) {
+  Widget gameEventWidget(BuildContext context, GameEvent gameEvent) {
     return SingleChildScrollView(
       child: Column(children: [
         Container(
@@ -33,12 +32,12 @@ class PickUpEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: pickUpEvent.imageURL != null &&
-                          pickUpEvent.imageURL!.isNotEmpty
+                  child: gameEvent.imageURL != null &&
+                      gameEvent.imageURL!.isNotEmpty
                       ? Image.asset(
-                          'event_images/pickup_event_images/${pickUpEvent.imageURL}')
+                      'event_images/game_event_images/${gameEvent.imageURL}')
                       : Image.asset(
-                          'images/placeholder_image/placeholder.jpeg'),
+                      'images/placeholder_image/placeholder.jpeg'),
                 ),
               ),
               SizedBox(
@@ -70,7 +69,7 @@ class PickUpEventDetailPage extends StatelessWidget {
                         width: 20,
                       ),
                       Text(
-                        pickUpEvent.title,
+                        gameEvent.title,
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -132,7 +131,7 @@ class PickUpEventDetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(pickUpEvent.category),
+              Text(gameEvent.category),
             ],
           ),
         ),
@@ -170,7 +169,7 @@ class PickUpEventDetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(pickUpEvent.place),
+              Text(gameEvent.place),
             ],
           ),
         ),
@@ -208,7 +207,7 @@ class PickUpEventDetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(pickUpEvent.contents),
+              Text(gameEvent.contents),
             ],
           ),
         ),
@@ -246,7 +245,7 @@ class PickUpEventDetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(pickUpEvent.date),
+              Text(gameEvent.date),
             ],
           ),
         ),
@@ -276,12 +275,8 @@ class PickUpEventDetailPage extends StatelessWidget {
                         CupertinoDialogAction(
                           child: const Text('参加する'),
                           isDestructiveAction: true,
-                          onPressed: () async {
-                            await Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => EventParticipationCompletePage(),
-                              ),
-                            );
+                          onPressed: () {
+                            // Do something destructive.
                           },
                         )
                       ],
@@ -290,8 +285,8 @@ class PickUpEventDetailPage extends StatelessWidget {
                 },
                 child: Text("参加する",
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ),
