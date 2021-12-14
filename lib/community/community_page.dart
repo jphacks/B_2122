@@ -44,6 +44,7 @@ class CommunityPage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
               bottom: TabBar(
+                isScrollable: true,
                 tabs: [
                   Tab(text: 'フォロー中'),
                   Tab(text: '学生生活'),
