@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:testapp/domain/community.dart';
 
-class UnitCommunityDetailPage extends StatelessWidget {
-  final UnitCommunity unitCommunity;
-  UnitCommunityDetailPage(this.unitCommunity);
+class BeautyCommunityDetailPage extends StatelessWidget {
+  final BeautyCommunity beautyCommunity;
+  BeautyCommunityDetailPage(this.beautyCommunity);
   final _controller = TextEditingController();
 
   @override
@@ -13,7 +13,7 @@ class UnitCommunityDetailPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            unitCommunity.title,
+            beautyCommunity.title,
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           backgroundColor: Colors.transparent,
@@ -56,7 +56,7 @@ class UnitCommunityDetailPage extends StatelessWidget {
                         padding: EdgeInsets.all(10.0),
                         child: SizedBox(
                             child: Center(
-                                child: Text('ここにコンテンツが入ります'))),
+                                child: Text(beautyCommunity.contents))),
                       ),
                     ),
                   ]),
