@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'add_community_model.dart';
@@ -10,7 +11,7 @@ class AddCommunityPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            '新規オープンチャット',
+            'コミュニティを作成する',
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           backgroundColor: Colors.transparent,
@@ -79,7 +80,8 @@ class AddCommunityPage extends StatelessWidget {
                 SizedBox(
                   height: 16,
                 ),
-                ElevatedButton(
+                CupertinoButton(
+                  color: Colors.amber,
                   onPressed: () async {
                     try {
                       await model.addCommunity();
@@ -91,7 +93,7 @@ class AddCommunityPage extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
-                  child: Text('投稿する！'),
+                  child: Text('投稿する！',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white)),
                 ),
               ]),
             );

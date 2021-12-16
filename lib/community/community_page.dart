@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testapp/add_community/add_community_page.dart';
-import 'package:testapp/add_event/add_event_page.dart';
 import 'package:testapp/community_detail/beauty_community_detail_page.dart';
 import 'package:testapp/community_detail/club_community_detail_page.dart';
 import 'package:testapp/community_detail/college_life_community_detail_page.dart';
@@ -18,7 +17,6 @@ import 'package:testapp/community_detail/sports_community_detail_page.dart';
 import 'package:testapp/community_detail/study_community_detail_page.dart';
 import 'package:testapp/domain/community.dart';
 import 'community_page_model.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class CommunityPage extends StatelessWidget {
   @override
@@ -46,7 +44,7 @@ class CommunityPage extends StatelessWidget {
               bottom: TabBar(
                 isScrollable: true,
                 tabs: [
-                  Tab(text: 'フォロー中'),
+                  Tab(text: 'いいね'),
                   Tab(text: '学生生活'),
                   Tab(text: '勉強'),
                   Tab(text: '授業'),
@@ -73,7 +71,7 @@ class CommunityPage extends StatelessWidget {
               automaticallyImplyLeading: false),
           extendBodyBehindAppBar: true,
           body: Padding(
-            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             child: Column(
               children: [
                 Consumer<CommunityPageModel>(builder: (context, model, child) {
@@ -162,36 +160,113 @@ class CommunityPage extends StatelessWidget {
                     return CircularProgressIndicator();
                   }
 
-
                   //community系Widgetの定義
                   //followingCommunityWidget
                   final List<Widget> followingCommunityWidgets =
-                  followingCommunities
-                      .map(
-                        (followingCommunities) => Card(
-                      child: ListTile(
-                        title: Text(followingCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  FollowingCommunityDetailPage(
-                                      followingCommunities),
+                      followingCommunities
+                          .map(
+                            (followingCommunities) => Card(
+                              elevation: 0.0,
+                              child: ListTile(
+                                trailing: Icon(Icons.favorite),
+                                title: Text(
+                                  followingCommunities.title,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.favorite,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Icon(
+                                          Icons.chat_outlined,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                onTap: () async {
+                                  await Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          FollowingCommunityDetailPage(
+                                              followingCommunities),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
-                      .toList();
+                          )
+                          .toList();
 
                   //collegeLifeCommunityWidget
                   final List<Widget> collegeLifeCommunityWidgets =
                       collegeLifeCommunities
                           .map(
                             (collegeLifeCommunities) => Card(
+                              elevation: 0.0,
                               child: ListTile(
-                                title: Text(collegeLifeCommunities.title),
+                                trailing: Icon(Icons.favorite),
+                                title: Text(
+                                  collegeLifeCommunities.title,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.favorite,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Icon(
+                                          Icons.chat_outlined,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                                 onTap: () async {
                                   await Navigator.of(context).push(
                                     MaterialPageRoute(
@@ -207,242 +282,695 @@ class CommunityPage extends StatelessWidget {
                           .toList();
 
                   //studyCommunityWidget
-                  final List<Widget> studyCommunityWidgets =
-                  studyCommunities
+                  final List<Widget> studyCommunityWidgets = studyCommunities
                       .map(
                         (studyCommunities) => Card(
-                      child: ListTile(
-                        title: Text(studyCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  StudyCommunityDetailPage(
-                                      studyCommunities),
+                          elevation: 0.0,
+                          child: ListTile(
+                            trailing: Icon(Icons.favorite),
+                            title: Text(
+                              studyCommunities.title,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
+                            subtitle: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.favorite,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.chat_outlined,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            onTap: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      StudyCommunityDetailPage(
+                                          studyCommunities),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      )
                       .toList();
 
                   //lectureCommunityWidget
                   final List<Widget> lectureCommunityWidgets =
-                  lectureCommunities
-                      .map(
-                        (lectureCommunities) => Card(
-                      child: ListTile(
-                        title: Text(lectureCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  LectureCommunityDetailPage(
-                                      lectureCommunities),
+                      lectureCommunities
+                          .map(
+                            (lectureCommunities) => Card(
+                              elevation: 0.0,
+                              child: ListTile(
+                                trailing: Icon(Icons.favorite),
+                                title: Text(
+                                  lectureCommunities.title,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.favorite,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Icon(
+                                          Icons.chat_outlined,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                onTap: () async {
+                                  await Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          LectureCommunityDetailPage(
+                                              lectureCommunities),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
-                      .toList();
+                          )
+                          .toList();
 
                   //clubCommunityWidget
-                  final List<Widget> clubCommunityWidgets =
-                  clubCommunities
+                  final List<Widget> clubCommunityWidgets = clubCommunities
                       .map(
                         (clubCommunities) => Card(
-                      child: ListTile(
-                        title: Text(clubCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ClubCommunityDetailPage(
-                                      clubCommunities),
+                          elevation: 0.0,
+                          child: ListTile(
+                            trailing: Icon(Icons.favorite),
+                            title: Text(
+                              clubCommunities.title,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
+                            subtitle: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.favorite,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.chat_outlined,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            onTap: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ClubCommunityDetailPage(clubCommunities),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      )
                       .toList();
 
                   //partTimeCommunityWidget
                   final List<Widget> partTimeCommunityWidgets =
-                  partTimeCommunities
-                      .map(
-                        (partTimeCommunities) => Card(
-                      child: ListTile(
-                        title: Text(partTimeCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  PartTimeCommunityDetailPage(
-                                      partTimeCommunities),
+                      partTimeCommunities
+                          .map(
+                            (partTimeCommunities) => Card(
+                              elevation: 0.0,
+                              child: ListTile(
+                                trailing: Icon(Icons.favorite),
+                                title: Text(
+                                  partTimeCommunities.title,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.favorite,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Icon(
+                                          Icons.chat_outlined,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                onTap: () async {
+                                  await Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          PartTimeCommunityDetailPage(
+                                              partTimeCommunities),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
-                      .toList();
+                          )
+                          .toList();
 
                   //internshipCommunityWidget
                   final List<Widget> internshipCommunityWidgets =
-                  internshipCommunities
-                      .map(
-                        (internshipCommunities) => Card(
-                      child: ListTile(
-                        title: Text(internshipCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  InternshipCommunityDetailPage(
-                                      internshipCommunities),
+                      internshipCommunities
+                          .map(
+                            (internshipCommunities) => Card(
+                              elevation: 0.0,
+                              child: ListTile(
+                                trailing: Icon(Icons.favorite),
+                                title: Text(
+                                  internshipCommunities.title,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.favorite,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Icon(
+                                          Icons.chat_outlined,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                onTap: () async {
+                                  await Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          InternshipCommunityDetailPage(
+                                              internshipCommunities),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
-                      .toList();
+                          )
+                          .toList();
 
                   //recruitCommunityWidget
                   final List<Widget> recruitCommunityWidgets =
-                  recruitCommunities
-                      .map(
-                        (recruitCommunities) => Card(
-                      child: ListTile(
-                        title: Text(recruitCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  RecruitCommunityDetailPage(
-                                      recruitCommunities),
+                      recruitCommunities
+                          .map(
+                            (recruitCommunities) => Card(
+                              elevation: 0.0,
+                              child: ListTile(
+                                trailing: Icon(Icons.favorite),
+                                title: Text(
+                                  recruitCommunities.title,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.favorite,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Icon(
+                                          Icons.chat_outlined,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                onTap: () async {
+                                  await Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          RecruitCommunityDetailPage(
+                                              recruitCommunities),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
-                      .toList();
+                          )
+                          .toList();
 
                   //loveCommunityWidget
-                  final List<Widget> loveCommunityWidgets =
-                  loveCommunities
+                  final List<Widget> loveCommunityWidgets = loveCommunities
                       .map(
                         (loveCommunities) => Card(
-                      child: ListTile(
-                        title: Text(loveCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  LoveCommunityDetailPage(
-                                      loveCommunities),
+                          elevation: 0.0,
+                          child: ListTile(
+                            trailing: Icon(Icons.favorite),
+                            title: Text(
+                              loveCommunities.title,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
+                            subtitle: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.favorite,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.chat_outlined,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            onTap: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      LoveCommunityDetailPage(loveCommunities),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      )
                       .toList();
 
                   //beautyCommunityWidget
-                  final List<Widget> beautyCommunityWidgets =
-                  beautyCommunities
+                  final List<Widget> beautyCommunityWidgets = beautyCommunities
                       .map(
                         (beautyCommunities) => Card(
-                      child: ListTile(
-                        title: Text(beautyCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  BeautyCommunityDetailPage(
-                                      beautyCommunities),
+                          elevation: 0.0,
+                          child: ListTile(
+                            trailing: Icon(Icons.favorite),
+                            title: Text(
+                              beautyCommunities.title,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
+                            subtitle: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.favorite,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.chat_outlined,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            onTap: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      BeautyCommunityDetailPage(
+                                          beautyCommunities),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      )
                       .toList();
 
                   //hobbyCommunityWidget
-                  final List<Widget> hobbyCommunityWidgets =
-                  hobbyCommunities
+                  final List<Widget> hobbyCommunityWidgets = hobbyCommunities
                       .map(
                         (hobbyCommunities) => Card(
-                      child: ListTile(
-                        title: Text(hobbyCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  HobbyCommunityDetailPage(
-                                      hobbyCommunities),
+                          elevation: 0.0,
+                          child: ListTile(
+                            trailing: Icon(Icons.favorite),
+                            title: Text(
+                              hobbyCommunities.title,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
+                            subtitle: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.favorite,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.chat_outlined,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            onTap: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      HobbyCommunityDetailPage(
+                                          hobbyCommunities),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      )
                       .toList();
 
                   //entertainmentCommunityWidget
                   final List<Widget> entertainmentCommunityWidgets =
-                  entertainmentCommunities
-                      .map(
-                        (entertainmentCommunities) => Card(
-                      child: ListTile(
-                        title: Text(entertainmentCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  EntertainmentCommunityDetailPage(
-                                      entertainmentCommunities),
+                      entertainmentCommunities
+                          .map(
+                            (entertainmentCommunities) => Card(
+                              elevation: 0.0,
+                              child: ListTile(
+                                trailing: Icon(Icons.favorite),
+                                title: Text(
+                                  entertainmentCommunities.title,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.favorite,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Icon(
+                                          Icons.chat_outlined,
+                                          size: 15,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Text('1'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                onTap: () async {
+                                  await Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          EntertainmentCommunityDetailPage(
+                                              entertainmentCommunities),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
-                      .toList();
+                          )
+                          .toList();
 
                   //sportsCommunityWidget
-                  final List<Widget> sportsCommunityWidgets =
-                  sportsCommunities
+                  final List<Widget> sportsCommunityWidgets = sportsCommunities
                       .map(
                         (sportsCommunities) => Card(
-                      child: ListTile(
-                        title: Text(sportsCommunities.title),
-                        onTap: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  SportsCommunityDetailPage(
-                                      sportsCommunities),
+                          elevation: 0.0,
+                          child: ListTile(
+                            trailing: Icon(Icons.favorite),
+                            title: Text(
+                              sportsCommunities.title,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
+                            subtitle: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.favorite,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.chat_outlined,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            onTap: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      SportsCommunityDetailPage(
+                                          sportsCommunities),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      )
                       .toList();
 
                   //foodCommunityWidget
                   final List<Widget> foodCommunityWidgets = foodCommunities
                       .map(
                         (foodCommunities) => Card(
+                          elevation: 0.0,
                           child: ListTile(
-                            title: Text(foodCommunities.title),
+                            trailing: Icon(Icons.favorite),
+                            title: Text(
+                              foodCommunities.title,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            subtitle: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.favorite,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.chat_outlined,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Text('1'),
+                                  ],
+                                ),
+                              ],
+                            ),
                             onTap: () async {
                               await Navigator.of(context).push(
                                 MaterialPageRoute(
@@ -482,56 +1010,26 @@ class CommunityPage extends StatelessWidget {
           ),
           floatingActionButton:
               Consumer<CommunityPageModel>(builder: (context, model, child) {
-            return SpeedDial(
-              animatedIcon: AnimatedIcons.menu_close,
-              backgroundColor: Colors.amber,
-              closeManually: true,
-              children: [
-                SpeedDialChild(
-                  child: Icon(Icons.event),
-                  label: 'イベント作成',
-                  backgroundColor: Colors.amberAccent,
-                  onTap: () async {
-                    final bool? added = await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AddEventPage(),
-                        fullscreenDialog: true,
-                      ),
-                    );
+            return FloatingActionButton(
+              onPressed: () async {
+                final bool? added = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddCommunityPage(),
+                    fullscreenDialog: true,
+                  ),
+                );
 
-                    if (added != null && added) {
-                      final snackBar = SnackBar(
-                        content: Text('コミュニティを追加しました'),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }
+                if (added != null && added) {
+                  final snackBar = SnackBar(
+                    content: Text('コミュニティを追加しました'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
 
-                    model.fetchCollegeLifeCommunityList();
-                  },
-                ),
-                SpeedDialChild(
-                  child: Icon(Icons.people),
-                  label: '意見箱作成',
-                  backgroundColor: Colors.amberAccent,
-                  onTap: () async {
-                    final bool? added = await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AddCommunityPage(),
-                        fullscreenDialog: true,
-                      ),
-                    );
-
-                    if (added != null && added) {
-                      final snackBar = SnackBar(
-                        content: Text('コミュニティを追加しました'),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }
-                  },
-                ),
-              ],
+                model.fetchCollegeLifeCommunityList();
+              },
+              child: Icon(Icons.add, color: Colors.white),
             );
           }),
         ),

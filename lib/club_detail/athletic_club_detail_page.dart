@@ -97,6 +97,16 @@ class AthleticClubDetailPage extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
+          Divider(
+            indent: 20,
+            endIndent: 20,
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             width: MediaQuery
                 .of(context)
@@ -124,6 +134,16 @@ class AthleticClubDetailPage extends StatelessWidget {
                 Text(athleticClub.campus),
               ],
             ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Divider(
+            indent: 20,
+            endIndent: 20,
+          ),
+          SizedBox(
+            height: 10,
           ),
           Container(
             width: MediaQuery
@@ -153,6 +173,16 @@ class AthleticClubDetailPage extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
+          Divider(
+            indent: 20,
+            endIndent: 20,
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             width: MediaQuery
                 .of(context)
@@ -180,6 +210,16 @@ class AthleticClubDetailPage extends StatelessWidget {
                 Text(athleticClub.place),
               ],
             ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Divider(
+            indent: 20,
+            endIndent: 20,
+          ),
+          SizedBox(
+            height: 10,
           ),
           Container(
             width: MediaQuery
@@ -209,6 +249,16 @@ class AthleticClubDetailPage extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
+          Divider(
+            indent: 20,
+            endIndent: 20,
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             width: MediaQuery
                 .of(context)
@@ -236,6 +286,16 @@ class AthleticClubDetailPage extends StatelessWidget {
                 Text(athleticClub.frequency),
               ],
             ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Divider(
+            indent: 20,
+            endIndent: 20,
+          ),
+          SizedBox(
+            height: 10,
           ),
           Container(
             width: MediaQuery
@@ -266,6 +326,16 @@ class AthleticClubDetailPage extends StatelessWidget {
                 Text('ここに年間予定を入れる'),
               ],
             ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Divider(
+            indent: 20,
+            endIndent: 20,
+          ),
+          SizedBox(
+            height: 10,
           ),
           Container(
             width: MediaQuery
