@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class ProfileWidget extends StatelessWidget {
   ProfileWidget(
@@ -32,16 +32,9 @@ class ProfileWidget extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(photoSize / 2),
               child: photoUrl != null
-                  ? FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: photoUrl,
+                  ? CachedNetworkImage(
+                imageUrl: photoUrl,
                 fit: BoxFit.fitHeight,
-                imageErrorBuilder: (context, error, stackTrace) {
-                  // フィードのエラーハンドリング
-                  return Image.network(
-                    //ここはデフォルトで表示されるプレースホルダー画像を表示する
-                      'https://www.uekusa.ac.jp/uekusa_wp/wp-content/uploads/2019/10/club_activity_img2019_badminton.jpg');
-                },
               )
                   : Image.network(
                 //ここもデフォルトで表示されるプレースホルダー画像を表示する？意味あるそれ？
