@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
@@ -34,8 +35,8 @@ class MusicEventDetailPage extends StatelessWidget {
                 child: Container(
                   child: musicEvent.imageURL != null &&
                       musicEvent.imageURL!.isNotEmpty
-                      ? Image.asset(
-                      'event_images/music_event_images/${musicEvent.imageURL}')
+                      ? CachedNetworkImage(
+                      imageUrl:'${musicEvent.imageURL}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),
