@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testapp/event_detail/art_event_detail_page.dart';
@@ -596,8 +595,8 @@ Widget sightSeeingEventWidget(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl: '${sightSeeingEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/sightseeing_event_images/${sightSeeingEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -705,21 +704,31 @@ Widget partyEventWidget(BuildContext context, PartyEvent partyEvent) {
             child: partyEvent.imageURL != null &&
                     partyEvent.imageURL!.isNotEmpty
                 ? Container(
+                    height: 500,
+                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Container(
-
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        minWidth: 100,
+                        minHeight: 80,
+                      ),
                       child: Column(children: <Widget>[
                         Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: const Radius.circular(10.0),
-                              topRight: const Radius.circular(10.0),
-                            ),
-                            child: CachedNetworkImage(
-                              imageUrl: '${partyEvent.imageURL}',
+                          child: Container(
+                            height: 150,
+                            width: 300,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                topLeft: const Radius.circular(10.0),
+                                topRight: const Radius.circular(10.0),
+                              ),
+                              child: Image.asset(
+                                'event_images/party_event_images/${partyEvent.imageURL}',
+                                fit: BoxFit.fill,
+                              ),
                             ),
                           ),
                         ),
@@ -790,6 +799,8 @@ Widget partyEventWidget(BuildContext context, PartyEvent partyEvent) {
                     ),
                   )
                 : Container(
+                    height: 500,
+                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -843,8 +854,8 @@ Widget foodEventWidget(BuildContext context, FoodEvent foodEvent) {
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${foodEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/food_event_images/${foodEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -972,8 +983,8 @@ Widget artEventWidget(BuildContext context, ArtEvent artEvent) {
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${artEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/art_event_images/${artEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1102,8 +1113,8 @@ Widget beautyEventWidget(BuildContext context, BeautyEvent beautyEvent) {
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${beautyEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/beauty_event_images/${beautyEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1232,8 +1243,8 @@ Widget hobbyEventWidget(BuildContext context, HobbyEvent hobbyEvent) {
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${hobbyEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/hobby_event_images/${hobbyEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1361,8 +1372,8 @@ Widget gameEventWidget(BuildContext context, GameEvent gameEvent) {
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${gameEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/game_event_images/${gameEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1491,8 +1502,8 @@ Widget sportsEventWidget(BuildContext context, SportsEvent sportsEvent) {
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${sportsEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/sports_event_images/${sportsEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1622,8 +1633,8 @@ Widget technologyEventWidget(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${technologyEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/party_event_images/${technologyEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1752,8 +1763,8 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${studyEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/study_event_images/${studyEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1884,8 +1895,8 @@ Widget businessEventWidget(BuildContext context, BusinessEvent businessEvent) {
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${businessEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/business_event_images/${businessEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -2014,8 +2025,8 @@ Widget musicEventWidget(BuildContext context, MusicEvent musicEvent) {
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${musicEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/music_event_images/${musicEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -2144,8 +2155,8 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${recruitEvent.imageURL}',
+                              child: Image.asset(
+                                'event_images/recruit_event_images/${recruitEvent.imageURL}',
                                 fit: BoxFit.fill,
                               ),
                             ),

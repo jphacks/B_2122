@@ -41,13 +41,9 @@ class FollowingCommunityDetailPage extends StatelessWidget {
               Card(
                 child: Column(children: <Widget>[
                   ListTile(
-                    leading: Container(
-                        height: 50,
-                        width: 50,
-                        child: Image(
-                            image: AssetImage(
-                                'images/placeholder_image/placeholder.jpeg'))),
-                    title: Text('迷える子羊'),
+                    title: Text('迷える子羊',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold),),
                     subtitle: Text('関西大学 商学部 1年生'),
                   ),
                   Row(children: <Widget>[
@@ -178,23 +174,12 @@ class FollowingCommunityDetailPage extends StatelessWidget {
           children: <Widget>[
             Row(children: <Widget>[
               SizedBox(width: 10),
-              Container(
-                  height: 50,
-                  width: 50,
-                  child: Image(
-                      image: AssetImage(
-                          'images/placeholder_image/placeholder.jpeg'))),
-              SizedBox(width: 8),
               Expanded(
                 child: Container(
                   padding: EdgeInsets.all(10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      SizedBox(height: 8),
                       Text(
                         userName,
                         style: TextStyle(

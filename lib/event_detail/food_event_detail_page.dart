@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
@@ -35,8 +34,8 @@ class FoodEventDetailPage extends StatelessWidget {
                 child: Container(
                   child: foodEvent.imageURL != null &&
                        foodEvent.imageURL!.isNotEmpty
-                      ? CachedNetworkImage(
-                      imageUrl:'${foodEvent.imageURL}')
+                      ? Image.asset(
+                      'event_images/food_event_images/${foodEvent.imageURL}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),

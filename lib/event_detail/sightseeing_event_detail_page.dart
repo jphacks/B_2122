@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
@@ -36,8 +35,8 @@ class SightSeeingEventDetailPage extends StatelessWidget {
                 child: Container(
                   child: sightSeeingEvent.imageURL != null &&
                          sightSeeingEvent.imageURL!.isNotEmpty
-                      ? CachedNetworkImage(
-                          imageUrl:'${sightSeeingEvent.imageURL}')
+                      ? Image.asset(
+                          'event_images/sightSeeing_event_images/${sightSeeingEvent.imageURL}')
                       : Image.asset(
                           'images/placeholder_image/placeholder.jpeg'),
                 ),

@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
@@ -35,8 +34,8 @@ class PartyEventDetailPage extends StatelessWidget {
                 child: Container(
                   child: partyEvent.imageURL != null &&
                       partyEvent.imageURL!.isNotEmpty
-                      ? CachedNetworkImage(
-                      imageUrl:'${partyEvent.imageURL}')
+                      ? Image.asset(
+                      'event_images/party_event_images/${partyEvent.imageURL}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),
