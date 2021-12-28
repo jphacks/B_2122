@@ -33,10 +33,10 @@ class StudyEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: studyEvent.imageURL != null &&
-                      studyEvent.imageURL!.isNotEmpty
+                  child: studyEvent.imageUrl != null &&
+                      studyEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                      imageUrl:'${studyEvent.imageURL}')
+                      imageUrl:'${studyEvent.imageUrl}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),

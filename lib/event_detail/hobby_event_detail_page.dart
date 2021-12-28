@@ -33,10 +33,10 @@ class HobbyEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: hobbyEvent.imageURL != null &&
-                      hobbyEvent.imageURL!.isNotEmpty
+                  child: hobbyEvent.imageUrl != null &&
+                      hobbyEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                      imageUrl:'${hobbyEvent.imageURL}')
+                      imageUrl:'${hobbyEvent.imageUrl}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),

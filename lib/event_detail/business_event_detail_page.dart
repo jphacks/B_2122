@@ -33,10 +33,10 @@ class BusinessEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: businessEvent.imageURL != null &&
-                      businessEvent.imageURL!.isNotEmpty
+                  child: businessEvent.imageUrl != null &&
+                      businessEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                      imageUrl:'${businessEvent.imageURL}')
+                      imageUrl:'${businessEvent.imageUrl}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),

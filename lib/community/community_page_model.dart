@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:testapp/domain/community.dart';
 
 class CommunityPageModel extends ChangeNotifier {
-  final _followingCommunitiesCorrection = FirebaseFirestore.instance.collection('following_communities');
-  final _collegeLifeCommunitiesCorrection = FirebaseFirestore.instance.collection('college_life_communities');
-  final _studyCommunitiesCorrection = FirebaseFirestore.instance.collection('study_communities');
-  final _lectureCommunitiesCorrection = FirebaseFirestore.instance.collection('lecture_communities');
-  final _clubCommunitiesCorrection = FirebaseFirestore.instance.collection('club_communities');
-  final _partTimeCommunitiesCorrection = FirebaseFirestore.instance.collection('part_time_communities');
-  final _internshipCommunitiesCorrection = FirebaseFirestore.instance.collection('internship_communities');
-  final _recruitCommunitiesCorrection = FirebaseFirestore.instance.collection('recruit_communities');
-  final _loveCommunitiesCorrection = FirebaseFirestore.instance.collection('love_communities');
-  final _beautyCommunitiesCorrection = FirebaseFirestore.instance.collection('beauty_communities');
-  final _hobbyCommunitiesCorrection = FirebaseFirestore.instance.collection('hobby_communities');
-  final _entertainmentCommunitiesCorrection = FirebaseFirestore.instance.collection('entertainment_communities');
-  final _sportsCommunitiesCorrection = FirebaseFirestore.instance.collection('sports_communities');
-  final _foodCommunitiesCorrection = FirebaseFirestore.instance.collection('food_communities');
+  final _followingCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('following_communities').collection('following_community_details');
+  final _collegeLifeCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('college_life_communities').collection('college_life_community_details');
+  final _studyCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('study_communities').collection('study_community_details');
+  final _lectureCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('lecture_communities').collection('lecture_community_details');
+  final _clubCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('club_communities').collection('club_community_details');
+  final _partTimeCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('part_time_communities').collection('part_time_community_details');
+  final _internshipCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('internship_communities').collection('internship_community_details');
+  final _recruitCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('recruit_communities').collection('recruit_community_details');
+  final _loveCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('love_communities').collection('love_community_details');
+  final _beautyCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('beauty_communities').collection('beauty_community_details');
+  final _hobbyCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('hobby_communities').collection('hobby_community_details');
+  final _entertainmentCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('entertainment_communities').collection('entertainment_community_details');
+  final _sportsCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('sports_communities').collection('sports_community_details');
+  final _foodCommunitiesCorrection = FirebaseFirestore.instance.collection('communities').doc('food_communities').collection('food_community_details');
 
 
 
@@ -29,9 +29,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return FollowingCommunity(id,title,contents,category,imageURL);
+      return FollowingCommunity(id,title,contents);
     }).toList();
 
     this.followingCommunities = followingCommunities;
@@ -47,9 +45,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return CollegeLifeCommunity(id,title,contents,category,imageURL);
+      return CollegeLifeCommunity(id,title,contents);
     }).toList();
 
     this.collegeLifeCommunities = collegeLifeCommunities;
@@ -65,9 +61,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return StudyCommunity(id,title,contents,category,imageURL);
+      return StudyCommunity(id,title,contents);
     }).toList();
 
     this.studyCommunities = studyCommunities;
@@ -83,9 +77,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return LectureCommunity(id,title,contents,category,imageURL);
+      return LectureCommunity(id,title,contents);
     }).toList();
 
     this.lectureCommunities = lectureCommunities;
@@ -101,9 +93,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return ClubCommunity(id,title,contents,category,imageURL);
+      return ClubCommunity(id,title,contents);
     }).toList();
 
     this.clubCommunities = clubCommunities;
@@ -119,9 +109,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return PartTimeCommunity(id,title,contents,category,imageURL);
+      return PartTimeCommunity(id,title,contents);
     }).toList();
 
     this.partTimeCommunities = partTimeCommunities;
@@ -137,9 +125,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return InternshipCommunity(id,title,contents,category,imageURL);
+      return InternshipCommunity(id,title,contents);
     }).toList();
 
     this.internshipCommunities = internshipCommunities;
@@ -155,9 +141,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return RecruitCommunity(id,title,contents,category,imageURL);
+      return RecruitCommunity(id,title,contents);
     }).toList();
 
     this.recruitCommunities = recruitCommunities;
@@ -173,9 +157,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return LoveCommunity(id,title,contents,category,imageURL);
+      return LoveCommunity(id,title,contents);
     }).toList();
 
     this.loveCommunities = loveCommunities;
@@ -191,9 +173,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return BeautyCommunity(id,title,contents,category,imageURL);
+      return BeautyCommunity(id,title,contents);
     }).toList();
 
     this.beautyCommunities = beautyCommunities;
@@ -209,9 +189,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return HobbyCommunity(id,title,contents,category,imageURL);
+      return HobbyCommunity(id,title,contents);
     }).toList();
 
     this.hobbyCommunities = hobbyCommunities;
@@ -227,9 +205,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return EntertainmentCommunity(id,title,contents,category,imageURL);
+      return EntertainmentCommunity(id,title,contents);
     }).toList();
 
     this.entertainmentCommunities = entertainmentCommunities;
@@ -245,9 +221,7 @@ class CommunityPageModel extends ChangeNotifier {
       final String id = document.id;
       final String title = data['title'];
       final String contents = data['contents'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return SportsCommunity(id,title,contents,category,imageURL);
+      return SportsCommunity(id,title,contents);
     }).toList();
 
     this.sportsCommunities = sportsCommunities;
@@ -262,9 +236,8 @@ class CommunityPageModel extends ChangeNotifier {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
       final String id = document.id;
       final String title = data['title'];
-      final String category = data['category'];
-      final String? imageURL = data['imageURL'];
-      return FoodCommunity(id,title,category,imageURL);
+      final String contents = data['contents'];
+      return FoodCommunity(id,title,contents);
     }).toList();
 
     this.foodCommunities = foodCommunities;

@@ -33,10 +33,10 @@ class RecruitEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: recruitEvent.imageURL != null &&
-                      recruitEvent.imageURL!.isNotEmpty
+                  child: recruitEvent.imageUrl != null &&
+                      recruitEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                      imageUrl:'${recruitEvent.imageURL}')
+                      imageUrl:'${recruitEvent.imageUrl}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),

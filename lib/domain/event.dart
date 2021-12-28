@@ -1,143 +1,143 @@
 class SightSeeingEvent {
-  SightSeeingEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  SightSeeingEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class PartyEvent {
-  PartyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  PartyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class FoodEvent {
-  FoodEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  FoodEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class ArtEvent {
-  ArtEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  ArtEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class BeautyEvent {
-  BeautyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  BeautyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class HobbyEvent {
-  HobbyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  HobbyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class GameEvent {
-  GameEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  GameEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class SportsEvent {
-  SportsEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  SportsEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class TechnologyEvent {
-  TechnologyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  TechnologyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class StudyEvent {
-  StudyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  StudyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class BusinessEvent {
-  BusinessEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  BusinessEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 class MusicEvent {
-  MusicEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  MusicEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }
 
 
 class RecruitEvent {
-  RecruitEvent(this.id,this.title, this.category,this.contents,this.date,this.imageURL,this.place);
+  RecruitEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
   String category;
   String contents;
   String date;
-  String? imageURL;
+  String? imageUrl;
   String place;
 }

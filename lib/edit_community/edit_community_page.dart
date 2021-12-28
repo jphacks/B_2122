@@ -35,14 +35,6 @@ class EditCommunityPage extends StatelessWidget {
                 SizedBox(
                   height: 16,
                 ),
-                TextField(
-                  controller: model.categoryController,
-                  decoration: InputDecoration(
-                      border: InputBorder.none, hintText: 'コミュニティのカテゴリを編集'),
-                  onChanged: (text) {
-                    model.setCategory(text);
-                  },
-                ),
                 SizedBox(
                   height: 16,
                 ),

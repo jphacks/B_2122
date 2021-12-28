@@ -10,6 +10,7 @@ class StudyCommunityDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final id = studyCommunity.id;
     return Scaffold(
         appBar: AppBar(
           title: Text(

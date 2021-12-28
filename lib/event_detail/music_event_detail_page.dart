@@ -33,10 +33,10 @@ class MusicEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: musicEvent.imageURL != null &&
-                      musicEvent.imageURL!.isNotEmpty
+                  child: musicEvent.imageUrl != null &&
+                      musicEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                      imageUrl:'${musicEvent.imageURL}')
+                      imageUrl:'${musicEvent.imageUrl}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),

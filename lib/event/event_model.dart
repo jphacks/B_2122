@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
 
 class EventModel extends ChangeNotifier {
-  final _sightSeeingEventsCorrection = FirebaseFirestore.instance.collection('sightseeing_events');
-  final _partyEventsCorrection = FirebaseFirestore.instance.collection('party_events');
-  final _foodEventsCorrection = FirebaseFirestore.instance.collection('food_events');
-  final _artEventsCorrection = FirebaseFirestore.instance.collection('art_events');
-  final _beautyEventsCorrection = FirebaseFirestore.instance.collection('beauty_events');
-  final _hobbyEventsCorrection = FirebaseFirestore.instance.collection('hobby_events');
-  final _gameEventsCorrection = FirebaseFirestore.instance.collection('game_events');
-  final _sportsEventsCorrection = FirebaseFirestore.instance.collection('sports_events');
-  final _technologyEventsCorrection = FirebaseFirestore.instance.collection('technology_events');
-  final _studyEventsCorrection = FirebaseFirestore.instance.collection('study_events');
-  final _businessEventsCorrection = FirebaseFirestore.instance.collection('business_events');
-  final _musicEventsCorrection = FirebaseFirestore.instance.collection('music_events');
-  final _recruitEventsCorrection = FirebaseFirestore.instance.collection('recruit_events');
+  final _sightSeeingEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('sightseeing_events');
+  final _partyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('party_events');
+  final _foodEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('food_events');
+  final _artEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('art_events');
+  final _beautyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('beauty_events');
+  final _hobbyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('hobby_events');
+  final _gameEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('game_events');
+  final _sportsEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('sports_events');
+  final _technologyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('technology_events');
+  final _studyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('study_events');
+  final _businessEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('business_events');
+  final _musicEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('music_events');
+  final _recruitEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('recruit_events');
 
   List<SightSeeingEvent>? sightSeeingEvents;
   void fetchSightSeeingEventList() async {
@@ -27,9 +27,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return SightSeeingEvent(id,title,category,contents,date,imageURL,place);
+      return SightSeeingEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.sightSeeingEvents = sightSeeingEvents;
@@ -46,9 +46,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return PartyEvent(id,title,category,contents,date,imageURL,place);
+      return PartyEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.partyEvents = partyEvents;
@@ -65,9 +65,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return FoodEvent(id,title,category,contents,date,imageURL,place);
+      return FoodEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.foodEvents = foodEvents;
@@ -84,9 +84,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return ArtEvent(id,title,category,contents,date,imageURL,place);
+      return ArtEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.artEvents = artEvents;
@@ -103,9 +103,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return BeautyEvent(id,title,category,contents,date,imageURL,place);
+      return BeautyEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.beautyEvents = beautyEvents;
@@ -122,9 +122,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return HobbyEvent(id,title,category,contents,date,imageURL,place);
+      return HobbyEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.hobbyEvents = hobbyEvents;
@@ -141,9 +141,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return GameEvent(id,title,category,contents,date,imageURL,place);
+      return GameEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.gameEvents = gameEvents;
@@ -160,9 +160,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return SportsEvent(id,title,category,contents,date,imageURL,place);
+      return SportsEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.sportsEvents = sportsEvents;
@@ -179,9 +179,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return TechnologyEvent(id,title,category,contents,date,imageURL,place);
+      return TechnologyEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.technologyEvents = technologyEvents;
@@ -198,9 +198,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return StudyEvent(id,title,category,contents,date,imageURL,place);
+      return StudyEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.studyEvents = studyEvents;
@@ -217,9 +217,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return BusinessEvent(id,title,category,contents,date,imageURL,place);
+      return BusinessEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.businessEvents = businessEvents;
@@ -236,9 +236,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return MusicEvent(id,title,category,contents,date,imageURL,place);
+      return MusicEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.musicEvents = musicEvents;
@@ -256,9 +256,9 @@ class EventModel extends ChangeNotifier {
       final String category = data['category'];
       final String contents = data['contents'];
       final String date = data['date'];
-      final String? imageURL = data['imageURL'];
+      final String? imageUrl = data['imageUrl'];
       final String place = data['place'];
-      return RecruitEvent(id,title,category,contents,date,imageURL,place);
+      return RecruitEvent(id,title,category,contents,date,imageUrl,place);
     }).toList();
 
     this.recruitEvents = recruitEvents;

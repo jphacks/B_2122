@@ -33,10 +33,10 @@ class PartyEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: partyEvent.imageURL != null &&
-                      partyEvent.imageURL!.isNotEmpty
+                  child: partyEvent.imageUrl != null &&
+                      partyEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                      imageUrl:'${partyEvent.imageURL}')
+                      imageUrl:'${partyEvent.imageUrl}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),

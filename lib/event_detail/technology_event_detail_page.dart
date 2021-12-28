@@ -33,10 +33,10 @@ class TechnologyEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: technologyEvent.imageURL != null &&
-                      technologyEvent.imageURL!.isNotEmpty
+                  child: technologyEvent.imageUrl != null &&
+                      technologyEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                      imageUrl:'${technologyEvent.imageURL}')
+                      imageUrl:'${technologyEvent.imageUrl}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),

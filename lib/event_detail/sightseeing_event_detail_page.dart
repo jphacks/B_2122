@@ -34,10 +34,10 @@ class SightSeeingEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: sightSeeingEvent.imageURL != null &&
-                         sightSeeingEvent.imageURL!.isNotEmpty
+                  child: sightSeeingEvent.imageUrl != null &&
+                         sightSeeingEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                          imageUrl:'${sightSeeingEvent.imageURL}')
+                          imageUrl:'${sightSeeingEvent.imageUrl}')
                       : Image.asset(
                           'images/placeholder_image/placeholder.jpeg'),
                 ),

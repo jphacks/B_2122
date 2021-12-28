@@ -33,10 +33,10 @@ class FoodEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: foodEvent.imageURL != null &&
-                       foodEvent.imageURL!.isNotEmpty
+                  child: foodEvent.imageUrl != null &&
+                       foodEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                      imageUrl:'${foodEvent.imageURL}')
+                      imageUrl:'${foodEvent.imageUrl}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),

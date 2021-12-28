@@ -39,10 +39,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_launcher_icons: ^0.9.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -89,10 +91,6 @@ flutter:
      - images/baseball_club_images/baseball.jpeg
      - images/soccer_club_images/soccer2.jpeg
      - images/futsal_club_images/futsal.jpeg
-     - event_images/sightseeing_event_images/pocky.jpeg
-     - event_images/party_event_images/waiwai.jpeg
-     - event_images/study_event_images/study.jpeg
-     - event_images/recruit_event_images/recruit.jpeg
      - images/other_field_club_images/quiz.jpeg
      - images/other_field_club_images/loveraibu.jpeg
      - images/badminton_club_images/bado.jpeg

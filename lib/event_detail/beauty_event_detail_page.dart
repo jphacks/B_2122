@@ -33,10 +33,10 @@ class BeautyEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: beautyEvent.imageURL != null &&
-                      beautyEvent.imageURL!.isNotEmpty
+                  child: beautyEvent.imageUrl != null &&
+                      beautyEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                      imageUrl:'${beautyEvent.imageURL}')
+                      imageUrl:'${beautyEvent.imageUrl}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),

@@ -33,10 +33,10 @@ class ArtEventDetailPage extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
-                  child: artEvent.imageURL != null &&
-                      artEvent.imageURL!.isNotEmpty
+                  child: artEvent.imageUrl != null &&
+                      artEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                      imageUrl:'${artEvent.imageURL}')
+                      imageUrl:'${artEvent.imageUrl}')
                       : Image.asset(
                       'images/placeholder_image/placeholder.jpeg'),
                 ),
