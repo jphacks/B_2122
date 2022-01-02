@@ -117,44 +117,6 @@ class GameEventDetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('カテゴリ',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.black),),
-            ],
-          ),
-        ),
-        Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .height * 0.43,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(gameEvent.category),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Divider(
-          indent: 20,
-          endIndent: 20,
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .height * 0.43,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
               Text('開催場所',
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.black),),

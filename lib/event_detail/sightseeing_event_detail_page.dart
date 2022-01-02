@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
-import 'package:testapp/event_participation_complete/event_participation_complete_page.dart';
 
 class SightSeeingEventDetailPage extends StatelessWidget {
   final SightSeeingEvent sightSeeingEvents;
@@ -101,44 +100,6 @@ class SightSeeingEventDetailPage extends StatelessWidget {
               ),
             ],
           ),
-        ),
-        Divider(
-          indent: 20,
-          endIndent: 20,
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .height * 0.43,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text('カテゴリ',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.black),),
-            ],
-          ),
-        ),
-        Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .height * 0.43,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(sightSeeingEvent.category),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 10,
         ),
         Divider(
           indent: 20,
@@ -265,26 +226,15 @@ class SightSeeingEventDetailPage extends StatelessWidget {
                   showCupertinoDialog<void>(
                     context: context,
                     builder: (BuildContext context) => CupertinoAlertDialog(
-                      title: const Text('イベント参加確認'),
-                      content: const Text('このイベントに参加しますか？'),
+                      title: const Text('イベントへの参加が完了しました！'),
+                      content: const Text('参加をキャンセルする場合はもう一度ボタンを押してください。'),
                       actions: <CupertinoDialogAction>[
                         CupertinoDialogAction(
-                          child: const Text('やめとく'),
+                          child: const Text('OK'),
                           onPressed: () {
                             Navigator.pop(context);
                           },
                         ),
-                        CupertinoDialogAction(
-                          child: const Text('参加する'),
-                          isDestructiveAction: true,
-                          onPressed: () async {
-                            await Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => EventParticipationCompletePage(),
-                              ),
-                            );
-                          },
-                        )
                       ],
                     ),
                   );

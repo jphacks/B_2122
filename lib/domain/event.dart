@@ -1,8 +1,7 @@
 class SightSeeingEvent {
-  SightSeeingEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  SightSeeingEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -10,10 +9,9 @@ class SightSeeingEvent {
 }
 
 class PartyEvent {
-  PartyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  PartyEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -21,10 +19,9 @@ class PartyEvent {
 }
 
 class FoodEvent {
-  FoodEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  FoodEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -32,10 +29,9 @@ class FoodEvent {
 }
 
 class ArtEvent {
-  ArtEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  ArtEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -43,10 +39,9 @@ class ArtEvent {
 }
 
 class BeautyEvent {
-  BeautyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  BeautyEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -54,10 +49,9 @@ class BeautyEvent {
 }
 
 class HobbyEvent {
-  HobbyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  HobbyEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -65,10 +59,9 @@ class HobbyEvent {
 }
 
 class GameEvent {
-  GameEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  GameEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -76,10 +69,9 @@ class GameEvent {
 }
 
 class SportsEvent {
-  SportsEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  SportsEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -87,10 +79,9 @@ class SportsEvent {
 }
 
 class TechnologyEvent {
-  TechnologyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  TechnologyEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -98,10 +89,9 @@ class TechnologyEvent {
 }
 
 class StudyEvent {
-  StudyEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  StudyEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -109,10 +99,9 @@ class StudyEvent {
 }
 
 class BusinessEvent {
-  BusinessEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  BusinessEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -120,10 +109,9 @@ class BusinessEvent {
 }
 
 class MusicEvent {
-  MusicEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  MusicEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;
@@ -132,10 +120,9 @@ class MusicEvent {
 
 
 class RecruitEvent {
-  RecruitEvent(this.id,this.title, this.category,this.contents,this.date,this.imageUrl,this.place);
+  RecruitEvent(this.id,this.title,this.contents,this.date,this.imageUrl,this.place);
   String id;
   String title;
-  String category;
   String contents;
   String date;
   String? imageUrl;

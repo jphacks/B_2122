@@ -132,37 +132,38 @@ class FollowingCommunityDetailPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        color: Colors.white,
-                        margin: EdgeInsets.only(right: 20.0, left: 20.0),
-                        child: SafeArea(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              labelText: 'メッセージを入力',
-                              suffixIcon: Align(
-                                  widthFactor: 1.0,
-                                  heightFactor: 1.0,
-                                  child: IconButton(
-                                    onPressed: () {
-                                      _handleSubmit(_controller.text);
-                                    },
-                                    icon:
-                                    Icon(Icons.send, size: 20, color: Colors.amber),
-                                  )),
-                            ),
-                            controller: _controller,
-                            onSubmitted: _handleSubmit,
-                            keyboardType: TextInputType.multiline,
-                            maxLines: null,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          color: Colors.white,
+                          child: Column(
+                            children: [
+                              TextField(
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  labelText: 'メッセージを入力',
+                                  suffixIcon: Align(
+                                      widthFactor: 1.0,
+                                      heightFactor: 1.0,
+                                      child: IconButton(
+                                        onPressed: () {
+                                          _handleSubmit(_controller.text);
+                                        },
+                                        icon:
+                                        Icon(Icons.send, size: 20, color: Colors.amber),
+                                      )),
+                                ),
+                                controller: _controller,
+                                onSubmitted: _handleSubmit,
+                                keyboardType: TextInputType.multiline,
+                                maxLines: null,
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
                 ],
               );
   },
