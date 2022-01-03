@@ -65,10 +65,36 @@ class CommunityPage extends StatelessWidget {
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
               ),
+              actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.add,
+                color: Colors.black,
+              ),
+              onPressed: () async {
+                final bool? added = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddCommunityPage(),
+                    fullscreenDialog: true,
+                  ),
+                );
+
+                if (added != null && added) {
+                  final snackBar = SnackBar(
+                    content: Text('コミュニティを追加しました'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+              },
+            )
+          ],
+
               backgroundColor: Colors.transparent,
               elevation: 0.0,
               centerTitle: false,
-              automaticallyImplyLeading: false),
+              automaticallyImplyLeading: false
+          ),
           extendBodyBehindAppBar: true,
           body: Padding(
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -1026,8 +1052,6 @@ class CommunityPage extends StatelessWidget {
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
-
-                model.fetchCollegeLifeCommunityList();
               },
               child: Icon(Icons.add, color: Colors.white),
             );

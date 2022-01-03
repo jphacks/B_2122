@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testapp/add_event/add_event_page.dart';
 import 'package:testapp/event_detail/art_event_detail_page.dart';
 import 'package:testapp/event_detail/beauty_event_detail_page.dart';
 import 'package:testapp/event_detail/business_event_detail_page.dart';
@@ -42,6 +43,30 @@ class EventPage extends StatelessWidget {
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
             ),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.add,
+                  color: Colors.black,
+                ),
+                onPressed: () async {
+                  final bool? added = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddEventPage(),
+                      fullscreenDialog: true,
+                    ),
+                  );
+
+                  if (added != null && added) {
+                    final snackBar = SnackBar(
+                      content: Text('イベントを追加しました'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
+                },
+              )
+            ],
             backgroundColor: Colors.transparent,
             elevation: 0.0,
             centerTitle: false,

@@ -23,18 +23,16 @@ class AddCommunityPage extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.start, children: [
+                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                   Text(
                     'タイトル',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                   ),
-                ]
-                ),
+                ]),
                 TextField(
                   decoration: InputDecoration(
-                      border: InputBorder.none, hintText: 'オープンチャットの名前'),
+                      border: InputBorder.none, hintText: 'コミュニティのタイトル'),
                   onChanged: (text) {
                     model.title = text;
                   },
@@ -42,34 +40,49 @@ class AddCommunityPage extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.start, children: [
+                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                   Text(
                     'カテゴリ',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                   ),
-                ]
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none, hintText: 'カテゴリ名'),
-                  onChanged: (text) {
-                    model.title = text;
-                  },
+                ]),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 5,
+                    ),
+                    DropdownButton<String>(
+                      items: <String>[
+                        '学生生活',
+                        '勉強',
+                        '授業',
+                        'サークル・部活',
+                        'バイト',
+                        'インターン',
+                        '就活',
+                        '恋愛'
+                      ].map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (_) {},
+                    ),
+                  ],
                 ),
                 SizedBox(
-                  height:30,
+                  height: 30,
                 ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.start, children: [
+                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                   Text(
-                    '内容',
+                    '聞きたいこと',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                   ),
-                ]
-                ),
+                ]),
                 TextField(
                   decoration: InputDecoration(
                       border: InputBorder.none, hintText: '単位落としそうです助けてください'),
@@ -77,9 +90,12 @@ class AddCommunityPage extends StatelessWidget {
                     model.title = text;
                   },
                 ),
+                //TODO: 定数は後で変更する
                 SizedBox(
-                  height: 16,
+                  height: 160,
                 ),
+
+                //TODO: ここの処理をイベント参加時の処理をするボタンにも適用する
                 CupertinoButton(
                   color: Colors.amber,
                   onPressed: () async {
@@ -93,7 +109,9 @@ class AddCommunityPage extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
-                  child: Text('投稿する！',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white)),
+                  child: Text('投稿する',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white)),
                 ),
               ]),
             );
