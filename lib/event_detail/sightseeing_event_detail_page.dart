@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
@@ -24,7 +26,8 @@ class SightSeeingEventDetailPage extends StatelessWidget {
     );
   }
 
-  Widget sightSeeingEventWidget(BuildContext context, SightSeeingEvent sightSeeingEvent) {
+  Widget sightSeeingEventWidget(
+      BuildContext context, SightSeeingEvent sightSeeingEvent) {
     return SingleChildScrollView(
       child: Column(children: [
         Container(
@@ -34,9 +37,9 @@ class SightSeeingEventDetailPage extends StatelessWidget {
                 fit: BoxFit.fitWidth,
                 child: Container(
                   child: sightSeeingEvent.imageUrl != null &&
-                         sightSeeingEvent.imageUrl!.isNotEmpty
+                          sightSeeingEvent.imageUrl!.isNotEmpty
                       ? CachedNetworkImage(
-                          imageUrl:'${sightSeeingEvent.imageUrl}')
+                          imageUrl: '${sightSeeingEvent.imageUrl}')
                       : Image.asset(
                           'images/placeholder_image/placeholder.jpeg'),
                 ),
@@ -109,25 +112,21 @@ class SightSeeingEventDetailPage extends StatelessWidget {
           height: 10,
         ),
         Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .height * 0.43,
+          width: MediaQuery.of(context).size.height * 0.43,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('開催場所',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.black),),
+              Text(
+                '開催場所',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
             ],
           ),
         ),
         Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .height * 0.43,
+          width: MediaQuery.of(context).size.height * 0.43,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,25 +146,21 @@ class SightSeeingEventDetailPage extends StatelessWidget {
           height: 10,
         ),
         Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .height * 0.43,
+          width: MediaQuery.of(context).size.height * 0.43,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('内容',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.black),),
+              Text(
+                '内容',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
             ],
           ),
         ),
         Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .height * 0.43,
+          width: MediaQuery.of(context).size.height * 0.43,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,25 +180,21 @@ class SightSeeingEventDetailPage extends StatelessWidget {
           height: 10,
         ),
         Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .height * 0.43,
+          width: MediaQuery.of(context).size.height * 0.43,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('開催日時',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.black),),
+              Text(
+                '開催日時',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
             ],
           ),
         ),
         Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .height * 0.43,
+          width: MediaQuery.of(context).size.height * 0.43,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -226,11 +217,52 @@ class SightSeeingEventDetailPage extends StatelessWidget {
                   showCupertinoDialog<void>(
                     context: context,
                     builder: (BuildContext context) => CupertinoAlertDialog(
-                      title: const Text('イベントへの参加が完了しました！'),
-                      content: const Text('参加をキャンセルする場合はもう一度ボタンを押してください。'),
+                      title: const Text('このイベントに参加しますか？'),
                       actions: <CupertinoDialogAction>[
                         CupertinoDialogAction(
                           child: const Text('OK'),
+                          //ダイアログを消して参加完了ダイアログを表示、firebaseの該当イベントコレクションのparticipantコレクションにuserデータをadd
+                          onPressed: () {
+                            Navigator.pop(context);
+                            showCupertinoDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    CupertinoAlertDialog(
+                                      title: const Text('イベントへの参加が完了しました'),
+                                      content: const Text(
+                                          '参加をキャンセルする場合はプロフィールの「参加イベント一覧」からキャンセル処理を行ってください。'),
+                                      actions: <CupertinoDialogAction>[
+                                        CupertinoDialogAction(
+                                            child: const Text('OK'),
+                                            onPressed: () async {
+                                              final uid = FirebaseAuth
+                                                  .instance.currentUser?.uid;
+                                              try {
+                                                await FirebaseFirestore.instance
+                                                    .collection('events')
+                                                    .doc('sightseeing_events')
+                                                    .collection(
+                                                        'sightseeing_event_details')
+                                                    .doc(sightSeeingEvents.id)
+                                                    .collection('participants')
+                                                    .doc(uid)
+                                                    //ここにcurrentUserのuidを入れたい
+                                                    .set({"uid": uid});
+                                                Navigator.of(context).pop(true);
+                                              } catch (e) {
+                                                final snackBar = SnackBar(
+                                                  content: Text(e.toString()),
+                                                );
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(snackBar);
+                                              }
+                                            })
+                                      ],
+                                    ));
+                          },
+                        ),
+                        CupertinoDialogAction(
+                          child: const Text('やめとく'),
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -239,10 +271,11 @@ class SightSeeingEventDetailPage extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text("参加する",
+                child: Text(
+                  "参加する",
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ),

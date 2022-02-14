@@ -23,6 +23,28 @@ class LoginPage extends StatelessWidget {
         ),
         body: Consumer<LoginModel>(
           builder: (context, model, child) {
+            void _emailValidation() async{
+              //この_emailTextControllerをログインフォームで入力されたメールアドレスと対応させたい
+              final email = mailController.text;
+              // バリデーションチェック
+              // 正規表現にemailがマッチしたらtrueを返す
+
+                // メールの形式が正しい時の処理
+                model.startLoading();
+                try {
+                  await model.login();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return TopPage();
+                      },
+                    ),
+                  );
+                } catch (e) {
+                  _showTextDialog(context, e.toString());
+                  model.endLoading();
+                }
+            }
             return Stack(
               children: <Widget>[
                 SingleChildScrollView(
@@ -56,20 +78,7 @@ class LoginPage extends StatelessWidget {
                           child: ElevatedButton(
                             child: Text('ログイン'),
                             onPressed: () async {
-                              model.startLoading();
-                              try {
-                                await model.login();
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return TopPage();
-                                    },
-                                  ),
-                                );
-                              } catch (e) {
-                                _showTextDialog(context, e.toString());
-                                model.endLoading();
-                              }
+                              _emailValidation();
                             },
                           ),
                         ),

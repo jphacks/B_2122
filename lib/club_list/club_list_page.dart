@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:testapp/add_event/add_event_page.dart';
 
 import 'package:testapp/club_detail/academic_study_club_detail_page.dart';
 import 'package:testapp/club_detail/all_round_club_detail_page.dart';
@@ -97,6 +98,30 @@ class ClubListPage extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.black),
                 ),
+                actions: <Widget>[
+                  IconButton(
+                    icon: Icon(
+                      Icons.favorite_border_outlined,
+                      color: Colors.black,
+                    ),
+                    onPressed: () async {
+                      final bool? added = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AddEventPage(),
+                          fullscreenDialog: true,
+                        ),
+                      );
+
+                      if (added != null && added) {
+                        final snackBar = SnackBar(
+                          content: Text('イベントを追加しました'),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
+                    },
+                  )
+                ],
                 backgroundColor: Colors.transparent,
                 elevation: 0.0,
                 centerTitle: false,
@@ -513,10 +538,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            athleticClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(athleticClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             athleticClub.category,
             style: TextStyle(color: Colors.grey),
@@ -568,10 +593,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            culturalClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(culturalClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             culturalClub.category,
             style: TextStyle(color: Colors.grey),
@@ -608,8 +633,7 @@ class ClubListPage extends StatelessWidget {
                         height: 130,
                         child: CircleAvatar(
                           radius: 30.0,
-                          backgroundImage: academicStudyClub.imageURL !=
-                                      null &&
+                          backgroundImage: academicStudyClub.imageURL != null &&
                                   academicStudyClub.imageURL!.isNotEmpty
                               ? AssetImage(
                                   'images/academic_study_club_images/${academicStudyClub.imageURL}')
@@ -625,10 +649,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            academicStudyClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(academicStudyClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             academicStudyClub.category,
             style: TextStyle(color: Colors.grey),
@@ -682,10 +706,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            singlePartClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(singlePartClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             singlePartClub.category,
             style: TextStyle(color: Colors.grey),
@@ -732,10 +756,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            otherFieldClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(otherFieldClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             otherFieldClub.category,
             style: TextStyle(color: Colors.grey),
@@ -787,10 +811,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            baseballClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(baseballClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             baseballClub.category,
             style: TextStyle(color: Colors.grey),
@@ -836,10 +860,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            soccerClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(soccerClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             soccerClub.category,
             style: TextStyle(color: Colors.grey),
@@ -885,10 +909,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            futsalClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(futsalClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             futsalClub.category,
             style: TextStyle(color: Colors.grey),
@@ -934,10 +958,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            tennisClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(tennisClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             tennisClub.category,
             style: TextStyle(color: Colors.grey),
@@ -984,10 +1008,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            badmintonClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(badmintonClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             badmintonClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1034,10 +1058,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            basketballClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(basketballClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             basketballClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1084,10 +1108,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            volleyballClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(volleyballClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             volleyballClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1133,10 +1157,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            allRoundClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(allRoundClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             allRoundClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1182,10 +1206,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            danceClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(danceClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             danceClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1232,10 +1256,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            martialArtsClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(martialArtsClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             martialArtsClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1282,10 +1306,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            marinSportsClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(marinSportsClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             marinSportsClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1332,10 +1356,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            winterSportsClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(winterSportsClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             winterSportsClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1383,10 +1407,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            otherSportsClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(otherSportsClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             otherSportsClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1432,10 +1456,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            outdoorClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(outdoorClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             outdoorClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1482,10 +1506,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            lightMusicClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(lightMusicClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             lightMusicClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1532,10 +1556,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            otherMusicClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(otherMusicClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             otherMusicClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1581,10 +1605,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            artClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(artClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             artClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1631,10 +1655,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            socialStudyClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(socialStudyClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             socialStudyClub.category,
             style: TextStyle(color: Colors.grey),
@@ -1681,10 +1705,10 @@ class ClubListPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(
-            volunteerClub.title,
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
+          Text(volunteerClub.title,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              textAlign: TextAlign.center),
           Text(
             volunteerClub.category,
             style: TextStyle(color: Colors.grey),

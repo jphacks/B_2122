@@ -36,43 +36,84 @@ class EventPage extends StatelessWidget {
         ..fetchBusinessEventList()
         ..fetchMusicEventList()
         ..fetchRecruitEventList(),
-      child: Scaffold(
-        appBar: AppBar(
-            title: const Text(
-              'イベント',
-              style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-            ),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.add,
-                  color: Colors.black,
-                ),
-                onPressed: () async {
-                  final bool? added = await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AddEventPage(),
-                      fullscreenDialog: true,
-                    ),
-                  );
-
-                  if (added != null && added) {
-                    final snackBar = SnackBar(
-                      content: Text('イベントを追加しました'),
+      child: DefaultTabController(
+        length: 13,
+        child: Scaffold(
+          appBar: AppBar(
+              bottom: TabBar(
+                isScrollable: true,
+                tabs: [
+                  Tab(text: '旅/観光'),
+                  Tab(text: 'パーティ'),
+                  Tab(text: '食/グルメ'),
+                  Tab(text: 'アート/芸術'),
+                  Tab(text: 'ファッション/美容'),
+                  Tab(text: '趣味'),
+                  Tab(text: 'ゲーム/マンガ'),
+                  Tab(text: 'スポーツ'),
+                  Tab(text: 'テクノロジー'),
+                  Tab(text: '勉強'),
+                  Tab(text: 'ビジネス/起業'),
+                  Tab(text: '音楽'),
+                  Tab(text: '就活相談'),
+                ],
+              ),
+              title: const Text(
+                'イベント',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.black,
+                  ),
+                  onPressed: () async {
+                    final bool? added = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddEventPage(),
+                        fullscreenDialog: true,
+                      ),
                     );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  }
-                },
-              )
-            ],
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            centerTitle: false,
-            automaticallyImplyLeading: false),
-        body: SingleChildScrollView(
-          child: Column(
+
+                    if (added != null && added) {
+                      final snackBar = SnackBar(
+                        content: Text('イベントを追加しました'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                  },
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite_border_outlined,
+                    color: Colors.black,
+                  ),
+                  onPressed: () async {
+                    final bool? added = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddEventPage(),
+                        fullscreenDialog: true,
+                      ),
+                    );
+
+                    if (added != null && added) {
+                      final snackBar = SnackBar(
+                        content: Text('イベントを追加しました'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                  },
+                )
+              ],
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              centerTitle: false,
+              automaticallyImplyLeading: false),
+          body: Column(
             children: [
               Consumer<EventModel>(builder: (context, model, child) {
                 //ここのfinalはevent_modelから指定のeventをprovider経由で持ってきてる
@@ -182,398 +223,61 @@ class EventPage extends StatelessWidget {
                         recruitEventWidget(context, recruitEvent))
                     .toList();
 
-                return Column(
-                  children: [
-                    //sightSeeingEvent
-                    SizedBox(
-                      height: 10,
+                return Expanded(
+                  child: TabBarView(children: [
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: sightSeeingEventWidgets,
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          '旅/観光',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: partyEventWidgets,
                     ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.32,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: sightSeeingEventWidgets,
-                            );
-                          }),
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: foodEventWidgets,
                     ),
-
-                    //partyEvent
-                    SizedBox(
-                      height: 30,
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: artEventWidgets,
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'パーティ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: beautyEventWidgets,
                     ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: partyEventWidgets,
-                            );
-                          }),
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: hobbyEventWidgets,
                     ),
-
-                    //foodEvent
-                    SizedBox(
-                      height: 30,
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: gameEventWidgets,
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          '食/グルメ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: sportsEventWidgets,
                     ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: foodEventWidgets,
-                            );
-                          }),
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: technologyEventWidgets,
                     ),
-
-                    //artEvent
-                    SizedBox(
-                      height: 30,
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: studyEventWidgets,
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'アート/芸術',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: businessEventWidgets,
                     ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: artEventWidgets,
-                            );
-                          }),
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: musicEventWidgets,
                     ),
-
-                    //beautyEvent
-                    SizedBox(
-                      height: 30,
+                    GridView.count(
+                      crossAxisCount: 1,
+                      children: recruitEventWidgets,
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'ファッション/美容',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: beautyEventWidgets,
-                            );
-                          }),
-                    ),
-
-                    //hobbyEvent
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          '趣味',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: hobbyEventWidgets,
-                            );
-                          }),
-                    ),
-
-                    //gameEvent
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'ゲーム/マンガ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: gameEventWidgets,
-                            );
-                          }),
-                    ),
-
-                    //sportsEvent
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'スポーツ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: sportsEventWidgets,
-                            );
-                          }),
-                    ),
-
-                    //technologyEvent
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'テクノロジー',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: technologyEventWidgets,
-                            );
-                          }),
-                    ),
-
-                    //studyEvent
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          '勉強',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: studyEventWidgets,
-                            );
-                          }),
-                    ),
-
-                    //businessEvent
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'ビジネス/企業',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: businessEventWidgets,
-                            );
-                          }),
-                    ),
-
-                    //musicEvent
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          '音楽',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: musicEventWidgets,
-                            );
-                          }),
-                    ),
-
-                    //recruitEvent
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          '就活相談',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: recruitEventWidgets,
-                            );
-                          }),
-                    ),
-                  ],
+                  ]),
                 );
               })
             ],
@@ -600,8 +304,7 @@ Widget sightSeeingEventWidget(
             child: sightSeeingEvent.imageUrl != null &&
                     sightSeeingEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
+                    width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -614,15 +317,13 @@ Widget sightSeeingEventWidget(
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${sightSeeingEvent.imageUrl}',
+                                imageUrl: '${sightSeeingEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -635,33 +336,6 @@ Widget sightSeeingEventWidget(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      sightSeeingEvent.date,
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Icon(
-                                    Icons.favorite_border_outlined,
-                                    color: Colors.grey,
-                                    size: 24.0,
-                                  ),
-                                ],
-                              ),
                               SizedBox(
                                 width: 20,
                               ),
@@ -695,8 +369,6 @@ Widget sightSeeingEventWidget(
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -722,116 +394,75 @@ Widget partyEventWidget(BuildContext context, PartyEvent partyEvent) {
     child: Padding(
       padding: const EdgeInsets.all(10),
       child: Column(children: <Widget>[
-        SizedBox(
-          height: 8,
-        ),
         Expanded(
           child: Container(
-            child: partyEvent.imageUrl != null &&
-                    partyEvent.imageUrl!.isNotEmpty
-                ? Container(
-                    height: 500,
-                    width: 300,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        minWidth: 100,
-                        minHeight: 80,
-                      ),
-                      child: Column(children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            height: 150,
-                            width: 300,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.only(
-                                topLeft: const Radius.circular(10.0),
-                                topRight: const Radius.circular(10.0),
-                              ),
-                              child: CachedNetworkImage(
-                                imageUrl:'${partyEvent.imageUrl}',
-                                fit: BoxFit.fill,
+            child:
+                partyEvent.imageUrl != null && partyEvent.imageUrl!.isNotEmpty
+                    ? Container(
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade200),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: const Radius.circular(10.0),
+                                  topRight: const Radius.circular(10.0),
+                                ),
+                                child: CachedNetworkImage(
+                                  imageUrl: '${partyEvent.imageUrl}',
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      partyEvent.date,
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      partyEvent.title,
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Icon(
-                                    Icons.favorite_border_outlined,
-                                    color: Colors.grey,
-                                    size: 24.0,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    partyEvent.title,
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),
-                                  ),
-                                  Text(
-                                    '開催場所: ' + partyEvent.place,
-                                    style: TextStyle(
-                                        fontSize: 13, color: Colors.grey),
-                                  ),
-                                  Text(
-                                    '主催者: ' + '内芝弘尭',
-                                    style: TextStyle(
-                                        fontSize: 13, color: Colors.grey),
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                ],
-                              ),
-                            ]),
-                      ]),
-                    ),
-                  )
-                : Container(
-                    height: 500,
-                    width: 300,
-                    child: Image.asset(
-                      'images/placeholder_image/placeholder.jpeg',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                                    Text(
+                                      '開催場所: ' + partyEvent.place,
+                                      style: TextStyle(
+                                          fontSize: 13, color: Colors.grey),
+                                    ),
+                                    Text(
+                                      '主催者: ' + '内芝弘尭',
+                                      style: TextStyle(
+                                          fontSize: 13, color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                  ],
+                                ),
+                              ]),
+                        ]),
+                      )
+                    : Container(
+                        child: Image.asset(
+                          'images/placeholder_image/placeholder.jpeg',
+                          fit: BoxFit.fill,
+                        ),
+                      ),
           ),
         ),
       ]),
@@ -859,8 +490,6 @@ Widget foodEventWidget(BuildContext context, FoodEvent foodEvent) {
           child: Container(
             child: foodEvent.imageUrl != null && foodEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -873,15 +502,13 @@ Widget foodEventWidget(BuildContext context, FoodEvent foodEvent) {
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${foodEvent.imageUrl}',
+                                imageUrl: '${foodEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -954,8 +581,6 @@ Widget foodEventWidget(BuildContext context, FoodEvent foodEvent) {
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -988,8 +613,6 @@ Widget artEventWidget(BuildContext context, ArtEvent artEvent) {
           child: Container(
             child: artEvent.imageUrl != null && artEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -1002,15 +625,13 @@ Widget artEventWidget(BuildContext context, ArtEvent artEvent) {
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${artEvent.imageUrl}',
+                                imageUrl: '${artEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1083,8 +704,6 @@ Widget artEventWidget(BuildContext context, ArtEvent artEvent) {
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -1118,8 +737,6 @@ Widget beautyEventWidget(BuildContext context, BeautyEvent beautyEvent) {
             child: beautyEvent.imageUrl != null &&
                     beautyEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -1132,15 +749,13 @@ Widget beautyEventWidget(BuildContext context, BeautyEvent beautyEvent) {
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${beautyEvent.imageUrl}',
+                                imageUrl: '${beautyEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1213,8 +828,6 @@ Widget beautyEventWidget(BuildContext context, BeautyEvent beautyEvent) {
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -1248,8 +861,6 @@ Widget hobbyEventWidget(BuildContext context, HobbyEvent hobbyEvent) {
             child: hobbyEvent.imageUrl != null &&
                     hobbyEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -1262,15 +873,13 @@ Widget hobbyEventWidget(BuildContext context, HobbyEvent hobbyEvent) {
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${hobbyEvent.imageUrl}',
+                                imageUrl: '${hobbyEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1343,8 +952,6 @@ Widget hobbyEventWidget(BuildContext context, HobbyEvent hobbyEvent) {
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -1377,8 +984,6 @@ Widget gameEventWidget(BuildContext context, GameEvent gameEvent) {
           child: Container(
             child: gameEvent.imageUrl != null && gameEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -1391,15 +996,13 @@ Widget gameEventWidget(BuildContext context, GameEvent gameEvent) {
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${gameEvent.imageUrl}',
+                                imageUrl: '${gameEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1472,8 +1075,6 @@ Widget gameEventWidget(BuildContext context, GameEvent gameEvent) {
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -1507,8 +1108,6 @@ Widget sportsEventWidget(BuildContext context, SportsEvent sportsEvent) {
             child: sportsEvent.imageUrl != null &&
                     sportsEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -1521,15 +1120,13 @@ Widget sportsEventWidget(BuildContext context, SportsEvent sportsEvent) {
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${sportsEvent.imageUrl}',
+                                imageUrl: '${sportsEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1602,8 +1199,6 @@ Widget sportsEventWidget(BuildContext context, SportsEvent sportsEvent) {
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -1638,8 +1233,6 @@ Widget technologyEventWidget(
             child: technologyEvent.imageUrl != null &&
                     technologyEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -1652,15 +1245,13 @@ Widget technologyEventWidget(
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${technologyEvent.imageUrl}',
+                                imageUrl: '${technologyEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1733,8 +1324,6 @@ Widget technologyEventWidget(
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -1768,8 +1357,6 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
             child: studyEvent.imageUrl != null &&
                     studyEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -1782,15 +1369,13 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${studyEvent.imageUrl}',
+                                imageUrl: '${studyEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1865,8 +1450,6 @@ Widget studyEventWidget(BuildContext context, StudyEvent studyEvent) {
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -1900,8 +1483,6 @@ Widget businessEventWidget(BuildContext context, BusinessEvent businessEvent) {
             child: businessEvent.imageUrl != null &&
                     businessEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -1914,15 +1495,13 @@ Widget businessEventWidget(BuildContext context, BusinessEvent businessEvent) {
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${businessEvent.imageUrl}',
+                                imageUrl: '${businessEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -1995,8 +1574,6 @@ Widget businessEventWidget(BuildContext context, BusinessEvent businessEvent) {
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -2030,8 +1607,6 @@ Widget musicEventWidget(BuildContext context, MusicEvent musicEvent) {
             child: musicEvent.imageUrl != null &&
                     musicEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -2044,15 +1619,13 @@ Widget musicEventWidget(BuildContext context, MusicEvent musicEvent) {
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${musicEvent.imageUrl}',
+                                imageUrl: '${musicEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -2125,8 +1698,6 @@ Widget musicEventWidget(BuildContext context, MusicEvent musicEvent) {
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,
@@ -2160,8 +1731,6 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
             child: recruitEvent.imageUrl != null &&
                     recruitEvent.imageUrl!.isNotEmpty
                 ? Container(
-                    height: 500,
-                    width: 300,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade200),
                       borderRadius: BorderRadius.circular(10),
@@ -2174,15 +1743,13 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
                       child: Column(children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 150,
-                            width: 300,
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
                                 topLeft: const Radius.circular(10.0),
                                 topRight: const Radius.circular(10.0),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl:'${recruitEvent.imageUrl}',
+                                imageUrl: '${recruitEvent.imageUrl}',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -2257,8 +1824,6 @@ Widget recruitEventWidget(BuildContext context, RecruitEvent recruitEvent) {
                     ),
                   )
                 : Container(
-                    height: 500,
-                    width: 300,
                     child: Image.asset(
                       'images/placeholder_image/placeholder.jpeg',
                       fit: BoxFit.fill,

@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:testapp/domain/event.dart';
 
 class EventModel extends ChangeNotifier {
-  final _sightSeeingEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('sightseeing_events');
-  final _partyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('party_events');
-  final _foodEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('food_events');
-  final _artEventsCorrection = FirebaseFirestore.instance.collection('events').doc('art_events').collection('art_event_details');
-  final _beautyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('beauty_events');
-  final _hobbyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('hobby_events');
-  final _gameEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('game_events');
-  final _sportsEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('sports_events');
-  final _technologyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('technology_events');
-  final _studyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('study_events');
-  final _businessEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('business_events');
-  final _musicEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('music_events');
-  final _recruitEventsCorrection = FirebaseFirestore.instance.collection('events').doc('DwNXq3HUkVJmyOpdAhMa').collection('recruit_events');
+  final _sightSeeingEventsCorrection = FirebaseFirestore.instance.collection('events').doc('sightseeing_events').collection('sightseeing_event_details');
+  final _partyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('party_events').collection('party_event_details');
+  final _foodEventsCorrection = FirebaseFirestore.instance.collection('events').doc('food_events').collection('food_event_details');
+  final _artEventsCorrection = FirebaseFirestore.instance.collection('events').doc('art_events').collection('art_event_event_details');
+  final _beautyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('beauty_events').collection('beauty_event_details');
+  final _hobbyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('hobby_events').collection('hobby_event_details');
+  final _gameEventsCorrection = FirebaseFirestore.instance.collection('events').doc('game_events').collection('game_event_details');
+  final _sportsEventsCorrection = FirebaseFirestore.instance.collection('events').doc('sports_events').collection('sports_event_details');
+  final _technologyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('technology_events').collection('technology_event_details');
+  final _studyEventsCorrection = FirebaseFirestore.instance.collection('events').doc('study_events').collection('study_event_details');
+  final _businessEventsCorrection = FirebaseFirestore.instance.collection('events').doc('business_events').collection('business_event_details');
+  final _musicEventsCorrection = FirebaseFirestore.instance.collection('events').doc('music_events').collection('music_event_details');
+  final _recruitEventsCorrection = FirebaseFirestore.instance.collection('events').doc('recruit_events').collection('recruit_event_details');
 
   List<SightSeeingEvent>? sightSeeingEvents;
   void fetchSightSeeingEventList() async {

@@ -24,15 +24,36 @@ class SignUpPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Center(
             child: Consumer<SignUpModel>(builder: (context, model, child) {
+
+              void _signUpValidation() async {
+                final email = mailController.text;
+                if (RegExp(
+                    r'^[a-zA-Z0-9]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+ac.jp$')
+                    .hasMatch(email)) {
+                  try {
+                    await model.signUp();
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => TopPage(),
+                      ),
+                    );
+                  } catch (e) {
+                    _showTextDialog(context, e.toString());
+                  }
+                } else {
+                  // メールの形式が正しくない時の処理(エラーダイアログの表示など)
+                  print('えらー');
+                }
+              }
+
               return Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(100.0),
                     child: GestureDetector(
                       child: SizedBox(
-                        width: 180,
-                        height: 180,
+                        width: 150,
+                        height: 150,
                         child: model.imageFile != null
                             ? Image.file(model.imageFile!)
                             : Container(
@@ -41,25 +62,21 @@ class SignUpPage extends StatelessWidget {
                       ),
                       onTap: () async {
                         await model.pickImage();
-                    },
+                      },
                     ),
                   ),
                   SizedBox(
-                    height:50,
+                    height: 50,
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        child:Text('メールアドレス')
-                      )
-                    ],
+                    children: <Widget>[Container(child: Text('メールアドレス'))],
                   ),
                   TextField(
                     controller: mailController,
                     decoration: InputDecoration(
-                        border: InputBorder.none, hintText: 'example@gmail.com'
-                    ),
+                        border: InputBorder.none,
+                        hintText: 'example@gmail.com'),
                     onChanged: (text) {
                       model.email = text;
                     },
@@ -69,17 +86,12 @@ class SignUpPage extends StatelessWidget {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                          child:Text('パスワード')
-                      )
-                    ],
+                    children: <Widget>[Container(child: Text('パスワード'))],
                   ),
                   TextField(
                     controller: passwordController,
                     decoration: InputDecoration(
-                        border: InputBorder.none, hintText: 'password'
-                    ),
+                        border: InputBorder.none, hintText: 'password'),
                     obscureText: true,
                     onChanged: (text) {
                       model.password = text;
@@ -90,16 +102,11 @@ class SignUpPage extends StatelessWidget {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                          child:Text('名前')
-                      )
-                    ],
+                    children: <Widget>[Container(child: Text('名前'))],
                   ),
                   TextField(
                     decoration: InputDecoration(
-                        border: InputBorder.none, hintText: '関大太郎'
-                    ),
+                        border: InputBorder.none, hintText: '関大太郎'),
                     onChanged: (text) {
                       model.nickname = text;
                     },
@@ -109,15 +116,11 @@ class SignUpPage extends StatelessWidget {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                          child:Text('学部')
-                      )
-                    ],
+                    children: <Widget>[Container(child: Text('学部'))],
                   ),
                   TextField(
-                    decoration:
-                        InputDecoration(border: InputBorder.none, hintText: '学部'),
+                    decoration: InputDecoration(
+                        border: InputBorder.none, hintText: '学部'),
                     onChanged: (text) {
                       model.faculty = text;
                     },
@@ -127,11 +130,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                          child:Text('自己紹介')
-                      )
-                    ],
+                    children: <Widget>[Container(child: Text('自己紹介'))],
                   ),
                   TextField(
                     decoration: InputDecoration(
@@ -144,24 +143,11 @@ class SignUpPage extends StatelessWidget {
                     height: 16,
                   ),
                   SizedBox(
-                    height: 16,
-                  ),
-                  SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       child: Text('登録する'),
                       onPressed: () async {
-                        try {
-                          await model.signUp();
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context)
-                                => TopPage(),
-                            ),
-                          );
-                        } catch (e) {
-                          _showTextDialog(context, e.toString());
-                        }
+                        _signUpValidation();
                       },
                     ),
                   ),

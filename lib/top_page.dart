@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'event/event_page.dart';
+import 'home/home_page.dart';
 import 'top_model.dart';
 import 'club_list/club_list_page.dart';
 import 'community/community_page.dart';
@@ -8,6 +9,7 @@ import 'profile_page.dart';
 
 class TopPage extends StatelessWidget {
   final List<String> _tabNames = [
+    "",
     "",
     "",
     "",
@@ -45,6 +47,10 @@ class TopPage extends StatelessWidget {
                       icon: Icon(Icons.account_circle),
                       label: _tabNames[3],
                     ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.people),
+                      label: _tabNames[4],
+                    ),
                   ],
                 ));
           },
@@ -80,6 +86,11 @@ class TopPage extends StatelessWidget {
           currentIndex,
           3,
           ProfilePage(),
+        ),
+        _tabPage(
+          currentIndex,
+          4,
+          HomePage(),
         ),
       ],
     );

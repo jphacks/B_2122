@@ -35,34 +35,39 @@ class SignUpModel extends ChangeNotifier {
       throw '学部を入力してください';
     }
 
-  await _auth.createUserWithEmailAndPassword(
+  final userCredential = await _auth.createUserWithEmailAndPassword(
       email: email!,
       password: password!,
     );
 
-    final doc = FirebaseFirestore.instance.collection('users').doc();
+    final user = userCredential.user;
 
-    String? photoUrl;
-    if (imageFile != null) {
-      // storageにアップロード
-      final task = await FirebaseStorage.instance
-          .ref('users/${doc.id}')
-          .putFile(imageFile!);
-      photoUrl = await task.ref.getDownloadURL();
+    if(user != null) {
+      final uid = user.uid;
+      final doc = FirebaseFirestore.instance.collection('users').doc(uid);
+
+      String? photoUrl;
+      if (imageFile != null) {
+        // storageにアップロード
+        final task = await FirebaseStorage.instance
+            .ref('users/${doc.id}')
+            .putFile(imageFile!);
+        photoUrl = await task.ref.getDownloadURL();
+      }
+
+      // Firestoreに追加
+      await doc.set({
+        'uid': uid,
+        'email': email,
+        'password': password,
+        'nickname': nickname,
+        'faculty': faculty,
+        'bio': bio,
+        'photoUrl': photoUrl,
+        'createdAt': Timestamp.now(),
+      });
     }
-
-    // Firestoreに追加
-    await doc.set({
-      'email': email,
-      'password': password,
-      'nickname': nickname,
-      'faculty': faculty,
-      'bio': bio,
-      'photoUrl': photoUrl,
-      'createdAt': Timestamp.now(),
-    });
-  }
-
+    }
   Future pickImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 

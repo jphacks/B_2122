@@ -1,8 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class FollowingCommunityDetail {
-  FollowingCommunityDetail(this.id,this.sender_name,this.message);
+  FollowingCommunityDetail(this.id,this.senderName,this.message,this.createdAt,this.senderImageUrl,this.senderUniversity,this.senderFaculty);
   String id;
-  String sender_name;
+  String senderName;
   String message;
+  Timestamp createdAt;
+  String senderImageUrl;
+  String senderUniversity;
+  String senderFaculty;
 }
 
 class CollegeLifeCommunityDetail {
