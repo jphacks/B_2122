@@ -17,11 +17,11 @@ class HomePage extends StatelessWidget {
           centerTitle: false,
           automaticallyImplyLeading: false),
       body: Column(children: [
-        TextButton(
-          onPressed: () {
+        GestureDetector(
+          onTap: () {
             _launchInBrowser();
           },
-          child: Text('外部リンク'),
+          child: Image.asset('images/infomation/campus_guide_map.png'),
         ),
       ]),
     );
