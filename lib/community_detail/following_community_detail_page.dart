@@ -9,7 +9,6 @@ import 'package:testapp/community_detail_model/community_detail_page_model.dart'
 import 'package:testapp/domain/community_detail.dart';
 
 class FollowingCommunityDetailPage extends StatelessWidget {
-
   final FollowingCommunity followingCommunity;
 
   FollowingCommunityDetailPage(this.followingCommunity);
@@ -21,7 +20,7 @@ class FollowingCommunityDetailPage extends StatelessWidget {
     return ChangeNotifierProvider<CommunityDetailPageModel>(
       create: (_) => CommunityDetailPageModel()
         ..fetchFollowingCommunityDetailList(followingCommunity)
-      ..getBooleanValue(),
+        ..getBooleanValue(followingCommunity.id),
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -211,11 +210,12 @@ class FollowingCommunityDetailPage extends StatelessWidget {
                                         horizontal: 10.0),
                                     child: Column(
                                       children: [
-                                          CachedNetworkImage(
-                                            //TODO:ここはnullの時どうすればいいか考える
-                                            imageUrl: followingCommunity.contentsImageUrl ??
-                                                'https://pics.prcm.jp/56455b32220b1/85274180/jpeg/85274180_480x480.jpeg',
-                                          ),
+                                        CachedNetworkImage(
+                                          //TODO:ここはnullの時どうすればいいか考える
+                                          imageUrl: followingCommunity
+                                                  .contentsImageUrl ??
+                                              'https://pics.prcm.jp/56455b32220b1/85274180/jpeg/85274180_480x480.jpeg',
+                                        ),
                                         SizedBox(
                                           height: 20,
                                         ),
@@ -256,8 +256,9 @@ class FollowingCommunityDetailPage extends StatelessWidget {
                                                     children: [
                                                       IconButton(
                                                         onPressed: () async {
-                                                          await model.createBookMark(followingCommunity.id);
-                                              },
+
+                                                              await model.createBookMark(followingCommunity.id);
+                                                        },
                                                         icon: Icon(
                                                           Icons.bookmark,
                                                           size: 25,
@@ -335,9 +336,6 @@ class FollowingCommunityDetailPage extends StatelessWidget {
     );
   }
 
-
-
-
   Future _handleSubmit(String message) async {
     _controller.text = "";
     final db = FirebaseFirestore.instance;
@@ -346,7 +344,8 @@ class FollowingCommunityDetailPage extends StatelessWidget {
         await FirebaseFirestore.instance.collection('users').doc(uid).get();
     Map<String, dynamic> data = document.data() as Map<String, dynamic>;
 
-    db.collection("communities")
+    db
+        .collection("communities")
         .doc("following_communities")
         .collection("following_community_details")
         .doc(followingCommunity.id)

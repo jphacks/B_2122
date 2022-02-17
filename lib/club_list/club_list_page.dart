@@ -516,9 +516,10 @@ class ClubListPage extends StatelessWidget {
                           backgroundImage: athleticClub.imageURL != null &&
                                   athleticClub.imageURL!.isNotEmpty
                               ? AssetImage(
-                                  'images/athletic_club_images/${athleticClub.imageURL}')
+                                  'images/athletic_club_images/${athleticClub.imageURL}',
+                                )
                               : AssetImage(
-                                  'images/placeholder_image/placeholder.jpeg'),
+                              'images/placeholder_image/placeholder.png'),
                           backgroundColor: Colors.transparent,
                         ),
                       ),
@@ -529,7 +530,7 @@ class ClubListPage extends StatelessWidget {
                         BlendMode.saturation,
                       ),
                       child: Image.asset(
-                        'placeholder_image/placeholder.jpeg',
+                        'images/placeholder_image/placeholder.png',
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -582,7 +583,7 @@ class ClubListPage extends StatelessWidget {
                               ? AssetImage(
                                   'images/cultural_club_images/${culturalClub.imageURL}')
                               : AssetImage(
-                                  'images/placeholder_image/placeholder.jpeg'),
+                                  'images/placeholder_image/placeholder.png'),
                           backgroundColor: Colors.transparent,
                         ),
                       ),
@@ -638,7 +639,7 @@ class ClubListPage extends StatelessWidget {
                               ? AssetImage(
                                   'images/academic_study_club_images/${academicStudyClub.imageURL}')
                               : AssetImage(
-                                  'images/placeholder_image/placeholder.jpeg'),
+                                  'images/placeholder_image/placeholder.png'),
                           backgroundColor: Colors.transparent,
                         ),
                       ),
@@ -695,7 +696,7 @@ class ClubListPage extends StatelessWidget {
                               ? AssetImage(
                                   'images/single_part_club_images/${singlePartClub.imageURL}')
                               : AssetImage(
-                                  'images/placeholder_image/placeholder.jpeg'),
+                                  'images/placeholder_image/placeholder.png'),
                           backgroundColor: Colors.transparent,
                         ),
                       ),

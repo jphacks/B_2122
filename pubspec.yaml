@@ -66,30 +66,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - images/cultural_club_images/keion.jpeg
-     - images/cultural_club_images/guitar.jpeg
-     - images/cultural_club_images/movie.jpeg
-     - images/cultural_club_images/photo.jpeg
-     - images/cultural_club_images/popken.jpeg
-     - images/cultural_club_images/sadou.jpeg
-     - images/cultural_club_images/bungei.jpeg
-     - images/cultural_club_images/caligraphy.jpeg
-     - images/cultural_club_images/expedition.jpeg
-     - images/cultural_club_images/magic.jpeg
-     - images/cultural_club_images/theater.jpeg
-     - images/cultural_club_images/mandolin.jpeg
-     - images/cultural_club_images/art.jpeg
-     - images/cultural_club_images/placeholder_test.jpeg
-     - images/academic_study_club_images/kaigai.jpeg
-     - images/placeholder_image/placeholder.jpeg
-     - images/academic_study_club_images/massken.jpeg
-     - images/athletic_club_images/archery.jpeg
-     - images/athletic_club_images/skating.jpeg
-     - images/athletic_club_images/hokkey.jpeg
-     - images/athletic_club_images/amefootball.jpeg
-     - images/athletic_club_images/golf.jpeg
-     - images/athletic_club_images/soccer.jpeg
-     - images/academic_study_club_images/chaina.jpeg
+     - images/cultural_club_images/
+     - images/academic_study_club_images/
+     - images/placeholder_image/
+     - images/academic_study_club_images/
+     - images/athletic_club_images/
      - images/single_part_club_images/tia.jpeg
      - images/single_part_club_images/kbc.jpeg
      - images/single_part_club_images/tia-man.jpeg

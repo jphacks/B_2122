@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testapp/domain/community.dart';
 import 'package:testapp/domain/community_detail.dart';
 
@@ -38,11 +37,28 @@ class CommunityDetailPageModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getBooleanValue() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bookmark = prefs.getBool('bookmark') ?? false;
-    notifyListeners();
+  void getBooleanValue(String followingCommunityId) async {
+    //userのcommunity_bookmarkコレクション内のドキュメントパスの中に
+    // 該当コミュニティと同じドキュメントidがあった場合true,なければfalseを返したい
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('community_bookmarks')
+        .doc(followingCommunityId)
+        .snapshots()
+        .listen((snapshot) {
+      if (snapshot.exists) {
+        bookmark = true;
+      } else {
+        bookmark = false;
+      }
+      notifyListeners();
+    },);
+
   }
+
+
 //handleBookmarkとかに変更
   Future createBookMark(String followingCommunityId) async {
     var db = FirebaseFirestore.instance;
@@ -98,23 +114,33 @@ class CommunityDetailPageModel extends ChangeNotifier {
       "createdAt": DateTime.now()
     });
 
-    //userのcommunity_bookmarkコレクション内のドキュメントパスの中に
-    // 該当コミュニティと同じドキュメントidがあった場合true,なければfalseを返したい
-    final communityBookmark = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(uid)
+    notifyListeners();
+  }
+
+  Future deleteBookMark(String followingCommunityId) async {
+    var db = FirebaseFirestore.instance;
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+
+    //userコレクションにcommunityコレクションの値を追加
+    await FirebaseFirestore.instance
+        .collection('communities')
+        .doc('following_communities')
+        .collection('following_community_details')
+        .doc(followingCommunityId)
+        .delete();
+
+    //communityコレクションにuserコレクションの値を追加
+    final userDocument =
+    await FirebaseFirestore.instance.collection('users').doc(uid).get();
+
+    userDocument.data() as Map<String, dynamic>;
+    db.collection("communities")
+        .doc('following_communities')
+        .collection('following_community_details')
+        .doc(followingCommunityId)
         .collection('community_bookmarks')
-        .doc('QTyZyj0Gtyl1hs4P6oC9')
-        .get();
-
-    if (communityBookmark.exists) {
-      bookmark = true;
-    } else {
-      bookmark = false;
-    }
-
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('bookmark', bookmark);
+        .doc(uid)
+        .delete();
 
     notifyListeners();
   }
