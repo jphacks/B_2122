@@ -5,11 +5,10 @@ import 'package:testapp/domain/community.dart';
 import 'package:testapp/domain/community_detail.dart';
 
 class CommunityDetailPageModel extends ChangeNotifier {
-
   bool bookmark = false;
 
   List<FollowingCommunityDetail>? followingCommunityDetails;
-  void fetchFollowingCommunityDetailList(
+  Future<void> fetchFollowingCommunityDetailList(
       FollowingCommunity followingCommunity) async {
     final snapshot = await FirebaseFirestore.instance
         .collection('communities')
@@ -18,6 +17,7 @@ class CommunityDetailPageModel extends ChangeNotifier {
         .doc(followingCommunity.id)
         .collection('messages')
         .get();
+
     final List<FollowingCommunityDetail> followingCommunityDetails =
         snapshot.docs.map((DocumentSnapshot document) {
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
@@ -34,12 +34,11 @@ class CommunityDetailPageModel extends ChangeNotifier {
     }).toList();
 
     this.followingCommunityDetails = followingCommunityDetails;
+    followingCommunityDetails.sort((a, b) => a.createdAt.compareTo(b.createdAt));
     notifyListeners();
   }
 
-  void getBooleanValue(String followingCommunityId) async {
-    //userのcommunity_bookmarkコレクション内のドキュメントパスの中に
-    // 該当コミュニティと同じドキュメントidがあった場合true,なければfalseを返したい
+   Future<void> getBooleanValue(String followingCommunityId) async {
     final uid = FirebaseAuth.instance.currentUser!.uid;
     await FirebaseFirestore.instance
         .collection('users')
@@ -47,24 +46,52 @@ class CommunityDetailPageModel extends ChangeNotifier {
         .collection('community_bookmarks')
         .doc(followingCommunityId)
         .snapshots()
-        .listen((snapshot) {
-      if (snapshot.exists) {
-        bookmark = true;
-      } else {
-        bookmark = false;
-      }
-      notifyListeners();
-    },);
-
+        .listen(
+      (snapshot) {
+        if (snapshot.exists) {
+          bookmark = true;
+        } else {
+          bookmark = false;
+        }
+        notifyListeners();
+      },
+    );
   }
 
 
-//handleBookmarkとかに変更
-  Future createBookMark(String followingCommunityId) async {
+  Future<void> addText(String message, String followingCommunityId) async {
+    final db = FirebaseFirestore.instance;
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    final document = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .get();
+
+    Map<String, dynamic> data =
+    document.data() as Map<String, dynamic>;
+
+    await db
+        .collection("communities")
+        .doc("following_communities")
+        .collection("following_community_details")
+        .doc(followingCommunityId)
+        .collection('messages')
+        .add({
+      "senderName": data['nickname'],
+      "senderUniversity": data['university'],
+      "senderFaculty": data['faculty'],
+      //TODO:メッセージ送信者の性別情報も持たせる
+      //"senderGenderName":data['senderGenderName'],
+      "senderImageUrl": data['photoUrl'],
+      "message": message,
+      "createdAt": DateTime.now()
+    });
+  }
+
+  Future<void> createBookMark(String followingCommunityId) async {
     var db = FirebaseFirestore.instance;
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
-    //userコレクションにcommunityコレクションの値を追加
     final communityDocument = await FirebaseFirestore.instance
         .collection('communities')
         .doc('following_communities')
@@ -89,7 +116,6 @@ class CommunityDetailPageModel extends ChangeNotifier {
       "createdAt": DateTime.now()
     });
 
-    //communityコレクションにuserコレクションの値を追加
     final userDocument =
         await FirebaseFirestore.instance.collection('users').doc(uid).get();
 
@@ -117,24 +143,13 @@ class CommunityDetailPageModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future deleteBookMark(String followingCommunityId) async {
+  Future<void> deleteBookMark(
+      String followingCommunityId) async {
     var db = FirebaseFirestore.instance;
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
-    //userコレクションにcommunityコレクションの値を追加
     await FirebaseFirestore.instance
         .collection('communities')
-        .doc('following_communities')
-        .collection('following_community_details')
-        .doc(followingCommunityId)
-        .delete();
-
-    //communityコレクションにuserコレクションの値を追加
-    final userDocument =
-    await FirebaseFirestore.instance.collection('users').doc(uid).get();
-
-    userDocument.data() as Map<String, dynamic>;
-    db.collection("communities")
         .doc('following_communities')
         .collection('following_community_details')
         .doc(followingCommunityId)
@@ -142,9 +157,21 @@ class CommunityDetailPageModel extends ChangeNotifier {
         .doc(uid)
         .delete();
 
+    final userDocument =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+
+    userDocument.data() as Map<String, dynamic>;
+    db
+        .collection("users")
+        .doc(uid)
+        .collection('community_bookmarks')
+        .doc(followingCommunityId)
+        .delete();
+
     notifyListeners();
   }
 
+  //TODO:投稿したコミュニティ自体の削除機能実装
   Future delete(FollowingCommunity community) {
     return FirebaseFirestore.instance
         .collection('communities')

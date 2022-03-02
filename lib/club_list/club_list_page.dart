@@ -125,7 +125,7 @@ class ClubListPage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 elevation: 0.0,
                 centerTitle: false,
-                automaticallyImplyLeading: false),
+            ),
             body: Column(
               children: [
                 Consumer<ClubListModel>(builder: (context, model, child) {

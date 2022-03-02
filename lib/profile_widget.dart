@@ -1,16 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:testapp/setting_page.dart';
 
 class ProfileWidget extends StatelessWidget {
   ProfileWidget(
     this.photoUrl,
     this.nickname,
+    this.university,
+    this.faculty,
     this.bio,
     this.createdAt,
   );
   final String photoUrl;
   final String nickname;
+  final String university;
+  final String faculty;
   final String bio;
   final Timestamp createdAt;
 
@@ -28,7 +33,7 @@ class ProfileWidget extends StatelessWidget {
         children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(
-              'プロフィール情報',
+              'プロフィール',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             IconButton(
@@ -37,7 +42,14 @@ class ProfileWidget extends StatelessWidget {
                   size: 20,
                   color: Colors.grey,
                 ),
-                onPressed: () {}),
+                onPressed: () async{
+                  await Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => SettingPage(),
+                    ),
+                  );
+
+                }),
           ]),
           Divider(),
           SizedBox(
@@ -58,9 +70,7 @@ class ProfileWidget extends StatelessWidget {
                           imageUrl: photoUrl,
                           fit: BoxFit.fitHeight,
                         )
-                      : Image.network(
-                          //ここもデフォルトで表示されるプレースホルダー画像を表示する？意味あるそれ？
-                          'https://www.uekusa.ac.jp/uekusa_wp/wp-content/uploads/2019/10/club_activity_img2019_badminton.jpg'),
+                      : null,
                 ),
               ),
               SizedBox(
@@ -84,21 +94,13 @@ class ProfileWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 32,
-          ),
-          Text(
-            '基本データ',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          Divider(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsets.all(5.0),
                 child: Text(
-                  '大学: 関西大学',
+                  '大学: ' + university,
                   style: TextStyle(
                     fontSize: 14,
                   ),
@@ -108,78 +110,15 @@ class ProfileWidget extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(5.0),
                   child: Text(
-                    '学部: 商学部',
+                    '学部: ' + faculty,
                     style: TextStyle(
                       fontSize: 14,
                     ),
                   ),
                 ),
               ]),
-              Padding(
-                padding: EdgeInsets.all(5.0),
-                child: Text(
-                  '学年: 3年生',
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(5.0),
-                child: Text(
-                  '性別: 男性',
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-              ),
             ],
           ),
-          SizedBox(
-            height: 30,
-          ),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(
-              '参加予定のイベント',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            IconButton(
-                icon: const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.grey,
-                ),
-                onPressed: () {}),
-          ]),
-          Divider(),
-          Center(
-            child: Padding(
-              padding: EdgeInsets.all(30),
-              child: Text('現在参加予定のイベントはありません'),
-            ),
-          ),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(
-              '投稿したコミュニティ',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            IconButton(
-                icon: const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: Colors.grey,
-                ),
-                onPressed: () {}),
-          ]),
-          Divider(),
-          Center(
-            child: Padding(
-              padding: EdgeInsets.all(30),
-              child: Text('投稿したコミュニティはありません'),
-            ),
-          ),
-          SizedBox(height: 30,),
-          Center(child: Text('ログアウト',style: TextStyle(fontWeight: FontWeight.bold),))
         ],
       ),
     );

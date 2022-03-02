@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 
 class AddCommunityModel extends ChangeNotifier {
   String? category;
+  String? title;
   String? contents;
   String? createdBy;
   String? contentsImageUrl;
@@ -16,13 +17,16 @@ class AddCommunityModel extends ChangeNotifier {
 
   Future addCommunity() async {
 
+    if (title == null || title!.isEmpty) {
+      throw 'タイトルを入力してください';
+    }
+
     if (contents == null || contents!.isEmpty) {
       throw '内容を入力してください';
     }
 
 
     final db = FirebaseFirestore.instance;
-    //ここでuidを取得
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
 
@@ -34,7 +38,6 @@ class AddCommunityModel extends ChangeNotifier {
 
     String? contentsImageUrl;
     if (contentsImageFile != null) {
-      // storageにアップロード
       final uploadTask = await FirebaseStorage.instance
           .ref('communities/${imageDocument.id}')
           .putFile(contentsImageFile!);
@@ -48,11 +51,11 @@ class AddCommunityModel extends ChangeNotifier {
           .doc("following_communities")
           .collection("following_community_details")
           .add({
+        "title": data['title'],
         "creatorName": data['nickname'],
         "creatorImage": data['photoUrl'],
         "creatorUniversity": data['university'],
         "creatorFaculty": data['faculty'],
-        //user_nameを変数に変更する
         "contents": contents,
         "contentsImageUrl": contentsImageUrl,
         "createdAt": DateTime.now(),

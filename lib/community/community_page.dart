@@ -11,194 +11,165 @@ class CommunityPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<CommunityPageModel>(
       create: (_) => CommunityPageModel()..fetchFollowingCommunityList(),
-      child: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-              bottom: TabBar(
-                tabs: [
-                  Tab(text: 'すべて'),
-                  Tab(text: '人気順'),
-                  Tab(text: '保存'),
-                ],
-              ),
-              title: const Text(
-                'コミュニティ',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-              ),
-              backgroundColor: Colors.transparent,
-              elevation: 0.0,
-              centerTitle: false,
-              automaticallyImplyLeading: false),
-          extendBodyBehindAppBar: true,
-          body: Padding(
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-            child: Column(
-              children: [
+      child: Scaffold(
+        appBar: AppBar(
+            title: const Text(
+              'コミュニティ',
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            ),
+            backgroundColor: Colors.white,
+            elevation: 0.0,
+            centerTitle: false,
+            automaticallyImplyLeading: false),
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+          child: Column(
+            children: [
+              Consumer<CommunityPageModel>(builder: (context, model, child) {
+                final List<FollowingCommunity>? followingCommunities =
+                    model.followingCommunities;
 
-                Consumer<CommunityPageModel>(builder: (context, model, child) {
-                  final List<FollowingCommunity>? followingCommunities =
-                      model.followingCommunities;
+                if (followingCommunities == null) {
+                  return Container(
+                    color: Colors.black.withOpacity(0.3),
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
 
-                  if (followingCommunities == null) {
-                    return Container(
-                      color: Colors.black.withOpacity(0.3),
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                  }
-
-                  //community系Widgetの定義
-                  //followingCommunityWidget
-                  final List<Widget> followingCommunityWidgets =
-                      followingCommunities
-                          .map(
-                            (followingCommunities) => Card(
-                              elevation: 0.0,
-                              child: Column(
-                                children: [
-                                  ListTile(
-                                    leading: CachedNetworkImage(
-                                      height: 50,
-                                      width: 50,
-                                      imageUrl:
-                                          followingCommunities.creatorImage,
-                                      imageBuilder:
-                                          (context, imageProvider) =>
-                                              Container(
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          image: DecorationImage(
-                                            image: imageProvider,
-                                            fit: BoxFit.cover,
+                //community系Widgetの定義
+                //followingCommunityWidget
+                final List<Widget> followingCommunityWidgets =
+                    followingCommunities
+                        .map(
+                          (followingCommunities) => Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: GestureDetector(
+                              child: ClipRRect(
+                                borderRadius:BorderRadius.circular(10.0),
+                                child: Container(
+                                  color:Colors.white,
+                                  child: Column(
+                                    children: [
+                                      ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: const Radius.circular(10.0),
+                                            topRight: const Radius.circular(10.0),
                                           ),
-                                        ),
+                                          child: Container(
+                                            height:120,
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: CachedNetworkImageProvider(followingCommunities.contentsImageUrl),
+                                              ),
+                                            ),
+                                              child: CachedNetworkImage(imageUrl: followingCommunities.contentsImageUrl,
+                                                imageBuilder: (context, imageProvider) => Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(16),
+                                                    image: DecorationImage(
+                                                        image: imageProvider,
+                                                        fit: BoxFit.cover),
+                                                  ),
+                                                ),))),
+                                      SizedBox(
+                                        height: 5,
                                       ),
-                                      placeholder: (context, url) =>
-                                          CircularProgressIndicator(),
-                                      errorWidget: (context, url, error) =>
-                                          Icon(Icons.error),
-                                    ),
-                                    contentPadding: EdgeInsets.all(10),
-                                    title: Text(
-                                      followingCommunities.creatorName,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    subtitle: Column(
-                                      children: [
-                                        Row(
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal:5.0),
+                                        child: Row(
                                           children: [
-                                            Text(followingCommunities
-                                                .creatorUniversity),
+                                            CachedNetworkImage(
+                                              height: 35,
+                                              width: 35,
+                                              imageUrl:
+                                              followingCommunities.creatorImage,
+                                              imageBuilder:
+                                                  (context, imageProvider) =>
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      image: DecorationImage(
+                                                        image: imageProvider,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                              placeholder: (context, url) =>
+                                                  CircularProgressIndicator(),
+                                              errorWidget: (context, url, error) =>
+                                                  Icon(Icons.error),
+                                            ),
                                             SizedBox(
                                               width: 5,
                                             ),
-                                            Text(followingCommunities
-                                                .creatorFaculty),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: <Widget>[
-                                              Expanded(
-                                                child: Text(
-                                                    followingCommunities
-                                                        .contents),
+                                            Flexible(
+                                              child: Text(
+                                                followingCommunities.title,
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 2,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
-                                            ]),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Icon(
-                                              Icons.bookmark_outlined,
-                                              size: 15,
-                                              color: Colors.grey,
                                             ),
-                                            SizedBox(
-                                              width: 3,
-                                            ),
-                                            Text('56'),
-                                            SizedBox(
-                                              width: 10,
-                                            ),
-                                            Icon(
-                                              Icons.chat_outlined,
-                                              size: 15,
-                                              color: Colors.grey,
-                                            ),
-                                            SizedBox(
-                                              width: 3,
-                                            ),
-                                            Text('131'),
                                           ],
                                         ),
-                                      ],
-                                    ),
-                                    onTap: () async {
-                                      await Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              FollowingCommunityDetailPage(
-                                                  followingCommunities),
-                                        ),
-                                      );
-                                    },
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
+                              onTap: () async {
+                                await Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        FollowingCommunityDetailPage(
+                                            followingCommunities),
+                                  ),
+                                );
+                              },
                             ),
-                          )
-                          .toList();
-                  return Expanded(
-                    child: TabBarView(
-                      children: [
-                        ListView(children: followingCommunityWidgets),
-                        ListView(children: followingCommunityWidgets),
-                        ListView(children: followingCommunityWidgets),
-                      ],
-                    ),
-                  );
-                })
-              ],
-            ),
-          ),
-          floatingActionButton:
-              Consumer<CommunityPageModel>(builder: (context, model, child) {
-            return FloatingActionButton(
-              onPressed: () async {
-                final bool? added = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AddCommunityPage(),
-                    fullscreenDialog: true,
-                  ),
+                          ),
+                        )
+                        .toList();
+                return Expanded(
+                  child: GridView.count(
+                      crossAxisCount: 2, children: followingCommunityWidgets),
                 );
-
-                if (added != null && added) {
-                  final snackBar = SnackBar(
-                    content: Text('コミュニティを追加しました'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                }
-
-                model.fetchFollowingCommunityList();
-              },
-              tooltip: 'Increment',
-              child: Icon(Icons.add),
-            );
-          }),
+              })
+            ],
+          ),
         ),
+        floatingActionButton:
+            Consumer<CommunityPageModel>(builder: (context, model, child) {
+          return FloatingActionButton(
+            onPressed: () async {
+              final bool? added = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddCommunityPage(),
+                  fullscreenDialog: true,
+                ),
+              );
+
+              if (added != null && added) {
+                final snackBar = SnackBar(
+                  content: Text('コミュニティを追加しました'),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
+
+              model.fetchFollowingCommunityList();
+            },
+            tooltip: 'Increment',
+            child: Icon(Icons.add),
+          );
+        }),
       ),
     );
   }

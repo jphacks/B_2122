@@ -3,13 +3,11 @@ import 'package:provider/provider.dart';
 import 'event/event_page.dart';
 import 'home/home_page.dart';
 import 'top_model.dart';
-import 'club_list/club_list_page.dart';
 import 'community/community_page.dart';
 import 'profile_page.dart';
 
 class TopPage extends StatelessWidget {
   final List<String> _tabNames = [
-    "",
     "",
     "",
     "",
@@ -35,16 +33,12 @@ class TopPage extends StatelessWidget {
                       label: _tabNames[0],
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.explore),
+                      icon: Icon(Icons.chat_sharp),
                       label: _tabNames[1],
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.chat_sharp),
-                      label: _tabNames[2],
-                    ),
-                    BottomNavigationBarItem(
                       icon: Icon(Icons.account_circle),
-                      label: _tabNames[3],
+                      label: _tabNames[2],
                     ),
                   ],
                 ));
@@ -70,16 +64,11 @@ class TopPage extends StatelessWidget {
         _tabPage(
           currentIndex,
           1,
-          ClubListPage(),
-        ),
-        _tabPage(
-          currentIndex,
-          2,
           CommunityPage(),
         ),
         _tabPage(
           currentIndex,
-          3,
+          2,
           ProfilePage(),
         ),
       ],

@@ -31,12 +31,14 @@ class UserRepository {
     Map<String, dynamic> data = userDoc.data() as Map<String, dynamic>;
     final String id = userDoc.id;
     final String nickname = data['nickname'];
+    final String university = data['university'];
     final String faculty = data['faculty'];
     final String email = data['email'];
     final String photoUrl = data['photoUrl'];
     final String bio = data['bio'];
     final Timestamp createdAt = data['createdAt'];
 
-    return User(id, nickname, faculty, email, photoUrl, bio, createdAt);
+    return User(
+        id, nickname, university, faculty, email, photoUrl, bio, createdAt);
   }
 }

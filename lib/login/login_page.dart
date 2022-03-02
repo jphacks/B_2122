@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/signup/signup_page.dart';
 import '../top_page.dart';
 import 'login_model.dart';
 import 'package:provider/provider.dart';
@@ -79,25 +78,6 @@ class LoginPage extends StatelessWidget {
                             child: Text('ログイン'),
                             onPressed: () async {
                               _emailValidation();
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          height: 16,
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          height: 44,
-                          child: TextButton(
-                            child: Text('まだアカウントを持っていない方はこちら',style: TextStyle(color:Colors.grey)),
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return SignUpPage();
-                                  },
-                                ),
-                              );
                             },
                           ),
                         ),

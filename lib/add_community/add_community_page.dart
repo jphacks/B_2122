@@ -25,23 +25,8 @@ class AddCommunityPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(children: [
-
-                    TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: '気軽に質問してみよう！',
-
-                      ),
-                      onChanged: (text) {
-                        model.contents = text;
-                      },
-                    ),
-
-                    //TODO: 定数は後で変更する
-                    SizedBox(
-                      height: 10,
-                    ),
                     ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
                       child: GestureDetector(
                         child: SizedBox(
                           width: 150,
@@ -49,13 +34,40 @@ class AddCommunityPage extends StatelessWidget {
                           child: model.contentsImageFile != null
                               ? Image.file(model.contentsImageFile!)
                               : Container(
-                            color: Colors.amber,
+                            color: Colors.grey,
                           ),
                         ),
                         onTap: () async {
                           await model.pickImage();
                         },
                       ),
+                    ),
+                    //TODO: 定数は後で変更する
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'タイトル',
+
+                      ),
+                      onChanged: (text) {
+                        model.title = text;
+                      },
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: '内容',
+
+                      ),
+                      onChanged: (text) {
+                        model.contents = text;
+                      },
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                   ]),
                 ),

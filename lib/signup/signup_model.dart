@@ -10,10 +10,10 @@ class SignUpModel extends ChangeNotifier {
   String? password = '';
   String? nickname;
   String? faculty;
+  String? university;
   String? bio;
   String? photoUrl;
   File? imageFile;
-
 
   final picker = ImagePicker();
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -21,6 +21,12 @@ class SignUpModel extends ChangeNotifier {
   Future signUp() async {
     if (email == null || email!.isEmpty) {
       throw 'メールアドレスを入力してください';
+    }
+
+    if (RegExp(r'^[a-zA-Z0-9]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+ac.jp$')
+            .hasMatch(email!) ==
+        false) {
+      throw '正しいメールアドレスを入力してください';
     }
 
     if (password == null || password!.isEmpty) {
@@ -35,14 +41,18 @@ class SignUpModel extends ChangeNotifier {
       throw '学部を入力してください';
     }
 
-  final userCredential = await _auth.createUserWithEmailAndPassword(
+    if (university == null || university!.isEmpty) {
+      throw '大学名を入力してください';
+    }
+
+    final userCredential = await _auth.createUserWithEmailAndPassword(
       email: email!,
       password: password!,
     );
 
     final user = userCredential.user;
 
-    if(user != null) {
+    if (user != null) {
       final uid = user.uid;
       final doc = FirebaseFirestore.instance.collection('users').doc(uid);
 
@@ -62,12 +72,14 @@ class SignUpModel extends ChangeNotifier {
         'password': password,
         'nickname': nickname,
         'faculty': faculty,
+        'university':university,
         'bio': bio,
         'photoUrl': photoUrl,
         'createdAt': Timestamp.now(),
       });
     }
-    }
+  }
+
   Future pickImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 

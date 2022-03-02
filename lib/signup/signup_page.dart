@@ -24,32 +24,28 @@ class SignUpPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Center(
             child: Consumer<SignUpModel>(builder: (context, model, child) {
-
               void _signUpValidation() async {
-                final email = mailController.text;
-                if (RegExp(
-                    r'^[a-zA-Z0-9]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+ac.jp$')
-                    .hasMatch(email)) {
-                  try {
-                    await model.signUp();
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => TopPage(),
-                      ),
-                    );
-                  } catch (e) {
-                    _showTextDialog(context, e.toString());
-                  }
-                } else {
-                  // メールの形式が正しくない時の処理(エラーダイアログの表示など)
-                  print('えらー');
+                try {
+                  await model.signUp();
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => TopPage(),
+                    ),
+                  );
+                } catch (e) {
+                  _showTextDialog(context, e.toString());
                 }
               }
 
               return Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[Container(child: Text('プロフィール画像'))],
+                  ),
                   ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
                     child: GestureDetector(
                       child: SizedBox(
                         width: 150,
@@ -57,7 +53,7 @@ class SignUpPage extends StatelessWidget {
                         child: model.imageFile != null
                             ? Image.file(model.imageFile!)
                             : Container(
-                                color: Colors.amber,
+                                color: Colors.grey,
                               ),
                       ),
                       onTap: () async {
@@ -130,6 +126,20 @@ class SignUpPage extends StatelessWidget {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[Container(child: Text('大学名'))],
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                        border: InputBorder.none, hintText: '〇〇大学'),
+                    onChanged: (text) {
+                      model.university = text;
+                    },
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[Container(child: Text('自己紹介'))],
                   ),
                   TextField(
@@ -142,13 +152,28 @@ class SignUpPage extends StatelessWidget {
                   SizedBox(
                     height: 16,
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      child: Text('登録する'),
-                      onPressed: () async {
-                        _signUpValidation();
-                      },
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          primary: Colors.black,
+                          backgroundColor: Colors.amber,
+                          padding: EdgeInsets.all(15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                        onPressed: () async {
+                          _signUpValidation();
+                        },
+                        child: Text(
+                          '登録する',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                      ),
                     ),
                   ),
                 ]),
@@ -161,17 +186,18 @@ class SignUpPage extends StatelessWidget {
   }
 }
 
-_showTextDialog(context, message) async {
-  await showDialog(
+Future<void> _showTextDialog(BuildContext context, String? message) async {
+  showDialog(
     context: context,
-    builder: (BuildContext context) {
+    barrierDismissible: false,
+    builder: (BuildContext dialogContext) {
       return AlertDialog(
-        title: Text(message),
+        title: Text(message!),
         actions: <Widget>[
           TextButton(
             child: Text('OK'),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.pop(dialogContext);
             },
           ),
         ],

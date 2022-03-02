@@ -604,4 +604,7 @@ class ClubListModel extends ChangeNotifier {
     this.volunteerClubs = volunteerClubs;
     notifyListeners();
   }
+
+
+
 }

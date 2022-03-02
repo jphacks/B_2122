@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login/login_page.dart';
+import 'landing_page.dart';
 
 class MyApp extends StatelessWidget {
 
@@ -10,8 +10,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        scaffoldBackgroundColor: Colors.grey.shade100,
       ),
-      home: LoginPage(),
+      home: LandingPage(),
     );
   }
 }
