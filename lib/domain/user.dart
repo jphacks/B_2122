@@ -12,14 +12,3 @@ class User {
   String bio;
   Timestamp createdAt;
 }
-
-class CommunityBookmark {
-  CommunityBookmark(this.contents, this.createdAt, this.creatorFaculty,
-      this.creatorImage, this.creatorName, this.creatorUniversity);
-  String contents;
-  Timestamp createdAt;
-  String creatorFaculty;
-  String creatorImage;
-  String creatorName;
-  String creatorUniversity;
-}

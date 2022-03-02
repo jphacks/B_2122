@@ -1,8 +1,8 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:testapp/domain/user.dart';
 import 'package:testapp/profile_widget.dart';
 import 'package:testapp/proflie_model.dart';
+import 'package:testapp/sent_community_widget.dart';
 import 'bookmark_community_widget.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -23,9 +23,6 @@ class ProfilePage extends StatelessWidget {
               centerTitle: false,
               automaticallyImplyLeading: false),
           body: Consumer<ProfileModel>(builder: (context, model, child) {
-            final List<CommunityBookmark>? communityBookmarks =
-                model.communityBookmark;
-
             final user = model.user;
 
             if (user == null) {
@@ -63,9 +60,17 @@ class ProfilePage extends StatelessWidget {
                   ),
                   Divider(),
                   Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(30),
-                      child: Text('投稿したコミュニティはありません'),
+                    child: Column(
+                      children:<Widget>[
+                        SentCommunityWidget(
+                          user.photoUrl,
+                          user.nickname,
+                          user.university,
+                          user.faculty,
+                          user.bio,
+                          user.createdAt,
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(height: 30,),
@@ -80,20 +85,17 @@ class ProfilePage extends StatelessWidget {
                   ),
                   Divider(),
                   Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        children:<Widget>[
-                          BookmarkCommunityWidget(
-                            user.photoUrl,
-                            user.nickname,
-                            user.university,
-                            user.faculty,
-                            user.bio,
-                            user.createdAt,
-                          ),
-                        ],
-                      ),
+                    child: Column(
+                      children:<Widget>[
+                        BookmarkCommunityWidget(
+                          user.photoUrl,
+                          user.nickname,
+                          user.university,
+                          user.faculty,
+                          user.bio,
+                          user.createdAt,
+                        ),
+                      ],
                     ),
                   ),
                 ],
