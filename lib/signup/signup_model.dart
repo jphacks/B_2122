@@ -18,16 +18,18 @@ class SignUpModel extends ChangeNotifier {
   final picker = ImagePicker();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future signUp() async {
+
+  //認証メール送信までの関数
+  Future sendAuthLinkToUser() async {
     if (email == null || email!.isEmpty) {
       throw 'メールアドレスを入力してください';
     }
 
-    if (RegExp(r'^[a-zA-Z0-9]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+ac.jp$')
-            .hasMatch(email!) ==
-        false) {
-      throw '正しいメールアドレスを入力してください';
-    }
+    // if (RegExp(r'^[a-zA-Z0-9]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+.ac.jp$')
+    //     .hasMatch(email!) ==
+    //     false) {
+    //   throw '正しいメールアドレスを入力してください';
+    // }
 
     if (password == null || password!.isEmpty) {
       throw 'パスワードを入力してください';
@@ -45,6 +47,29 @@ class SignUpModel extends ChangeNotifier {
       throw '大学名を入力してください';
     }
 
+    final userCredential = await _auth.createUserWithEmailAndPassword(
+      email: email!,
+      password: password!,
+    );
+
+    final user = userCredential.user;
+
+    if (user!= null && !user.emailVerified) {
+      var actionCodeSettings = ActionCodeSettings(
+        url: 'https://www.example.com/?email=${user.email}',
+        dynamicLinkDomain: 'example.page.link',
+        androidPackageName: 'com.example.android',
+        androidInstallApp: true,
+        androidMinimumVersion: '12',
+        iOSBundleId: 'com.example.ios',
+        handleCodeInApp: true,
+      );
+
+      await user.sendEmailVerification(actionCodeSettings);
+    }
+  }
+
+  Future signUp() async {
     final userCredential = await _auth.createUserWithEmailAndPassword(
       email: email!,
       password: password!,
@@ -76,6 +101,7 @@ class SignUpModel extends ChangeNotifier {
         'bio': bio,
         'photoUrl': photoUrl,
         'createdAt': Timestamp.now(),
+        'isLeader' : false,
       });
     }
   }

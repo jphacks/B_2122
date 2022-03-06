@@ -11,6 +11,7 @@ class TopPage extends StatelessWidget {
     "",
     "",
     "",
+    "",
   ];
 
   @override
@@ -39,6 +40,10 @@ class TopPage extends StatelessWidget {
                     BottomNavigationBarItem(
                       icon: Icon(Icons.account_circle),
                       label: _tabNames[2],
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.explore),
+                      label: _tabNames[3],
                     ),
                   ],
                 ));
@@ -70,6 +75,11 @@ class TopPage extends StatelessWidget {
           currentIndex,
           2,
           ProfilePage(),
+        ),
+        _tabPage(
+          currentIndex,
+          3,
+          EventPage(),
         ),
       ],
     );

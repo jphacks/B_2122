@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../confirm_email_authentication_page.dart';
 import '../top_page.dart';
 import 'signup_model.dart';
 
@@ -26,10 +27,10 @@ class SignUpPage extends StatelessWidget {
             child: Consumer<SignUpModel>(builder: (context, model, child) {
               void _signUpValidation() async {
                 try {
-                  await model.signUp();
-                  Navigator.of(context).pushReplacement(
+                  await model.sendAuthLinkToUser();
+                  Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => TopPage(),
+                      builder: (context) => ConfirmEmailAuthenticationPage(),
                     ),
                   );
                 } catch (e) {
@@ -167,6 +168,11 @@ class SignUpPage extends StatelessWidget {
                         ),
                         onPressed: () async {
                           _signUpValidation();
+                          // Navigator.of(context).pushReplacement(
+                          //   MaterialPageRoute(
+                          //     builder: (context) => TopPage(),
+                          //   ),
+                          // );
                         },
                         child: Text(
                           '登録する',
